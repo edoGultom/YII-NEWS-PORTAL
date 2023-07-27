@@ -1,0 +1,17 @@
+<?php
+
+return [
+    'components' => [
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'pgsql:host=127.0.0.1;port=5432;dbname=portal_beringin',
+            'username' => 'postgres',
+            'password' => 'psql123',
+            'charset' => 'utf8',
+        ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'viewPath' => '@common/mail',
+        ],
+    ],
+];

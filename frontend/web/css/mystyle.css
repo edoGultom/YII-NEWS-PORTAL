@@ -1,0 +1,90 @@
+.lazy{
+    max-height: 208px;
+}
+.tags a{
+    margin-bottom: 5px;
+}
+
+.styled-pagination .pagination .active{
+    background-color: #14c599;
+    border-color: #14c599;
+    color: #ffffff;
+}
+.pagination .active a{
+    color: #ffffff;
+}
+
+.styled-pagination li span {
+    position: relative;
+    display: inline-block;
+    line-height: 36px;
+    height: 40px;
+    font-size: 14px;
+    text-transform: capitalize;
+    min-width: 40px;
+    background: none;
+    color: #999999;
+    font-weight: 500;
+    text-align: center;
+    border: 2px solid #f3f3f3;
+    transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+}
+
+.image-box a.lightbox-image.play-btn{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 34px;
+    height: 34px;
+    line-height: 28px;
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+    color: #14c599;
+    border: 3px solid #14c599;
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-box a.lightbox-image.play-btn:hover{
+ color: #ffffff
+}
+
+.icon-search-dihalaman{
+    position: absolute;
+    top: 0;
+    right: 16px;
+    width: 37px;
+    height: 37px;
+    background: none;
+    cursor: pointer;
+}
+
+.video-terbaru .image{
+    display: flex;
+    height: 240px;
+    align-items: center;
+}
+
+.video-terbaru .news-block-three .inner-box .image {
+    position: relative;
+    height: 150px;
+    overflow: hidden;
+}
+
+
+.fancybox .image-box img{
+    height: 157px;
+
+}
