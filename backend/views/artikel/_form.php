@@ -13,7 +13,6 @@ use yii\helpers\Url;
 /* @var $form yii\widgets\ActiveForm */
 
 $disable = ($idkategori) ? true : false;
-
 $this->registerJsFile(
     '@web/js/ajax_tag.js',
     ['depends' => [\yii\web\JqueryAsset::className()]]
@@ -34,7 +33,14 @@ if ($model->ambilgambar && $model->ambilgambar->type == 'application/pdf') {
     $content2 = '<img id="prev-img-thumb" src="' . $url2 . '" style="display:none;width:100px;height:100px;"></img>';
 }
 ?>
+<section class="section">
+    <div class="section-header d-flex">
+        <h1 class="mr-5">
+            <?= $title ?>
+        </h1>
 
+    </div>
+</section>
 <div class="artikel-form">
     <div class="card p-5 rounded">
         <?php $form = ActiveForm::begin([

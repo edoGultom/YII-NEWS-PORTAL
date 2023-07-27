@@ -41,7 +41,6 @@ class UploadForm extends Model
             // upload file asli =========================================================
 
             $this->file->saveAs($vdir_upload);
-
             switch ($imageType) {
                 case "image/gif":
                     $im_src = imagecreatefromgif($vdir_upload);
@@ -56,7 +55,7 @@ class UploadForm extends Model
                     $im_src = imagecreatefrompng($vdir_upload);
                     break;
             }
-            return $im_src;
+
             $src_width = imageSX($im_src);
             $src_height = imageSY($im_src);
 
@@ -109,10 +108,16 @@ class UploadForm extends Model
                 $cek->size = $this->file->size;
                 $cek->filename = $vdir_upload;
                 $cek->type = $this->file->type;
+                if (!$cek->validate()) {
+                    return $cek->getErrors();
+                }
                 $cek->save(false);
                 $idUpload[0] = $cek->id;
                 $this->file->saveAs($vdir_upload);
             } else {
+                if (!$model->validate()) {
+                    return $model->getErrors();
+                }
                 if ($model->save(false)) {
                     $idUpload[0] = $model->id;
                     $this->file->saveAs($vdir_upload);
@@ -176,7 +181,6 @@ class UploadForm extends Model
 
 
             imagedestroy($im_src);
-            // imagedestroy($im);
             imagedestroy($im2);
 
             $artikel = Artikel::findOne(['id' => $this->id_artikel]);
@@ -187,13 +191,9 @@ class UploadForm extends Model
                 $artikel->save(false);
             }
 
-            $iklan = Iklan::findOne(['id' => $this->id_iklan]);
-            if ($iklan && !empty($idUpload)) {
-                $iklan->gambar = $idUpload[0];
-                $iklan->save(false);
-            }
             return true;
         } else {
+            return $this->getErrors();
             return false;
         }
     }

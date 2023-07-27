@@ -2,23 +2,24 @@
 
 namespace common\models;
 
-use Yii;
 use yii\behaviors\TimestampBehavior;
 use common\components\UserBehavior;
 use yii\behaviors\SluggableBehavior;
-
+use Yii;
 
 /**
  * This is the model class for table "halaman".
  *
  * @property int $id
  * @property string $nama
- * @property string $judul
- * @property string $isi
- * @property string $format_halaman
- * @property int $id_user
- * @property int $created_at
- * @property int $updated_at
+ * @property string|null $judul
+ * @property string|null $sub_judul
+ * @property string|null $isi
+ * @property int|null $format_halaman
+ * @property int|null $id_user
+ * @property int|null $status
+ * @property int|null $created_at
+ * @property int|null $updated_at
  */
 class Halaman extends \yii\db\ActiveRecord
 {
@@ -29,6 +30,10 @@ class Halaman extends \yii\db\ActiveRecord
     {
         return 'halaman';
     }
+
+    /**
+     * {@inheritdoc}
+     */
 
     public function behaviors()
     {
@@ -42,17 +47,15 @@ class Halaman extends \yii\db\ActiveRecord
             ],
         ];
     }
-    /**
-     * {@inheritdoc}
-     */
+
     public function rules()
     {
         return [
             [['nama'], 'required'],
             [['isi'], 'string'],
-            [['status'], 'default', 'value' => 1],
-            [['id_user', 'created_at', 'updated_at','format_halaman'], 'integer'],
-            [['nama', 'judul',], 'string', 'max' => 255],
+            [['format_halaman', 'id_user', 'status', 'created_at', 'updated_at'], 'default', 'value' => null],
+            [['format_halaman', 'id_user', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['nama', 'judul', 'sub_judul'], 'string', 'max' => 255],
             [['nama'], 'unique'],
         ];
     }
@@ -66,24 +69,15 @@ class Halaman extends \yii\db\ActiveRecord
             'id' => 'ID',
             'nama' => 'Nama',
             'judul' => 'Judul',
-            'sub_judul'=>'Sub Judul',
+            'sub_judul' => 'Sub Judul',
             'isi' => 'Isi',
             'format_halaman' => 'Format Halaman',
             'id_user' => 'Id User',
+            'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
     }
-
-    public function getFormathalaman()
-    {
-        return $this->hasOne(RefFormatHalaman::className(), ['id' => 'format_halaman']);    
-    }
-
-    // public function getKategoriArtikel(){
-    //     return $this->hasOne(KategoriArtikel::className(), ['id' => 'id_user']);
-    // }
-
     public function getPostingBy()
     {
         return $this->hasOne(User::className(), ['id' => 'id_user']);

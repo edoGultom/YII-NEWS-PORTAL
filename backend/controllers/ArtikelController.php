@@ -140,11 +140,12 @@ class ArtikelController extends Controller
         $model = new Artikel();
         $upload = new UploadForm();
         $model->tanggalF = date("Y/m/d");
+
         // echo $model->tanggalF;exit;
         if ($idkategori) {
             $model->kategori = $idkategori;
         }
-
+        $title = 'Tambah Artikel';
         if ($request->isAjax) {
             /*
             *   Process for ajax request
@@ -157,6 +158,7 @@ class ArtikelController extends Controller
                         'model' => $model,
                         'idkategori' => $idkategori,
                         'upload' => $upload,
+                        'title' => $title,
                     ]),
                     'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
                         Html::button('Save', ['class' => 'btn btn-primary', 'type' => "submit"])
@@ -178,7 +180,7 @@ class ArtikelController extends Controller
                     'title' => "Tambah Artikel",
                     'content' => '<span class="text-success">Create Artikel success</span>',
                     'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
-                        Html::a('Create More', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote', 'onClick' => 'btnMore()'])
+                        Html::a('Create More', ['create', 'idKategori' => $idkategori], ['class' => 'btn btn-primary', 'role' => 'modal-remote', 'onClick' => 'btnMore()'])
 
                 ];
             } else {
@@ -188,6 +190,7 @@ class ArtikelController extends Controller
                         'model' => $model,
                         'idkategori' => $idkategori,
                         'upload' => $upload,
+                        'title' => $title,
                     ]),
                     'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
                         Html::button('Save', ['class' => 'btn btn-primary', 'type' => "submit"])
@@ -205,17 +208,14 @@ class ArtikelController extends Controller
 
                 $upload->id_artikel = $model->id;
                 $upload->file = UploadedFile::getInstance($model, 'file');
-
-                echo '<pre>';
-                print_r($upload->upload());
-                echo '</pre>';
-                exit();
+                $upload->upload();
 
                 return $this->redirect(['index', 'id' => $model->id]);
             } else {
                 return $this->render('create', [
                     'model' => $model,
                     'idkategori' => $idkategori,
+                    'title' => $title,
                     'upload' => $upload,
                 ]);
             }
@@ -236,6 +236,7 @@ class ArtikelController extends Controller
         $model = $this->findModel($id);
         $upload = new UploadForm();
         $tags = explode(',', $model->tag);
+        $title = 'Ubah Artikel';
         if ($request->isAjax) {
             /*
             *   Process for ajax request
@@ -248,6 +249,7 @@ class ArtikelController extends Controller
                         'model' => $model,
                         'idkategori' => $idkategori,
                         'tags' => $tags,
+                        'title' => $title,
                     ]),
                     'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
                         Html::button('Save', ['class' => 'btn btn-primary', 'type' => "submit"])
@@ -264,6 +266,7 @@ class ArtikelController extends Controller
                     'content' => $this->renderAjax('view', [
                         'model' => $model,
                         'idkategori' => $idkategori,
+                        'title' => $title,
                         'tags' => $tags,
                     ]),
                     'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
@@ -274,6 +277,7 @@ class ArtikelController extends Controller
                     'title' => "Update Artikel #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
+                        'title' => $title,
                         'idkategori' => $idkategori,
                         'tags' => $tags,
 
@@ -296,6 +300,7 @@ class ArtikelController extends Controller
                 return $this->render('update', [
                     'model' => $model,
                     'idkategori' => $idkategori,
+                    'title' => $title,
                     'tags' => $tags,
                 ]);
             }

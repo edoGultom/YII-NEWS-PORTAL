@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use common\models\Artikel;
+use common\models\KategoriArtikel;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -15,6 +17,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\data\Pagination;
 
 /**
  * Site controller
@@ -80,7 +83,18 @@ class SiteController extends Controller
     }
     public function actionIndex()
     {
-        return $this->render('index');
+        $kategoriBerita = KategoriArtikel::findOne(['keterangan' => 'Berita'])->id;
+        $querydataBerita = Artikel::find()->where(['aktif' => 1, 'kategori' => $kategoriBerita]);
+
+        $countdataBerita = $querydataBerita->count();
+        $paginationdataBerita = new Pagination(['totalCount' => $countdataBerita, 'pageSize' => 8]);
+        $berita = $querydataBerita->offset($paginationdataBerita->offset)
+            ->limit($paginationdataBerita->limit)
+            ->orderBy(['created_at' => SORT_DESC])
+            ->all();
+        return $this->render('index', [
+            'berita' => $berita
+        ]);
     }
 
     /**

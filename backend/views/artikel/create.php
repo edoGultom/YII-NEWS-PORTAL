@@ -11,6 +11,7 @@ use yii\helpers\Html;
     <?= $this->render('_form', [
         'model' => $model,
         'idkategori' => $idkategori,
+        'title' => $title,
         'tags' => []
     ]) ?>
 </div>

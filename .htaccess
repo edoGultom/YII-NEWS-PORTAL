@@ -33,7 +33,7 @@ RewriteRule ^assets/(.*)$ frontend/web/assets/$1 [L]
 # RewriteRule ^common/(.*)$ common/$1 [L]
 
 # ========Jika tidak memenuhi kondisi di atas, maka arahkan ke index.php======== #
-RewriteCond %{REQUEST_URI} !^/(frontend)/web/(|css|less|js|img|assets|upload|fonts|fonts|images|plugins|lib)/
+RewriteCond %{REQUEST_URI} !^/(frontend)/web/(|css|less|js|img|assets|upload|fonts|images|plugins)/
 RewriteCond %{REQUEST_URI} !index.php
 RewriteCond %{REQUEST_FILENAME} !-f [OR]
 RewriteCond %{REQUEST_FILENAME} !-d

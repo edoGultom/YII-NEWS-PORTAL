@@ -22,6 +22,20 @@ CrudAsset::register($this);
         overflow-x: hidden;
     }
 </style>
+<section class="section">
+    <div class="section-header d-flex justify-content-between ">
+        <h1 class="mr-5">
+            <?= $this->title ?>
+        </h1>
+        <div>
+            <?= Html::a(
+                '<i class="fa fa-circle-plus"></i> Tambah Data',
+                ['create'],
+                ['class' => 'btn btn-success', 'role' => 'modal-remote']
+            ) ?>
+        </div>
+    </div>
+</section>
 <div class="kategori-artikel-index">
     <div id="ajaxCrudDatatable">
         <?= GridView::widget([
@@ -29,31 +43,27 @@ CrudAsset::register($this);
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'pjax' => true,
-            'options' => [
-                'class' => 'panel-body panel-collapse table-flip-scroll',
+            'pager' => [
+                'firstPageLabel' => 'Awal',
+                'lastPageLabel' => 'Akhir'
             ],
+
             'columns' => require(__DIR__ . '/_columns.php'),
             'toolbar' => [
-                // ['content'=>
-
-                //     Html::a('<i class="glyphicon glyphicon-repeat"></i>', [''],
-                //     ['data-pjax'=>1, 'class'=>'btn btn-default', 'title'=>'Reset Grid']).
-                //     '{toggleData}'.
-                //     '{export}'
-                // ],
+                [
+                    'content' =>
+                    Html::a(
+                        '<i class="glyphicon glyphicon-repeat"></i> ',
+                        [''],
+                        ['data-pjax' => 1, 'class' => 'btn btn-default', 'title' => 'Reset Grid']
+                    )
+                ]
             ],
             'striped' => true,
             'condensed' => true,
             'responsive' => true,
             'panel' => [
                 'type' => 'primary',
-                'heading' => '<i class="glyphicon glyphicon-list"></i> Kategori Artikels listing',
-                'before' =>  Html::a(
-                    '<i class="glyphicon glyphicon-plus"></i> Tambah Data',
-                    ['create'],
-                    ['role' => 'modal-remote', 'title' => 'Tambah Kategori Artikels', 'class' => 'btn btn-primary']
-                ),
-                'after' => ''
             ]
         ]) ?>
     </div>

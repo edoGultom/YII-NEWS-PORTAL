@@ -21,10 +21,36 @@ use yii\widgets\Menu;
         ];
 
         $menuItems[] = [
-            'label' => '<i class="fas fa-table-cells-large"></i><span>Berita</span>',
-            'options' => ['class' => (in_array(Yii::$app->controller->id, ['artikel', 'kategori-artikel'])) ? 'dropdown active' : 'nav-item dropdown'],
+            'label' => '<i class="fas fa-table-cells-large"></i><span>All Section</span>',
+            'options' => ['class' => (in_array(Yii::$app->controller->id, ['section', 'section-kategori'])) ? 'dropdown active' : 'nav-item dropdown'],
             'url' => "#",
             'items' => [
+                [
+                    'label' => 'Section Kategori',
+                    'url' => ['/section-kategori'],
+                    'options' => ['class' => (Yii::$app->controller->id == 'section-kategori') ? 'active' : ''],
+                    'template' => '<a href="{url}" class="nav-link">{label}</a>',
+                ],
+                [
+                    'label' => 'Section',
+                    'url' => ['/section'],
+                    'options' => ['class' => (Yii::$app->controller->id == 'section') ? 'active' : ''],
+                    'template' => '<a href="{url}" class="nav-link">{label}</a>',
+                ],
+
+            ],
+        ];
+        $menuItems[] = [
+            'label' => '<i class="fas fa-table-cells-large"></i><span>Berita</span>',
+            'options' => ['class' => (in_array(Yii::$app->controller->id, ['halaman', 'artikel', 'kategori-artikel'])) ? 'dropdown active' : 'nav-item dropdown'],
+            'url' => "#",
+            'items' => [
+                [
+                    'label' => 'Halaman',
+                    'url' => ['/halaman'],
+                    'options' => ['class' => (Yii::$app->controller->id == 'halaman') ? 'active' : ''],
+                    'template' => '<a href="{url}" class="nav-link">{label}</a>',
+                ],
                 [
                     'label' => 'Kategori Artikel',
                     'url' => ['/kategori-artikel'],
@@ -37,7 +63,6 @@ use yii\widgets\Menu;
                     'options' => ['class' => (Yii::$app->controller->id == 'artikel') ? 'active' : ''],
                     'template' => '<a href="{url}" class="nav-link">{label}</a>',
                 ],
-
             ],
         ];
 

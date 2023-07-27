@@ -41,6 +41,14 @@ return [
         'gridview' =>  [
             'class' => '\kartik\grid\Module'
         ],
+        'generators' => [
+            'crud'   => [
+                'class' => 'common\generators_new\Generator',
+            ],
+            'crud1'   => [
+                'class' => 'common\generators\Generator',
+            ],
+        ],
         'mimin' => [
             'class' => '\hscstudio\mimin\Module',
         ],

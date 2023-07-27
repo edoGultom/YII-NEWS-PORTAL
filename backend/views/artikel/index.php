@@ -26,42 +26,52 @@ $this->registerJsFile(
         overflow-x: hidden;
     }
 </style>
-<div class="artikel-index">
-    <div id="ajaxCrudDatatable">
-        <?= GridView::widget([
-            'id' => 'crud-datatable',
-            'dataProvider' => $dataProvider,
-            'filterModel' => $searchModel,
-            'pjax' => true,
-            'options' => [
-                'class' => 'panel-body panel-collapse table-flip-scroll',
-            ],
-            'columns' => require(__DIR__ . '/_columns.php'),
-            'toolbar' => [
+<section class="section">
+    <div class="section-header d-flex justify-content-between ">
+        <h1 class="mr-5">
+            <?= $this->title ?>
+        </h1>
+        <div>
+            <?= Html::a(
+                '<i class="fa fa-circle-plus"></i> Tambah Data',
+                ['create', 'idkategori' => $idkategori],
+                ['class' => 'btn btn-success', 'data-pjax' => 0]
+            ) ?>
+        </div>
+    </div>
+</section>
+<div class="row">
+    <div class="col-12">
+        <div id="ajaxCrudDatatable">
+            <?= GridView::widget([
+                'id' => 'crud-datatable',
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'pjax' => true,
+                'pager' => [
+                    'firstPageLabel' => 'Awal',
+                    'lastPageLabel' => 'Akhir'
+                ],
 
-                // ['content'=>
-                //     Html::a('<i class="glyphicon glyphicon-repeat"></i>', [''],
-                //     ['data-pjax'=>1, 'class'=>'btn btn-default', 'title'=>'Reset Grid']).
-                //     '{toggleData}'.
-                //     '{export}'
-                // ],
-            ],
-            'striped' => true,
-            'condensed' => true,
-            'responsive' => true,
-            'panel' => [
-                'type' => 'warning',
-                'heading' => '<i class="glyphicon glyphicon-list"></i> <span class="text-white">Artikels listing</span>',
-                'before' =>
-                Html::a(
-                    '<i class="glyphicon glyphicon-plus"></i> Tambah Data',
-                    ['create', 'idkategori' => $idkategori],
-                    ['title' => 'Tambah Artikels', 'class' => 'btn btn-warning', 'data-pjax' => 0]
-                ),
-                'after' => '' .
-                    '<div class="clearfix"></div>',
-            ]
-        ]) ?>
+                'columns' => require(__DIR__ . '/_columns.php'),
+                'toolbar' => [
+                    [
+                        'content' =>
+                        Html::a(
+                            '<i class="glyphicon glyphicon-repeat"></i> ',
+                            [''],
+                            ['data-pjax' => 1, 'class' => 'btn btn-default', 'title' => 'Reset Grid']
+                        )
+                    ]
+                ],
+                'striped' => true,
+                'condensed' => true,
+                'responsive' => true,
+                'panel' => [
+                    'type' => 'primary',
+                ]
+            ]) ?>
+        </div>
     </div>
 </div>
 <?php Modal::begin([

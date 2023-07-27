@@ -1,16 +1,18 @@
-.lazy{
+.lazy {
     max-height: 208px;
 }
-.tags a{
+
+.tags a {
     margin-bottom: 5px;
 }
 
-.styled-pagination .pagination .active{
-    background-color: #14c599;
-    border-color: #14c599;
+.styled-pagination .pagination .active {
+    background-color: #78B7BB;
+    border-color: #78B7BB;
     color: #ffffff;
 }
-.pagination .active a{
+
+.pagination .active a {
     color: #ffffff;
 }
 
@@ -34,7 +36,7 @@
     -moz-transition: all 500ms ease;
 }
 
-.image-box a.lightbox-image.play-btn{
+.image-box a.lightbox-image.play-btn {
     position: absolute;
     right: 15px;
     top: 15px;
@@ -44,8 +46,8 @@
     display: inline-block;
     border-radius: 50%;
     text-align: center;
-    color: #14c599;
-    border: 3px solid #14c599;
+    color: #78B7BB;
+    border: 3px solid #78B7BB;
     transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
@@ -57,11 +59,11 @@
     align-items: center;
 }
 
-.image-box a.lightbox-image.play-btn:hover{
- color: #ffffff
+.image-box a.lightbox-image.play-btn:hover {
+    color: #ffffff
 }
 
-.icon-search-dihalaman{
+.icon-search-dihalaman {
     position: absolute;
     top: 0;
     right: 16px;
@@ -71,7 +73,7 @@
     cursor: pointer;
 }
 
-.video-terbaru .image{
+.video-terbaru .image {
     display: flex;
     height: 240px;
     align-items: center;
@@ -84,7 +86,7 @@
 }
 
 
-.fancybox .image-box img{
+.fancybox .image-box img {
     height: 157px;
 
 }

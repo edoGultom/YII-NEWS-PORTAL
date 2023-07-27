@@ -12,6 +12,8 @@ use yii\bootstrap\NavBar;
 
 
 AppAsset::register($this);
+$sectionHeader = Yii::$app->Template->sectionHeader(1);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -42,7 +44,8 @@ AppAsset::register($this);
                     <div class="inner-container clearfix">
 
                         <div class="pull-left logo-outer">
-                            <div class="logo"><a href="index.html"><span class="letter">Desa</span><img src="img/logo.svg" width="100" height="100" alt="" /></a></div>
+                            <div class="logo"><a href="index.html"><span class="letter">Desa</span><img
+                                        src="img/logo.svg" width="100" height="100" alt="" /></a></div>
                         </div>
 
                         <div class="pull-right upper-right clearfix">
@@ -86,7 +89,9 @@ AppAsset::register($this);
                         <nav class="main-menu navbar-expand-md">
                             <div class="navbar-header">
                                 <!-- Toggle Button -->
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
@@ -95,57 +100,26 @@ AppAsset::register($this);
 
                             <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
-                                    <li class="current dropdown"><a href="#">Home</a>
-                                        <ul>
-                                            <li><a href="index-1.html">Home 01</a></li>
-                                            <li><a href="index-2.html">Home 02</a></li>
-                                            <li><a href="index-3.html">Home 03</a></li>
-                                            <li class="dropdown"><a href="#">Header Styles</a>
-                                                <ul>
-                                                    <li><a href="index-1.html">Header 01</a></li>
-                                                    <li><a href="index-2.html">Header 02</a></li>
-                                                    <li><a href="index-3.html">Header 03</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                    <?php
+                                    foreach ($sectionHeader as $key => $value) {
+                                    ?>
+                                    <li class="<?= ($value->id == 1) ? 'current' : '' ?>">
+                                        <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
                                     </li>
-                                    <li class="dropdown"><a href="#">About Us</a>
-                                        <ul>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="about-2.html">About Us Two</a></li>
-                                            <li><a href="faq.html">Faq</a></li>
-                                            <li><a href="error-page.html">Error Page</a></li>
-                                            <li><a href="comming-soon.html">Comming Soon</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">Projects</a>
-                                        <ul>
-                                            <li><a href="project-threecolumn.html">Projects 3 Column</a></li>
-                                            <li><a href="project-fourcolumn.html">Projects 4 Column</a></li>
-                                            <li><a href="project-fullscreen.html">Projects Full Screen</a></li>
-                                            <li><a href="project-detail.html">Projects Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">Blog</a>
-                                        <ul>
-                                            <li><a href="blog.html">Our blog</a></li>
-                                            <li><a href="blog-sidebar.html">blog Sidebar</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">Shop</a>
-                                        <ul>
-                                            <li><a href="shop.html">Shop</a></li>
-                                            <li><a href="shop-single.html">Shop Details</a></li>
-                                            <li><a href="shoping-cart.html">Cart Page</a></li>
-                                            <li><a href="checkout.html">Checkout Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <?php
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                         </nav>
+
                         <!-- Main Menu End-->
+                        <div class="outer-box">
+                            <div class="pull-right mt-2">
+                                <button type="button" class="theme-btn cart-btn btn-style-four btn-sm">Login</button>
+                                <button type="button" class="theme-btn cart-btn btn-style-four btn-sm">Sign Up</button>
+                            </div>
+                        </div>
 
                         <!-- Hidden Nav Toggler -->
                         <div class="nav-toggler">
@@ -163,14 +137,19 @@ AppAsset::register($this);
                 <div class="auto-container clearfix">
                     <!--Logo-->
                     <div class="logo pull-left">
-                        <a href="index.html" title=""><span class="letter">n</span><img src="images/logo-small.png" alt="" /></a>
+                        <a href="index.html" title="">
+                            <span class="letter">Desa</span>
+                            <!-- <img src="images/logo-small.png" alt="" /> -->
+                        </a>
                     </div>
 
                     <!--Right Col-->
                     <div class="right-col pull-right">
                         <!-- Main Menu -->
                         <nav class="main-menu navbar-expand-md">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
+                                aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -178,53 +157,10 @@ AppAsset::register($this);
 
                             <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
                                 <ul class="navigation clearfix">
-                                    <li class="current dropdown"><a href="#">Home</a>
-                                        <ul>
-                                            <li><a href="index-1.html">Home 01</a></li>
-                                            <li><a href="index-2.html">Home 02</a></li>
-                                            <li><a href="index-3.html">Home 03</a></li>
-                                            <li class="dropdown"><a href="#">Header Styles</a>
-                                                <ul>
-                                                    <li><a href="index-1.html">Header 01</a></li>
-                                                    <li><a href="index-2.html">Header 02</a></li>
-                                                    <li><a href="index-3.html">Header 03</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">About Us</a>
-                                        <ul>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="about-2.html">About Us Two</a></li>
-                                            <li><a href="faq.html">Faq</a></li>
-                                            <li><a href="error-page.html">Error Page</a></li>
-                                            <li><a href="comming-soon.html">Comming Soon</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">Projects</a>
-                                        <ul>
-                                            <li><a href="project-threecolumn.html">Projects 3 Column</a></li>
-                                            <li><a href="project-fourcolumn.html">Projects 4 Column</a></li>
-                                            <li><a href="project-fullscreen.html">Projects Full Screen</a></li>
-                                            <li><a href="project-detail.html">Projects Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">Blog</a>
-                                        <ul>
-                                            <li><a href="blog.html">Our blog</a></li>
-                                            <li><a href="blog-sidebar.html">blog Sidebar</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">Shop</a>
-                                        <ul>
-                                            <li><a href="shop.html">Shop</a></li>
-                                            <li><a href="shop-single.html">Shop Details</a></li>
-                                            <li><a href="shoping-cart.html">Cart Page</a></li>
-                                            <li><a href="checkout.html">Checkout Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li class="current"><a href="#">Home</a></li>
+                                    <li><a>News</a></li>
+                                    <li><a>Maps</a></li>
+                                    <li><a>Document</a></li>
                                 </ul>
                             </div>
                         </nav><!-- Main Menu End-->
@@ -247,58 +183,17 @@ AppAsset::register($this);
             <!-- Hidden Bar Wrapper -->
             <div class="hidden-bar-wrapper">
                 <div class="logo">
-                    <a href="index.html"><span class="letter">n</span><img src="images/mobile-logo.png" alt="" /></a>
+                    <a href="index.html">
+                        <span class="letter">Desa</span>
+                        <!-- <img src="images/mobile-logo.png" alt="" /> -->
+                    </a>
                 </div>
                 <!-- .Side-menu -->
                 <div class="side-menu">
                     <!--navigation-->
                     <ul class="navigation clearfix">
-                        <li class="current dropdown"><a href="#">Home</a>
-                            <ul>
-                                <li><a href="index-1.html">Home 01</a></li>
-                                <li><a href="index-2.html">Home 02</a></li>
-                                <li><a href="index-3.html">Home 03</a></li>
-                                <li class="dropdown"><a href="#">Header Styles</a>
-                                    <ul>
-                                        <li><a href="index-1.html">Header 01</a></li>
-                                        <li><a href="index-2.html">Header 02</a></li>
-                                        <li><a href="index-3.html">Header 03</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a href="#">About Us</a>
-                            <ul>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="about-2.html">About Us Two</a></li>
-                                <li><a href="faq.html">Faq</a></li>
-                                <li><a href="error-page.html">Error Page</a></li>
-                                <li><a href="comming-soon.html">Comming Soon</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a href="#">Projects</a>
-                            <ul>
-                                <li><a href="project-threecolumn.html">Projects 3 Column</a></li>
-                                <li><a href="project-fourcolumn.html">Projects 4 Column</a></li>
-                                <li><a href="project-fullscreen.html">Projects Full Screen</a></li>
-                                <li><a href="project-detail.html">Projects Details</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a href="#">Blog</a>
-                            <ul>
-                                <li><a href="blog.html">Our blog</a></li>
-                                <li><a href="blog-sidebar.html">blog Sidebar</a></li>
-                                <li><a href="blog-single.html">Blog Single</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a href="#">Shop</a>
-                            <ul>
-                                <li><a href="shop.html">Shop</a></li>
-                                <li><a href="shop-single.html">Shop Details</a></li>
-                                <li><a href="shoping-cart.html">Cart Page</a></li>
-                                <li><a href="checkout.html">Checkout Page</a></li>
-                            </ul>
-                        </li>
+                        <li class="current dropdown"><a href="#">Home</a></li>
+                        <li class="dropdown"><a href="#">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -329,7 +224,9 @@ AppAsset::register($this);
                     </div>
 
                     <!--Language Dropdown-->
-                    <div class="language dropdown"><a class="btn btn-default dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#"> English <span class="icon fa fa-angle-down"></span></a>
+                    <div class="language dropdown"><a class="btn btn-default dropdown-toggle" id="dropdownMenu2"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#"> English <span
+                                class="icon fa fa-angle-down"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             <li><a href="#">English</a></li>
                             <li><a href="#">German</a></li>
@@ -575,394 +472,7 @@ AppAsset::register($this);
 
                     <!--Content Side-->
                     <div class="content-side pull-right col-lg-8 col-md-12 col-sm-12">
-
-                        <!--Economics Blog Boxed-->
-                        <div class="economics-category">
-                            <!--Sec Title-->
-                            <div class="sec-title">
-                                <h2>Popular News</h2>
-                            </div>
-                            <div class="economics-items-carousel owl-carousel owl-theme">
-
-                                <div class="slide">
-                                    <div class="row clearfix">
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                                            <!--News Block Two-->
-                                            <div class="news-block-two with-margin">
-                                                <div class="inner-box">
-                                                    <div class="image">
-                                                        <a href="blog-single.html"><img src="images/resource/news-5.jpg" alt="" /></a>
-                                                        <div class="category"><a href="blog-single.html">Sports</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="lower-box">
-                                                        <h3><a href="blog-single.html">Wooden skyscrapers are springing
-                                                                up across the world universal</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon fa fa-clock-o"></span>March 26, 2017
-                                                            </li>
-                                                            <li><span class="icon fa fa-comment-o"></span>3</li>
-                                                            <li><span class="icon fa fa-eye"></span>7420</li>
-                                                        </ul>
-                                                        <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                                            adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                                            Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                                            dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-5.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">Wooden skyscrapers are
-                                                        springing up across the world</a></div>
-                                                <div class="post-info">August 16, 2017</div>
-                                            </article>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-6.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">New York state and
-                                                        california are also close to cracking</a></div>
-                                                <div class="post-info">August 17, 2017</div>
-                                            </article>
-
-                                        </div>
-
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                                            <!--News Block Two-->
-                                            <div class="news-block-two with-margin">
-                                                <div class="inner-box">
-                                                    <div class="image">
-                                                        <a href="blog-single.html"><img src="images/resource/news-6.jpg" alt="" /></a>
-                                                        <div class="category"><a href="blog-single.html">Design</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="lower-box">
-                                                        <h3><a href="blog-single.html">A great personality in the world,
-                                                                What he use for his personality ?</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon fa fa-clock-o"></span>March 27, 2017
-                                                            </li>
-                                                            <li><span class="icon fa fa-comment-o"></span>4</li>
-                                                            <li><span class="icon fa fa-eye"></span>5740</li>
-                                                        </ul>
-                                                        <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                                            adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                                            Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                                            dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-7.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">Critics of sites like
-                                                        Airbnb have long claimed that the remove</a></div>
-                                                <div class="post-info">August 18, 2017</div>
-                                            </article>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-8.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">Six of the displaced Food
-                                                        filed a lawsuit against</a></div>
-                                                <div class="post-info">August 19, 2017</div>
-                                            </article>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="slide">
-                                    <div class="row clearfix">
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                                            <!--News Block Two-->
-                                            <div class="news-block-two with-margin">
-                                                <div class="inner-box">
-                                                    <div class="image">
-                                                        <a href="blog-single.html"><img src="images/resource/news-5.jpg" alt="" /></a>
-                                                        <div class="category"><a href="blog-single.html">Sports</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="lower-box">
-                                                        <h3><a href="blog-single.html">Wooden skyscrapers are springing
-                                                                up across the world universal</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon fa fa-clock-o"></span>March 26, 2017
-                                                            </li>
-                                                            <li><span class="icon fa fa-comment-o"></span>3</li>
-                                                            <li><span class="icon fa fa-eye"></span>7420</li>
-                                                        </ul>
-                                                        <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                                            adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                                            Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                                            dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-5.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">Wooden skyscrapers are
-                                                        springing up across the world</a></div>
-                                                <div class="post-info">August 16, 2017</div>
-                                            </article>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-6.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">New York state and
-                                                        california are also close to cracking</a></div>
-                                                <div class="post-info">August 17, 2017</div>
-                                            </article>
-
-                                        </div>
-
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                                            <!--News Block Two-->
-                                            <div class="news-block-two with-margin">
-                                                <div class="inner-box">
-                                                    <div class="image">
-                                                        <a href="blog-single.html"><img src="images/resource/news-6.jpg" alt="" /></a>
-                                                        <div class="category"><a href="blog-single.html">Design</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="lower-box">
-                                                        <h3><a href="blog-single.html">A great personality in the world,
-                                                                What he use for his personality ?</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon fa fa-clock-o"></span>March 27, 2017
-                                                            </li>
-                                                            <li><span class="icon fa fa-comment-o"></span>4</li>
-                                                            <li><span class="icon fa fa-eye"></span>5740</li>
-                                                        </ul>
-                                                        <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                                            adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                                            Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                                            dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-7.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">Critics of sites like
-                                                        Airbnb have long claimed that the remove</a></div>
-                                                <div class="post-info">August 18, 2017</div>
-                                            </article>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-8.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">Six of the displaced Food
-                                                        filed a lawsuit against</a></div>
-                                                <div class="post-info">August 19, 2017</div>
-                                            </article>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="slide">
-                                    <div class="row clearfix">
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                                            <!--News Block Two-->
-                                            <div class="news-block-two with-margin">
-                                                <div class="inner-box">
-                                                    <div class="image">
-                                                        <a href="blog-single.html"><img src="images/resource/news-5.jpg" alt="" /></a>
-                                                        <div class="category"><a href="blog-single.html">Sports</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="lower-box">
-                                                        <h3><a href="blog-single.html">Wooden skyscrapers are springing
-                                                                up across the world universal</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon fa fa-clock-o"></span>March 26, 2017
-                                                            </li>
-                                                            <li><span class="icon fa fa-comment-o"></span>3</li>
-                                                            <li><span class="icon fa fa-eye"></span>7420</li>
-                                                        </ul>
-                                                        <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                                            adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                                            Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                                            dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-5.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">Wooden skyscrapers are
-                                                        springing up across the world</a></div>
-                                                <div class="post-info">August 16, 2017</div>
-                                            </article>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-6.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">New York state and
-                                                        california are also close to cracking</a></div>
-                                                <div class="post-info">August 17, 2017</div>
-                                            </article>
-
-                                        </div>
-
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                                            <!--News Block Two-->
-                                            <div class="news-block-two with-margin">
-                                                <div class="inner-box">
-                                                    <div class="image">
-                                                        <a href="blog-single.html"><img src="images/resource/news-6.jpg" alt="" /></a>
-                                                        <div class="category"><a href="blog-single.html">Design</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="lower-box">
-                                                        <h3><a href="blog-single.html">A great personality in the world,
-                                                                What he use for his personality ?</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon fa fa-clock-o"></span>March 27, 2017
-                                                            </li>
-                                                            <li><span class="icon fa fa-comment-o"></span>4</li>
-                                                            <li><span class="icon fa fa-eye"></span>5740</li>
-                                                        </ul>
-                                                        <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                                            adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                                            Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                                            dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-7.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">Critics of sites like
-                                                        Airbnb have long claimed that the remove</a></div>
-                                                <div class="post-info">August 18, 2017</div>
-                                            </article>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-8.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">Six of the displaced Food
-                                                        filed a lawsuit against</a></div>
-                                                <div class="post-info">August 19, 2017</div>
-                                            </article>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="slide">
-                                    <div class="row clearfix">
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                                            <!--News Block Two-->
-                                            <div class="news-block-two with-margin">
-                                                <div class="inner-box">
-                                                    <div class="image">
-                                                        <a href="blog-single.html"><img src="images/resource/news-5.jpg" alt="" /></a>
-                                                        <div class="category"><a href="blog-single.html">Sports</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="lower-box">
-                                                        <h3><a href="blog-single.html">Wooden skyscrapers are springing
-                                                                up across the world universal</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon fa fa-clock-o"></span>March 26, 2017
-                                                            </li>
-                                                            <li><span class="icon fa fa-comment-o"></span>3</li>
-                                                            <li><span class="icon fa fa-eye"></span>7420</li>
-                                                        </ul>
-                                                        <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                                            adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                                            Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                                            dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-5.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">Wooden skyscrapers are
-                                                        springing up across the world</a></div>
-                                                <div class="post-info">August 16, 2017</div>
-                                            </article>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-6.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">New York state and
-                                                        california are also close to cracking</a></div>
-                                                <div class="post-info">August 17, 2017</div>
-                                            </article>
-
-                                        </div>
-
-                                        <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                                            <!--News Block Two-->
-                                            <div class="news-block-two with-margin">
-                                                <div class="inner-box">
-                                                    <div class="image">
-                                                        <a href="blog-single.html"><img src="images/resource/news-6.jpg" alt="" /></a>
-                                                        <div class="category"><a href="blog-single.html">Design</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="lower-box">
-                                                        <h3><a href="blog-single.html">A great personality in the world,
-                                                                What he use for his personality ?</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon fa fa-clock-o"></span>March 27, 2017
-                                                            </li>
-                                                            <li><span class="icon fa fa-comment-o"></span>4</li>
-                                                            <li><span class="icon fa fa-eye"></span>5740</li>
-                                                        </ul>
-                                                        <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                                            adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                                            Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                                            dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-7.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">Critics of sites like
-                                                        Airbnb have long claimed that the remove</a></div>
-                                                <div class="post-info">August 18, 2017</div>
-                                            </article>
-
-                                            <!--Widget Post-->
-                                            <article class="widget-post">
-                                                <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-8.jpg" alt=""></a></figure>
-                                                <div class="text"><a href="blog-single.html">Six of the displaced Food
-                                                        filed a lawsuit against</a></div>
-                                                <div class="post-info">August 19, 2017</div>
-                                            </article>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!--End Category-->
+                        <?= $content ?>
                     </div>
 
                     <!--Sidebar Side-->
@@ -1002,8 +512,10 @@ AppAsset::register($this);
                                                 <div class="content">
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-1.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-1.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Historical Placed &
                                                                 his photoshopped</a></div>
@@ -1011,8 +523,10 @@ AppAsset::register($this);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-2.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">the Poor Man use
                                                                 cycling for is Business improvement</a></div>
@@ -1020,8 +534,10 @@ AppAsset::register($this);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-3.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">American Black Film
                                                                 Festival New projects from film TV</a></div>
@@ -1029,8 +545,10 @@ AppAsset::register($this);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-4.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-4.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Amy Schumer swaps
                                                                 lives with Anna Wintour</a></div>
@@ -1038,8 +556,10 @@ AppAsset::register($this);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-9.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-9.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Historical Placed &
                                                                 his photoshopped</a></div>
@@ -1054,8 +574,10 @@ AppAsset::register($this);
                                                 <div class="content">
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-2.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">the Poor Man use
                                                                 cycling for is Business improvement</a></div>
@@ -1063,8 +585,10 @@ AppAsset::register($this);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-3.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">American Black Film
                                                                 Festival New projects from film TV</a></div>
@@ -1079,8 +603,10 @@ AppAsset::register($this);
                                                 <div class="content">
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-3.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">American Black Film
                                                                 Festival New projects from film TV</a></div>
@@ -1088,8 +614,10 @@ AppAsset::register($this);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-4.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-4.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Amy Schumer swaps
                                                                 lives with Anna Wintour</a></div>
@@ -1097,8 +625,10 @@ AppAsset::register($this);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-1.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-1.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Historical Placed &
                                                                 his photoshopped</a></div>
@@ -1138,7 +668,7 @@ AppAsset::register($this);
                     <div class="auto-container">
                         <div class="row clearfix">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="copyright">&copy; Copyright Noor_tech. All rights reserved.</div>
+                                <div class="copyright">&copy; Copyright 2023</div>
                             </div>
                         </div>
                     </div>

@@ -8,7 +8,8 @@ a,
 .news-block-three .inner-box .image .overlay-box .play-btn:hover,
 .fixed-header .sticky-header .logo .letter,
 .main-header .logo-outer .logo .letter,
-.widget-post a, .widget-post a:hover,
+.widget-post a,
+.widget-post a:hover,
 .testimonial-block .inner-box .author span,
 .news-block-two .inner-box .lower-box h3 a:hover,
 .main-header .header-top .top-right .social-nav li a:hover,
@@ -35,13 +36,15 @@ a,
 .shop-item .inner-box .lower-box .lower-content .price,
 .shop-item .inner-box .lower-box .upper-box h4 a:hover,
 .shop-page .basic-details .item-price,
-.gallery-section .filters .filter.active, .gallery-section .filters .filter:hover,
+.gallery-section .filters .filter.active,
+.gallery-section .filters .filter:hover,
 .news-block-six .inner-box .image-box .image .overlay-box .content h2 a:hover,
 .main-footer .footer-bottom .copyright-section .footer-nav li a:hover,
 .cart-table tbody tr .remove-btn:hover,
 .checkout-page .default-links li a,
 .cart-product .inner h3 a:hover,
-.error-search-box .form-group input:focus + button, .error-search-box .form-group button:hover,
+.error-search-box .form-group input:focus+button,
+.error-search-box .form-group button:hover,
 .hidden-bar .side-menu ul li a:hover,
 .news-block-two .inner-box .image .overlay-box:hover,
 .posts .post-with-audio .post-audio .plyr--full-ui input[type=range],
@@ -49,16 +52,16 @@ a,
 .news-block-two .inner-box blockquote .blockquote-inner .quote-author,
 .updated-news-block .inner-box .middle-box h3 a:hover,
 .updated-news-block .inner-box .lower-box .image .overlay-box .overlay-inner .read-more,
-.hidden-bar .side-menu ul > li.current > a,
-.hidden-bar .side-menu ul > li > ul > li.current > a,
-.hidden-bar .side-menu ul.navigation > li > ul > li > a:hover,
-.hidden-bar .side-menu ul.navigation > li.active > a{
-	color:#14c599;
+.hidden-bar .side-menu ul>li.current>a,
+.hidden-bar .side-menu ul>li>ul>li.current>a,
+.hidden-bar .side-menu ul.navigation>li>ul>li>a:hover,
+.hidden-bar .side-menu ul.navigation>li.active>a {
+	color: #78B7BB;
 }
 
 /*Background Color*/
-.main-menu .navigation > li > a:before,
-.main-menu .navigation > li > ul > li:hover > a,
+.main-menu .navigation>li>a:before,
+.main-menu .navigation>li>ul>li:hover>a,
 .main-slider .uranus.tparrows:hover,
 .main-slider .uranus.tparrows:hover,
 .scroll-to-top:hover,
@@ -69,8 +72,8 @@ a,
 .btn-style-one:hover,
 .main-slider .slider-content h2:before,
 .category-tabs-box .prod-tabs .tab-btns .category,
-.main-header .language .dropdown-menu > li > a:hover,
-.main-menu .navigation > li > ul > li > ul > li > a:hover,
+.main-header .language .dropdown-menu>li>a:hover,
+.main-menu .navigation>li>ul>li>ul>li>a:hover,
 .main-header .header-top .top-right .english-nav li a:hover,
 .main-header .header-top .top-right .english-nav li.active a,
 .product-widget-tabs .prod-tabs .tab-btns .tab-btn:hover,
@@ -88,7 +91,8 @@ a,
 .main-header .outer-box .cart-box .cart-panel .btns-boxed li a:hover,
 .skill-progress .progress-box .bar .bar-fill,
 .gallery-single .upper-content .image-info,
-.styled-pagination li a:hover, .styled-pagination li a.active,
+.styled-pagination li a:hover,
+.styled-pagination li a.active,
 .main-slider-two .owl-dots .owl-dot.active span,
 .main-slider-two .owl-dots .owl-dot:hover span,
 .main-slider-three .owl-dots .owl-dot.active span,
@@ -109,18 +113,27 @@ a,
 .shop-item .inner-box .lower-box .lower-content .cart-btn,
 .comment-box .comment .comment-inner .reply-btn:hover,
 .posts .post-with-audio .post-audio .plyr__controls .plyr__control[data-plyr=play]:hover,
-.related-item-carousel .owl-nav .owl-next:hover, .related-item-carousel .owl-nav .owl-prev:hover,
-.blog-single-slider .owl-nav .owl-prev:hover, .blog-single-slider .owl-nav .owl-next:hover,
-.comming-soon .emailed-form .form-group input[type="submit"], .comming-soon .emailed-form button,
+.related-item-carousel .owl-nav .owl-next:hover,
+.related-item-carousel .owl-nav .owl-prev:hover,
+.blog-single-slider .owl-nav .owl-prev:hover,
+.blog-single-slider .owl-nav .owl-next:hover,
+.comming-soon .emailed-form .form-group input[type="submit"],
+.comming-soon .emailed-form button,
 .accordion-box .block .acc-btn.active .icon-outer .icon-minus,
-.related-items .owl-nav .owl-prev:hover, .related-items .owl-nav .owl-next:hover,
-.main-slider-three .owl-nav .owl-prev:hover, .main-slider-three .owl-nav .owl-next:hover,
+.related-items .owl-nav .owl-prev:hover,
+.related-items .owl-nav .owl-next:hover,
+.main-slider-three .owl-nav .owl-prev:hover,
+.main-slider-three .owl-nav .owl-next:hover,
 .news-block-six .inner-box .image-box .image .overlay-box .overlay-inner .content .category,
-.blog-carousel-section .owl-nav .owl-prev:hover, .blog-carousel-section .owl-nav .owl-next:hover,
-.featured-block-section .owl-nav .owl-prev:hover, .featured-block-section .owl-nav .owl-next:hover,
-.category-tabs-box .owl-nav .owl-next:hover, .category-tabs-box .owl-nav .owl-prev:hover,
-.economics-category .owl-nav .owl-next:hover, .economics-category .owl-nav .owl-prev:hover{
-	background-color:#14c599;
+.blog-carousel-section .owl-nav .owl-prev:hover,
+.blog-carousel-section .owl-nav .owl-next:hover,
+.featured-block-section .owl-nav .owl-prev:hover,
+.featured-block-section .owl-nav .owl-next:hover,
+.category-tabs-box .owl-nav .owl-next:hover,
+.category-tabs-box .owl-nav .owl-prev:hover,
+.economics-category .owl-nav .owl-next:hover,
+.economics-category .owl-nav .owl-prev:hover {
+	background-color: #78B7BB;
 }
 
 
@@ -129,7 +142,8 @@ a,
 .btn-style-two:hover,
 .btn-style-one:hover,
 .main-header .language .dropdown-menu,
-.styled-pagination li a:hover, .styled-pagination li a.active,
+.styled-pagination li a:hover,
+.styled-pagination li a.active,
 .main-header .header-lower .search-box-outer .dropdown-menu,
 .main-header .header-lower .search-panel input:focus,
 .main-header .header-lower .search-panel select:focus,
@@ -164,27 +178,31 @@ a,
 .shop-comment-form .form-group select:focus,
 .shop-comment-form .form-group textarea:focus,
 .main-header .outer-box .cart-box .cart-panel .btns-boxed li a:hover,
-.shop-form input:focus, .shop-form select:focus, .shop-form textarea:focus,
-.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus,
-.category-tabs-box .owl-nav .owl-next:hover, .category-tabs-box .owl-nav .owl-prev:hover,
-.economics-category .owl-nav .owl-next:hover, .economics-category .owl-nav .owl-prev:hover{
-	border-color:#14c599;
+.shop-form input:focus,
+.shop-form select:focus,
+.shop-form textarea:focus,
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus,
+.category-tabs-box .owl-nav .owl-next:hover,
+.category-tabs-box .owl-nav .owl-prev:hover,
+.economics-category .owl-nav .owl-next:hover,
+.economics-category .owl-nav .owl-prev:hover {
+	border-color: #78B7BB;
 }
 
 /*RGBA Color Light*/
 .default-portfolio-item .overlay-inner,
 .category-tabs-box .owl-nav .owl-next,
 .category-tabs-box .owl-nav .owl-prev,
-.default-portfolio-item .overlay-inner .option-btn:hover{
-	background-color:rgba(20,197,153,0.80);
+.default-portfolio-item .overlay-inner .option-btn:hover {
+	background-color: rgba(20, 197, 153, 0.80);
 }
 
-.posts .post-with-audio .post-audio .plyr__controls{
-	background-color:rgba(20,197,153,0.10);
+.posts .post-with-audio .post-audio .plyr__controls {
+	background-color: rgba(20, 197, 153, 0.10);
 }
 
 /*RGBA Color Dark*/
 
-@media only screen and (max-width: 767px){
-	
-}
+@media only screen and (max-width: 767px) {}
