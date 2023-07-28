@@ -8,20 +8,17 @@
 use yii\helpers\Html;
 
 $this->title = $name;
+$statusCode = Yii::$app->response->statusCode;
+
 ?>
-<div class="site-error">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <div class="alert alert-danger">
+<div class="page-inner">
+    <h1><?= $statusCode ?></h1>
+    <div class="page-description">
         <?= nl2br(Html::encode($message)) ?>
     </div>
-
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
-
+    <div class="page-search">
+        <div class="mt-3">
+            <a href="/admin" class="btn btn-primary">Back to Home</a>
+        </div>
+    </div>
 </div>

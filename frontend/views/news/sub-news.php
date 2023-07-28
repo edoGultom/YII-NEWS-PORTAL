@@ -23,23 +23,23 @@ use yii\helpers\Url;
             </ul>
             <ul class="social-icon-one alternate">
                 <li class="share">Share:</li>
-                <li class="linkedin">
-                    <a target="_blank"
-                        href="https://www.linkedin.com/sharing/share-offsite/?url=<?=
-                                                                                                    'http://dinkes.sumutprov.go.id//artikel/' . $data->sub_judul ?>">
-                        <span class="fa fa-linkedin-square"></span>
-                    </a>
-                </li>
+
                 <li class="whatsapp">
-                    <a target="_blank"
-                        href="whatsapp://send?text=<?= 'http://dinkes.sumutprov.go.id/artikel/' . $data->sub_judul ?>">
-                        <span class="fa fa-whatsapp"></span>
+                    <a target="_blank" href="whatsapp://send?text=<?= 'http://dinkes.sumutprov.go.id/artikel/' . $data->sub_judul ?>">
+                        <!-- <span class="fa fa-whatsapp"></span> -->
+                        <i class="fa fa-brands fa-whatsapp"></i>
                     </a>
                 </li>
-                <li>
-                    <a target="_blank"
-                        href="https://t.me/share/url?url=<?= 'http://dinkes.sumutprov.go.id/artikel/' . $data->sub_judul ?>">
-                        <?= Html::img('/img/telegram.png', ['height' => 20]); ?>
+                <li class="twitter">
+                    <a target="_blank" href="whatsapp://send?text=<?= 'http://dinkes.sumutprov.go.id/artikel/' . $data->sub_judul ?>">
+                        <!-- <span class="fa fa-whatsapp"></span> -->
+                        <i class="fa fa-brands fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="g_plus">
+                    <a target="_blank" href="whatsapp://send?text=<?= 'http://dinkes.sumutprov.go.id/artikel/' . $data->sub_judul ?>">
+                        <!-- <span class="fa fa-whatsapp"></span> -->
+                        <i class="fa fa-brands fa-google-plus"></i>
                     </a>
                 </li>
             </ul>
@@ -78,7 +78,7 @@ use yii\helpers\Url;
                 foreach (array_keys($data->getAllTags()) as $value) {
                     if ($value !== '-') {
                 ?>
-                <a href="#"><?= $value ?></a>
+                        <a href="#"><?= $value ?></a>
                 <?php
                     }
                 }

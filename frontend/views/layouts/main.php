@@ -44,7 +44,8 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                     <div class="inner-container clearfix">
 
                         <div class="pull-left logo-outer">
-                            <div class="logo"><a href="index.html"><span class="letter">Desa</span><img src="img/logo.svg" width="100" height="100" alt="" /></a></div>
+                            <div class="logo"><a href="index.html"><span class="letter">Desa</span><img
+                                        src="img/logo.svg" width="100" height="100" alt="" /></a></div>
                         </div>
 
                         <div class="pull-right upper-right clearfix">
@@ -88,7 +89,9 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                         <nav class="main-menu navbar-expand-md">
                             <div class="navbar-header">
                                 <!-- Toggle Button -->
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
@@ -100,9 +103,9 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                     <?php
                                     foreach ($sectionHeader as $key => $value) {
                                     ?>
-                                        <li class="<?= ($value->id == 1) ? 'current' : '' ?>">
-                                            <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
-                                        </li>
+                                    <li class="<?= ($value->id == 1) ? 'current' : '' ?>">
+                                        <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
+                                    </li>
                                     <?php
                                     }
                                     ?>
@@ -113,7 +116,7 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                         <!-- Main Menu End-->
                         <div class="outer-box">
                             <div class="pull-right mt-2">
-                                <button type="button" class="theme-btn cart-btn btn-style-four btn-sm">Login</button>
+                                <?= Html::a('Login', ['/admin'], ['class' => 'theme-btn cart-btn btn-style-four btn-sm btn', 'data-pjax' => 0, 'target' => '_blank']) ?>
                             </div>
                         </div>
 
@@ -143,7 +146,9 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                     <div class="right-col pull-right">
                         <!-- Main Menu -->
                         <nav class="main-menu navbar-expand-md">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
+                                aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -218,7 +223,9 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                     </div>
 
                     <!--Language Dropdown-->
-                    <div class="language dropdown"><a class="btn btn-default dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#"> English <span class="icon fa fa-angle-down"></span></a>
+                    <div class="language dropdown"><a class="btn btn-default dropdown-toggle" id="dropdownMenu2"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#"> English <span
+                                class="icon fa fa-angle-down"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             <li><a href="#">English</a></li>
                             <li><a href="#">German</a></li>
@@ -504,8 +511,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                 <div class="content">
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-1.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-1.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Historical Placed &
                                                                 his photoshopped</a></div>
@@ -513,8 +522,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-2.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">the Poor Man use
                                                                 cycling for is Business improvement</a></div>
@@ -522,8 +533,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-3.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">American Black Film
                                                                 Festival New projects from film TV</a></div>
@@ -531,8 +544,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-4.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-4.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Amy Schumer swaps
                                                                 lives with Anna Wintour</a></div>
@@ -540,8 +555,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-9.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-9.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Historical Placed &
                                                                 his photoshopped</a></div>
@@ -556,8 +573,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                 <div class="content">
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-2.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">the Poor Man use
                                                                 cycling for is Business improvement</a></div>
@@ -565,8 +584,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-3.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">American Black Film
                                                                 Festival New projects from film TV</a></div>
@@ -581,8 +602,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                 <div class="content">
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-3.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">American Black Film
                                                                 Festival New projects from film TV</a></div>
@@ -590,8 +613,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-4.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-4.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Amy Schumer swaps
                                                                 lives with Anna Wintour</a></div>
@@ -599,8 +624,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-1.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="images/resource/post-thumb-1.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Historical Placed &
                                                                 his photoshopped</a></div>
