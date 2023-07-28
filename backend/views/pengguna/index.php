@@ -1,26 +1,25 @@
 <?php
-
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\Modal;
 use kartik\grid\GridView;
-use johnitvn\ajaxcrud\CrudAsset;
+use johnitvn\ajaxcrud\CrudAsset; 
 use johnitvn\ajaxcrud\BulkButtonWidget;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\KategoriArtikelSearch */
+/* @var $searchModel backend\models\PenggunaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kategori';
+$this->title = 'Penggunas';
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);
 
 ?>
 <style>
-    .kv-grid-container {
-        overflow-x: hidden;
-    }
+.kv-grid-container {
+    overflow-x: hidden;
+}
 </style>
 <section class="section">
     <div class="section-header d-flex justify-content-between ">
@@ -36,7 +35,7 @@ CrudAsset::register($this);
         </div>
     </div>
 </section>
-<div class="kategori-artikel-index">
+<div class="pengguna-index">
     <div id="ajaxCrudDatatable">
         <?= GridView::widget([
             'id' => 'crud-datatable',
@@ -69,7 +68,7 @@ CrudAsset::register($this);
     </div>
 </div>
 <?php Modal::begin([
-    "id" => "ajaxCrudModal",
-    "footer" => "", // always need it for jquery plugin
-]) ?>
+    "id"=>"ajaxCrudModal",
+    "footer"=>"",// always need it for jquery plugin
+])?>
 <?php Modal::end(); ?>

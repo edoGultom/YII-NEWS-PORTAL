@@ -248,8 +248,8 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
 
                                         <!--Tab Btns-->
                                         <ul class="tab-btns tab-buttons clearfix">
-                                            <li data-tab="#prod-popular" class="tab-btn active-btn">Stories</li>
-                                            <li data-tab="#prod-comment" class="tab-btn">Quick Bites</li>
+                                            <li data-tab="#prod-popular" class="tab-btn active-btn">Info</li>
+                                            <li data-tab="#prod-comment" class="tab-btn">Kegiatan</li>
                                         </ul>
 
                                         <!--Tabs Container-->

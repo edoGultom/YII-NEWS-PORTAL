@@ -23,6 +23,7 @@ use yii\widgets\Menu;
         $menuItems[] = [
             'label' => '<i class="fas fa-table-cells-large"></i><span>All Section</span>',
             'options' => ['class' => (in_array(Yii::$app->controller->id, ['section', 'section-kategori'])) ? 'dropdown active' : 'nav-item dropdown'],
+            'template' => '<a href="{url}" class="nav-link has-dropdown" aria-expanded="false">{label}</a>',
             'url' => "#",
             'items' => [
                 [
@@ -43,6 +44,7 @@ use yii\widgets\Menu;
         $menuItems[] = [
             'label' => '<i class="fas fa-table-cells-large"></i><span>Berita</span>',
             'options' => ['class' => (in_array(Yii::$app->controller->id, ['halaman', 'artikel', 'kategori-artikel'])) ? 'dropdown active' : 'nav-item dropdown'],
+            'template' => '<a href="{url}" class="nav-link has-dropdown" aria-expanded="false">{label}</a>',
             'url' => "#",
             'items' => [
                 [
@@ -52,7 +54,7 @@ use yii\widgets\Menu;
                     'template' => '<a href="{url}" class="nav-link">{label}</a>',
                 ],
                 [
-                    'label' => 'Kategori Artikel',
+                    'label' => 'Kategori',
                     'url' => ['/kategori-artikel'],
                     'options' => ['class' => (Yii::$app->controller->id == 'kategori-artikel') ? 'active' : ''],
                     'template' => '<a href="{url}" class="nav-link">{label}</a>',
@@ -66,6 +68,12 @@ use yii\widgets\Menu;
             ],
         ];
 
+        $menuItems[] = [
+            'label' => '<i data-feather="file-text"></i><span>Pengguna</span>',
+            'options' => ['class' =>  Yii::$app->controller->id == 'pengguna' ? 'nav-item active' : 'nav-item'],
+            'url' => ['/pengguna']
+        ];
+
         echo Menu::widget([
             'items' => $menuItems,
             'activateItems' => true,
@@ -73,7 +81,6 @@ use yii\widgets\Menu;
             'activeCssClass' => 'active',
             'options' => ['class' => 'sidebar-menu'],
             'itemOptions' => ['class' => 'nav-link'],
-            'linkTemplate' => '<a href="{url}" class="nav-link has-dropdown" aria-expanded="false">{label}</a>',
             'encodeLabels' => false,
             'submenuTemplate' => '<ul class="dropdown-menu">{items}</ul>',
             'activateParents' => true,
