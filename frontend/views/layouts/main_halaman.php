@@ -48,7 +48,8 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                     <div class="inner-container clearfix">
 
                         <div class="pull-left logo-outer">
-                            <div class="logo"><a href="index.html"><span class="letter">Desa</span><img src="/img/logo.svg" width="100" height="100" alt="" /></a></div>
+                            <div class="logo"><a href="/"><span class="letter">Desa</span><img src="/img/logo.svg"
+                                        width="100" height="100" alt="" /></a></div>
                         </div>
 
                         <div class="pull-right upper-right clearfix">
@@ -92,7 +93,9 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                         <nav class="main-menu navbar-expand-md">
                             <div class="navbar-header">
                                 <!-- Toggle Button -->
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
@@ -104,9 +107,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                     <?php
                                     foreach ($sectionHeader as $key => $value) {
                                     ?>
-                                        <li class="<?= ($value->id == 1) ? 'current' : '' ?>">
-                                            <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
-                                        </li>
+                                    <li
+                                        class="<?= (str_contains($value->link, Yii::$app->controller->id)) ? 'current' : '' ?>">
+                                        <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
+                                    </li>
                                     <?php
                                     }
                                     ?>
@@ -117,8 +121,8 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                         <!-- Main Menu End-->
                         <div class="outer-box">
                             <div class="pull-right mt-2">
-                                <button type="button" class="theme-btn cart-btn btn-style-four btn-sm">Login</button>
-                                <button type="button" class="theme-btn cart-btn btn-style-four btn-sm">Sign Up</button>
+                                <?= Html::a('Login', ['/admin'], ['class' => 'theme-btn cart-btn btn-style-four btn-sm btn', 'data-pjax' => 0, 'target' => '_blank']) ?>
+
                             </div>
                         </div>
 
@@ -138,7 +142,7 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                 <div class="auto-container clearfix">
                     <!--Logo-->
                     <div class="logo pull-left">
-                        <a href="index.html" title="">
+                        <a href="/" title="">
                             <span class="letter">Desa</span>
                             <!-- <img src="/images/logo-small.png" alt="" /> -->
                         </a>
@@ -148,7 +152,9 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                     <div class="right-col pull-right">
                         <!-- Main Menu -->
                         <nav class="main-menu navbar-expand-md">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
+                                aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -156,10 +162,16 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
 
                             <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
                                 <ul class="navigation clearfix">
-                                    <li class="current"><a href="#">Home</a></li>
-                                    <li><a>News</a></li>
-                                    <li><a>Maps</a></li>
-                                    <li><a>Document</a></li>
+                                    <?php
+                                    foreach ($sectionHeader as $key => $value) {
+                                    ?>
+                                    <li
+                                        class="<?= (str_contains($value->link, Yii::$app->controller->id)) ? 'current' : '' ?>">
+                                        <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
+                                    </li>
+                                    <?php
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                         </nav><!-- Main Menu End-->
@@ -182,7 +194,7 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
             <!-- Hidden Bar Wrapper -->
             <div class="hidden-bar-wrapper">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="/">
                         <span class="letter">Desa</span>
                         <!-- <img src="/images/mobile-logo.png" alt="" /> -->
                     </a>
@@ -191,276 +203,23 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                 <div class="side-menu">
                     <!--navigation-->
                     <ul class="navigation clearfix">
-                        <li class="current dropdown"><a href="#">Home</a></li>
-                        <li class="dropdown"><a href="#">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <?php
+                        foreach ($sectionHeader as $key => $value) {
+                        ?>
+                        <li class="<?= (str_contains($value->link, Yii::$app->controller->id)) ? 'current' : '' ?>">
+                            <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
+                        </li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </div>
                 <!-- /.Side-menu -->
-
-                <!--Options Box-->
-                <div class="options-box">
-                    <!--Sidebar Search-->
-                    <div class="sidebar-search">
-                        <form method="post" action="contact.html">
-                            <div class="form-group">
-                                <input type="search" name="text" value="" placeholder="Search ..." required="">
-                                <button type="submit" class="theme-btn"><span class="fa fa-search"></span></button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!--Mobile Cart-->
-                    <div class="mobile-cart">
-                        <a href="shop-single.html" class="clearfix">
-                            <div class="pull-left">
-                                <div class="text">0 items 0.00$</div>
-                            </div>
-                            <div class="pull-right">
-                                <span class="icon fa fa-shopping-cart"></span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!--Language Dropdown-->
-                    <div class="language dropdown"><a class="btn btn-default dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#"> English <span class="icon fa fa-angle-down"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <li><a href="#">English</a></li>
-                            <li><a href="#">German</a></li>
-                            <li><a href="#">Arabic</a></li>
-                            <li><a href="#">Hindi</a></li>
-                        </ul>
-                    </div>
-
-                    <!--Social Links-->
-                    <ul class="social-links clearfix">
-                        <li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
-                        <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                        <li><a href="#"><span class="fa fa-instagram"></span></a></li>
-                        <li><a href="#"><span class="fa fa-pinterest"></span></a></li>
-                    </ul>
-
-                </div>
 
             </div><!-- / Hidden Bar Wrapper -->
 
         </section>
         <!-- End / Hidden Bar -->
-
-        <!--Main Slider Two-->
-        <section class="main-slider-two">
-            <div class="single-item-carousel owl-carousel owl-theme">
-
-                <!--Slide-->
-                <div class="slide">
-                    <div class="clearfix">
-                        <!--Slide Column-->
-                        <div class="slide-column col-lg-6 col-md-12 col-sm-12">
-                            <!--News Block Three-->
-                            <div class="news-block-three style-two">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="/images/resource/news-15.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <div class="content">
-                                                <div class="tag"><a href="blog-single.html">Travel</a></div>
-                                                <h3><a href="blog-single.html">Jeep festival begins in China amid
-                                                        widespread criticism</a></h3>
-                                                <ul class="post-meta">
-                                                    <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                    <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                    <li><span class="icon qb-eye"></span>2470</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Slide Column-->
-                        <div class="slide-column col-lg-6 col-md-12 col-sm-12">
-                            <div class="row clearfix">
-                                <div class="inner-slide col-lg-12 col-md-12 col-sm-12">
-                                    <!--News Block Three-->
-                                    <div class="news-block-three style-three">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img src="/images/resource/news-16.jpg" alt="" />
-                                                <div class="overlay-box">
-                                                    <div class="content">
-                                                        <div class="tag"><a href="blog-single.html">Design</a></div>
-                                                        <h3><a href="blog-single.html">Lady Gaga join Billboard campaign
-                                                                to stop violence</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                            <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                            <li><span class="icon qb-eye"></span>2470</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="inner-slide col-lg-6 col-md-6 col-sm-12">
-                                    <!--News Block Three-->
-                                    <div class="news-block-three style-four">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img src="/images/resource/news-17.jpg" alt="" />
-                                                <div class="overlay-box">
-                                                    <div class="content">
-                                                        <div class="tag"><a href="blog-single.html">Style</a></div>
-                                                        <h3><a href="blog-single.html">Food has last laugh as
-                                                                Universal</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                            <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                            <li><span class="icon qb-eye"></span>2470</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="inner-slide col-lg-6 col-md-6 col-sm-12">
-                                    <!--News Block Three-->
-                                    <div class="news-block-three style-four">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img src="/images/resource/news-18.jpg" alt="" />
-                                                <div class="overlay-box">
-                                                    <div class="content">
-                                                        <div class="tag"><a href="blog-single.html">Fashion</a></div>
-                                                        <h3><a href="blog-single.html">Lady Chopra got what
-                                                                photoshopped?</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                            <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                            <li><span class="icon qb-eye"></span>2470</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--Slide-->
-                <div class="slide">
-                    <div class="clearfix">
-                        <!--Slide Column-->
-                        <div class="slide-column col-lg-6 col-md-12 col-sm-12">
-                            <!--News Block Three-->
-                            <div class="news-block-three style-two">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="/images/resource/news-15.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <div class="content">
-                                                <div class="tag"><a href="blog-single.html">Travel</a></div>
-                                                <h3><a href="blog-single.html">Jeep festival begins in China amid
-                                                        widespread criticism</a></h3>
-                                                <ul class="post-meta">
-                                                    <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                    <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                    <li><span class="icon qb-eye"></span>2470</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Slide Column-->
-                        <div class="slide-column col-lg-6 col-md-12 col-sm-12">
-                            <div class="row clearfix">
-                                <div class="inner-slide col-lg-12 col-md-12 col-sm-12">
-                                    <!--News Block Three-->
-                                    <div class="news-block-three style-three">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img src="/images/resource/news-16.jpg" alt="" />
-                                                <div class="overlay-box">
-                                                    <div class="content">
-                                                        <div class="tag"><a href="blog-single.html">Design</a></div>
-                                                        <h3><a href="blog-single.html">Lady Gaga join Billboard campaign
-                                                                to stop violence</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                            <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                            <li><span class="icon qb-eye"></span>2470</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="inner-slide col-lg-6 col-md-6 col-sm-12">
-                                    <!--News Block Three-->
-                                    <div class="news-block-three style-four">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img src="/images/resource/news-17.jpg" alt="" />
-                                                <div class="overlay-box">
-                                                    <div class="content">
-                                                        <div class="tag"><a href="blog-single.html">Style</a></div>
-                                                        <h3><a href="blog-single.html">Food has last laugh as
-                                                                Universal</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                            <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                            <li><span class="icon qb-eye"></span>2470</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="inner-slide col-lg-6 col-md-6 col-sm-12">
-                                    <!--News Block Three-->
-                                    <div class="news-block-three style-four">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img src="/images/resource/news-18.jpg" alt="" />
-                                                <div class="overlay-box">
-                                                    <div class="content">
-                                                        <div class="tag"><a href="blog-single.html">Fashion</a></div>
-                                                        <h3><a href="blog-single.html">Lady Chopra got what
-                                                                photoshopped?</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                            <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                            <li><span class="icon qb-eye"></span>2470</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </section>
-        <!--End Main Slider Two-->
 
         <!--Sidebar Page Container-->
         <div class="sidebar-page-container">
@@ -509,8 +268,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                 <div class="content">
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="/images/resource/post-thumb-1.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="/images/resource/post-thumb-1.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Historical Placed &
                                                                 his photoshopped</a></div>
@@ -518,8 +279,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="/images/resource/post-thumb-2.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="/images/resource/post-thumb-2.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">the Poor Man use
                                                                 cycling for is Business improvement</a></div>
@@ -527,8 +290,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="/images/resource/post-thumb-3.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="/images/resource/post-thumb-3.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">American Black Film
                                                                 Festival New projects from film TV</a></div>
@@ -536,8 +301,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="/images/resource/post-thumb-4.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="/images/resource/post-thumb-4.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Amy Schumer swaps
                                                                 lives with Anna Wintour</a></div>
@@ -545,8 +312,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="/images/resource/post-thumb-9.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="/images/resource/post-thumb-9.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Historical Placed &
                                                                 his photoshopped</a></div>
@@ -561,8 +330,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                 <div class="content">
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="/images/resource/post-thumb-2.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="/images/resource/post-thumb-2.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">the Poor Man use
                                                                 cycling for is Business improvement</a></div>
@@ -570,8 +341,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="/images/resource/post-thumb-3.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="/images/resource/post-thumb-3.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">American Black Film
                                                                 Festival New projects from film TV</a></div>
@@ -586,8 +359,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                 <div class="content">
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="/images/resource/post-thumb-3.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="/images/resource/post-thumb-3.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">American Black Film
                                                                 Festival New projects from film TV</a></div>
@@ -595,8 +370,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="/images/resource/post-thumb-4.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="/images/resource/post-thumb-4.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Amy Schumer swaps
                                                                 lives with Anna Wintour</a></div>
@@ -604,8 +381,10 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                                                     </article>
 
                                                     <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="/images/resource/post-thumb-1.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                        <figure class="post-thumb"><a href="blog-single.html"><img
+                                                                    src="/images/resource/post-thumb-1.jpg" alt=""></a>
+                                                            <div class="overlay"><span
+                                                                    class="icon qb-play-arrow"></span></div>
                                                         </figure>
                                                         <div class="text"><a href="blog-single.html">Historical Placed &
                                                                 his photoshopped</a></div>
