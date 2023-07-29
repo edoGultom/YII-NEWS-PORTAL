@@ -67,6 +67,26 @@ use yii\widgets\Menu;
                 ],
             ],
         ];
+        $menuItems[] = [
+            'label' => '<i class="fas fa-image"></i><span>Gambar</span>',
+            'options' => ['class' => (in_array(Yii::$app->controller->id, ['slider', 'slider-item'])) ? 'dropdown active' : 'nav-item dropdown'],
+            'template' => '<a href="{url}" class="nav-link has-dropdown" aria-expanded="false">{label}</a>',
+            'url' => "#",
+            'items' => [
+                [
+                    'label' => 'Slider',
+                    'url' => ['/slider'],
+                    'options' => ['class' => (Yii::$app->controller->id == 'slider') ? 'active' : ''],
+                    'template' => '<a href="{url}" class="nav-link">{label}</a>',
+                ],
+                [
+                    'label' => 'Slider Item',
+                    'url' => ['/slider-item'],
+                    'options' => ['class' => (Yii::$app->controller->id == 'slider-item') ? 'active' : ''],
+                    'template' => '<a href="{url}" class="nav-link">{label}</a>',
+                ],
+            ],
+        ];
 
         $menuItems[] = [
             'label' => '<i data-feather="file-text"></i><span>Pengguna</span>',

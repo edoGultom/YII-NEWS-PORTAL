@@ -17,6 +17,7 @@ use common\models\Menu;
 use common\models\MenuKategori;
 use common\models\Profil;
 use common\models\Section;
+use yii\helpers\ArrayHelper;
 
 class Template extends Component
 {
@@ -24,5 +25,11 @@ class Template extends Component
     public function sectionHeader($id_kategori = null)
     {
         return  Section::find()->where(['id_kategori' => $id_kategori])->orderBy(['id' => SORT_ASC])->all();
+    }
+    public function SliderJumbotron($id_section)
+    {
+        $arr = ArrayHelper::getColumn(Slider::find()->where(['id_section' => $id_section])->all(), 'id');
+        // return $arr;
+        return SliderItem::find()->where(['aktif' => 1])->andWhere(['IN', 'id_slider', $arr])->orderBy(['created_at' => SORT_DESC])->all();
     }
 }

@@ -9,10 +9,11 @@ use yii\widgets\Breadcrumbs;
 use yii\bootstrap\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-
+use yii\helpers\Url;
 
 AppAsset::register($this);
 $sectionHeader = Yii::$app->Template->sectionHeader(1);
+$sliderJumbotron = Yii::$app->Template->SliderJumbotron(2);
 
 ?>
 <?php $this->beginPage() ?>
@@ -186,56 +187,19 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                 <div class="side-menu">
                     <!--navigation-->
                     <ul class="navigation clearfix">
-                        <li class="current dropdown"><a href="#">Home</a></li>
-                        <li class="dropdown"><a href="#">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <?php
+                        foreach ($sectionHeader as $key => $value) {
+                        ?>
+                            <li class="<?= ($value->id == 1) ? 'current' : '' ?>">
+                                <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
+                            </li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </div>
                 <!-- /.Side-menu -->
 
-                <!--Options Box-->
-                <div class="options-box">
-                    <!--Sidebar Search-->
-                    <div class="sidebar-search">
-                        <form method="post" action="contact.html">
-                            <div class="form-group">
-                                <input type="search" name="text" value="" placeholder="Search ..." required="">
-                                <button type="submit" class="theme-btn"><span class="fa fa-search"></span></button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!--Mobile Cart-->
-                    <div class="mobile-cart">
-                        <a href="shop-single.html" class="clearfix">
-                            <div class="pull-left">
-                                <div class="text">0 items 0.00$</div>
-                            </div>
-                            <div class="pull-right">
-                                <span class="icon fa fa-shopping-cart"></span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!--Language Dropdown-->
-                    <div class="language dropdown"><a class="btn btn-default dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#"> English <span class="icon fa fa-angle-down"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <li><a href="#">English</a></li>
-                            <li><a href="#">German</a></li>
-                            <li><a href="#">Arabic</a></li>
-                            <li><a href="#">Hindi</a></li>
-                        </ul>
-                    </div>
-
-                    <!--Social Links-->
-                    <ul class="social-links clearfix">
-                        <li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
-                        <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                        <li><a href="#"><span class="fa fa-instagram"></span></a></li>
-                        <li><a href="#"><span class="fa fa-pinterest"></span></a></li>
-                    </ul>
-
-                </div>
 
             </div><!-- / Hidden Bar Wrapper -->
 
@@ -246,212 +210,58 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
         <section class="main-slider-two">
             <div class="single-item-carousel owl-carousel owl-theme">
 
-                <!--Slide-->
-                <div class="slide">
-                    <div class="clearfix">
-                        <!--Slide Column-->
-                        <div class="slide-column col-lg-6 col-md-12 col-sm-12">
-                            <!--News Block Three-->
-                            <div class="news-block-three style-two">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="images/resource/news-15.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <div class="content">
-                                                <div class="tag"><a href="blog-single.html">Travel</a></div>
-                                                <h3><a href="blog-single.html">Jeep festival begins in China amid
-                                                        widespread criticism</a></h3>
-                                                <ul class="post-meta">
-                                                    <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                    <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                    <li><span class="icon qb-eye"></span>2470</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                <?php
+                if (empty($sliderJumbotron)) {
+                    echo '
+                    <div class="news-block-six">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <div class="image">
+                                    <img src="images/main-slider/1.jpg" alt="" />
+                                    
                                 </div>
-                            </div>
-                        </div>
-                        <!--Slide Column-->
-                        <div class="slide-column col-lg-6 col-md-12 col-sm-12">
-                            <div class="row clearfix">
-                                <div class="inner-slide col-lg-12 col-md-12 col-sm-12">
-                                    <!--News Block Three-->
-                                    <div class="news-block-three style-three">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img src="images/resource/news-16.jpg" alt="" />
-                                                <div class="overlay-box">
-                                                    <div class="content">
-                                                        <div class="tag"><a href="blog-single.html">Design</a></div>
-                                                        <h3><a href="blog-single.html">Lady Gaga join Billboard campaign
-                                                                to stop violence</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                            <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                            <li><span class="icon qb-eye"></span>2470</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="inner-slide col-lg-6 col-md-6 col-sm-12">
-                                    <!--News Block Three-->
-                                    <div class="news-block-three style-four">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img src="images/resource/news-17.jpg" alt="" />
-                                                <div class="overlay-box">
-                                                    <div class="content">
-                                                        <div class="tag"><a href="blog-single.html">Style</a></div>
-                                                        <h3><a href="blog-single.html">Food has last laugh as
-                                                                Universal</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                            <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                            <li><span class="icon qb-eye"></span>2470</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="inner-slide col-lg-6 col-md-6 col-sm-12">
-                                    <!--News Block Three-->
-                                    <div class="news-block-three style-four">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img src="images/resource/news-18.jpg" alt="" />
-                                                <div class="overlay-box">
-                                                    <div class="content">
-                                                        <div class="tag"><a href="blog-single.html">Fashion</a></div>
-                                                        <h3><a href="blog-single.html">Lady Chopra got what
-                                                                photoshopped?</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                            <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                            <li><span class="icon qb-eye"></span>2470</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!--Slide-->
-                <div class="slide">
-                    <div class="clearfix">
-                        <!--Slide Column-->
-                        <div class="slide-column col-lg-6 col-md-12 col-sm-12">
-                            <!--News Block Three-->
-                            <div class="news-block-three style-two">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="images/resource/news-15.jpg" alt="" />
-                                        <div class="overlay-box">
-                                            <div class="content">
-                                                <div class="tag"><a href="blog-single.html">Travel</a></div>
-                                                <h3><a href="blog-single.html">Jeep festival begins in China amid
-                                                        widespread criticism</a></h3>
-                                                <ul class="post-meta">
-                                                    <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                    <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                    <li><span class="icon qb-eye"></span>2470</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="news-block-six">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <div class="image">
+                                    <img src="images/main-slider/1.jpg" alt="" />
+                                    
                                 </div>
-                            </div>
-                        </div>
-                        <!--Slide Column-->
-                        <div class="slide-column col-lg-6 col-md-12 col-sm-12">
-                            <div class="row clearfix">
-                                <div class="inner-slide col-lg-12 col-md-12 col-sm-12">
-                                    <!--News Block Three-->
-                                    <div class="news-block-three style-three">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img src="images/resource/news-16.jpg" alt="" />
-                                                <div class="overlay-box">
-                                                    <div class="content">
-                                                        <div class="tag"><a href="blog-single.html">Design</a></div>
-                                                        <h3><a href="blog-single.html">Lady Gaga join Billboard campaign
-                                                                to stop violence</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                            <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                            <li><span class="icon qb-eye"></span>2470</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="inner-slide col-lg-6 col-md-6 col-sm-12">
-                                    <!--News Block Three-->
-                                    <div class="news-block-three style-four">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img src="images/resource/news-17.jpg" alt="" />
-                                                <div class="overlay-box">
-                                                    <div class="content">
-                                                        <div class="tag"><a href="blog-single.html">Style</a></div>
-                                                        <h3><a href="blog-single.html">Food has last laugh as
-                                                                Universal</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                            <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                            <li><span class="icon qb-eye"></span>2470</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="inner-slide col-lg-6 col-md-6 col-sm-12">
-                                    <!--News Block Three-->
-                                    <div class="news-block-three style-four">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img src="images/resource/news-18.jpg" alt="" />
-                                                <div class="overlay-box">
-                                                    <div class="content">
-                                                        <div class="tag"><a href="blog-single.html">Fashion</a></div>
-                                                        <h3><a href="blog-single.html">Lady Chopra got what
-                                                                photoshopped?</a></h3>
-                                                        <ul class="post-meta">
-                                                            <li><span class="icon qb-clock"></span>March 17, 2017</li>
-                                                            <li><span class="icon fa fa-comment-o"></span>9</li>
-                                                            <li><span class="icon qb-eye"></span>2470</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
-                </div>
+                    ';
+                }
+                foreach ($sliderJumbotron as $key => $value) {
+                    // $image = '';
+                    $url = Url::to(['/document/get-file', 'id' =>  $value->ambilgambar->id ?? NULL]);
+                ?>
+                    <!--Slide-->
+                    <div class="news-block-six">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <div class="image">
+                                    <img id="slider" src="<?= Url::to(['/document/get-file', 'id' =>  $value->ambilgambar->id ?? NULL]) ?>" alt="images/main-slider/1.jpg" />
 
+                                    <div class="overlay-box">
+                                        <div class="overlay-inner">
+                                            <div class="content">
+                                                <!-- <div class="category"><a href="blog-single.html">Sports</a></div> -->
+                                                <h2><?= $value->nama_slider ?></a>
+                                                    <!-- <div class="post-date">March 16, 2017</div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
 
         </section>
