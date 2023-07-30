@@ -2,6 +2,8 @@
 
 namespace common\models;
 
+use yii\behaviors\TimestampBehavior;
+use common\components\UserBehavior;
 use Yii;
 
 /**
@@ -33,6 +35,13 @@ class KategoriArtikel extends \yii\db\ActiveRecord
             [['id_user', 'status', 'created_at', 'updated_at'], 'default', 'value' => null],
             [['id_user', 'status', 'created_at', 'updated_at'], 'integer'],
             [['keterangan'], 'string', 'max' => 255],
+        ];
+    }
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+            UserBehavior::className(),
         ];
     }
 

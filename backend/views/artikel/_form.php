@@ -6,6 +6,7 @@ use yii\widgets\ActiveForm;
 use dosamigos\ckeditor\CKEditor;
 use yii\helpers\ArrayHelper;
 use common\models\KategoriArtikel;
+use common\models\RefKategori;
 use kartik\select2\Select2;
 use yii\helpers\Url;
 /* @var $this yii\web\View */
@@ -54,7 +55,7 @@ if ($model->ambilgambar && $model->ambilgambar->type == 'application/pdf') {
 
         <?php
         echo $form->field($model, 'kategori')->widget(Select2::classname(), [
-            'data' => ArrayHelper::map(KategoriArtikel::find()->all(), 'id', 'keterangan'),
+            'data' => ArrayHelper::map(RefKategori::find()->all(), 'id', 'keterangan'),
             'language' => 'en',
             'options' => ['placeholder' => 'Select a state ...'],
             'pluginOptions' => [
@@ -84,17 +85,19 @@ if ($model->ambilgambar && $model->ambilgambar->type == 'application/pdf') {
 
         <?= $form->field($model, 'keterangan_gambar')->textInput(['maxlength' => true]) ?>
 
-        <label class="control-label" for="artikel-tag">Tambah Tag</label>
-        <input type="text" id="tag" class="form-control tag-form" name="tag" maxlength="255" aria-invalid="false" onkeyup='tambahtag(event)'>
+        <label class="control-label" for="artikel-tag"> Tag</label>
+        <input type="text" id="tag" class="form-control tag-form" name="tag" maxlength="255"
+            placeholder="Press enter after entry" aria-invalid="false" onkeyup='tambahtag(event)'>
         <!-- <button type="button" id="btn-tambah-tag">Tambah tag</button> -->
         <div id='tag-wrap' style="margin-top: 2px;">
             <?php if (count($tags) > 0) : ?>
-                <?php foreach ($tags as $tag) : ?>
-                    <div class="tag badge badge-pill badge-primary">
-                        <span class="txt-tag"><?= $tag ?></span>
-                        <span style="color: black; font-weight: bold; cursor: pointer; padding-left: 3px;" onClick="hapustag('<?= $tag ?>')">x<span>
-                    </div>
-                <?php endforeach; ?>
+            <?php foreach ($tags as $tag) : ?>
+            <div class="tag badge badge-pill badge-primary">
+                <span class="txt-tag"><?= $tag ?></span>
+                <span style="color: black; font-weight: bold; cursor: pointer; padding-left: 3px;"
+                    onClick="hapustag('<?= $tag ?>')">x<span>
+            </div>
+            <?php endforeach; ?>
             <?php endif; ?>
         </div>
 
@@ -102,9 +105,9 @@ if ($model->ambilgambar && $model->ambilgambar->type == 'application/pdf') {
 
         <?= $form->field($model, 'tanggalF')->textInput(['maxlength' => true, 'type' => 'date', 'value' => date('Y-m-d')])->label('Tanggal') ?>
         <?php if (!Yii::$app->request->isAjax) { ?>
-            <div class="form-group">
-                <?= Html::Button($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'id' => 'submit-form']) ?>
-            </div>
+        <div class="form-group">
+            <?= Html::Button($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary', 'id' => 'submit-form']) ?>
+        </div>
         <?php } ?>
 
         <?php ActiveForm::end(); ?>

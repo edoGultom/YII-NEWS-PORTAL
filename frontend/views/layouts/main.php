@@ -10,11 +10,16 @@ use yii\bootstrap\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Url;
+use toriphes\lazyload\LazyLoad;
 
 AppAsset::register($this);
 $sectionHeader = Yii::$app->Template->sectionHeader(1);
 $sliderJumbotron = Yii::$app->Template->SliderJumbotron(2);
-
+$sectionContent = Yii::$app->Template->sectionContent(3);
+// echo '<pre>';
+// print_r($sectionContent);
+// echo '</pre>';
+// exit();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -45,7 +50,8 @@ $sliderJumbotron = Yii::$app->Template->SliderJumbotron(2);
                     <div class="inner-container clearfix">
 
                         <div class="pull-left logo-outer">
-                            <div class="logo"><a href="index.html"><span class="letter">Desa</span><img src="img/logo.svg" width="100" height="100" alt="" /></a></div>
+                            <div class="logo"><a href="index.html"><span class="letter">Desa</span><img src="<?= Url::to('@web/img/logo.svg') ?>" width="100" height="100" alt="" /></a>
+                            </div>
                         </div>
 
                         <div class="pull-right upper-right clearfix">
@@ -99,9 +105,18 @@ $sliderJumbotron = Yii::$app->Template->SliderJumbotron(2);
                             <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
                                     <?php
+                                    // echo Yii::$app->controller->id;
+                                    // die();
                                     foreach ($sectionHeader as $key => $value) {
+                                        $status = ' ';
+                                        if (str_contains($value->link, Yii::$app->controller->id)) {
+                                            $status = 'current';
+                                        }
+                                        if (strtolower($value->link) === '/') {
+                                            $status = 'current';
+                                        }
                                     ?>
-                                        <li class="<?= ($value->id == 1) ? 'current' : '' ?>">
+                                        <li class='<?= str_contains($value->link, Yii::$app->controller->id) ? 'current' : (Yii::$app->controller->id === 'site' && strtolower($value->link) == '/') ? 'current' : '' ?>'>
                                             <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
                                         </li>
                                     <?php
@@ -134,7 +149,7 @@ $sliderJumbotron = Yii::$app->Template->SliderJumbotron(2);
                 <div class="auto-container clearfix">
                     <!--Logo-->
                     <div class="logo pull-left">
-                        <a href="index.html" title="">
+                        <a href="/" title="">
                             <span class="letter">Desa</span>
                             <!-- <img src="images/logo-small.png" alt="" /> -->
                         </a>
@@ -152,10 +167,22 @@ $sliderJumbotron = Yii::$app->Template->SliderJumbotron(2);
 
                             <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
                                 <ul class="navigation clearfix">
-                                    <li class="current"><a href="#">Home</a></li>
-                                    <li><a>News</a></li>
-                                    <li><a>Maps</a></li>
-                                    <li><a>Document</a></li>
+                                    <?php
+                                    foreach ($sectionHeader as $key => $value) {
+                                        $status = '';
+                                        if (str_contains($value->link, Yii::$app->controller->id)) {
+                                            $status = 'current';
+                                        }
+                                        if (strtolower($value->link) === '/') {
+                                            $status = 'current';
+                                        }
+                                    ?>
+                                        <li class="<?= $status ?>">
+                                            <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
+                                        </li>
+                                    <?php
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                         </nav><!-- Main Menu End-->
@@ -178,7 +205,7 @@ $sliderJumbotron = Yii::$app->Template->SliderJumbotron(2);
             <!-- Hidden Bar Wrapper -->
             <div class="hidden-bar-wrapper">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="/">
                         <span class="letter">Desa</span>
                         <!-- <img src="images/mobile-logo.png" alt="" /> -->
                     </a>
@@ -189,8 +216,15 @@ $sliderJumbotron = Yii::$app->Template->SliderJumbotron(2);
                     <ul class="navigation clearfix">
                         <?php
                         foreach ($sectionHeader as $key => $value) {
+                            $status = '';
+                            if (str_contains($value->link, Yii::$app->controller->id)) {
+                                $status = 'current';
+                            }
+                            if (strtolower($value->link) === '/') {
+                                $status = 'current';
+                            }
                         ?>
-                            <li class="<?= ($value->id == 1) ? 'current' : '' ?>">
+                            <li class="<?= $status ?>">
                                 <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
                             </li>
                         <?php
@@ -268,7 +302,7 @@ $sliderJumbotron = Yii::$app->Template->SliderJumbotron(2);
         <!--End Main Slider Two-->
 
         <!--Sidebar Page Container-->
-        <div class="sidebar-page-container">
+        <div class="sidebar-page-container" style="padding: unset !important;">
             <div class="auto-container">
                 <div class="row clearfix">
 
@@ -302,61 +336,47 @@ $sliderJumbotron = Yii::$app->Template->SliderJumbotron(2);
 
                                         <!--Tab Btns-->
                                         <ul class="tab-btns tab-buttons clearfix">
-                                            <li data-tab="#prod-popular" class="tab-btn active-btn">Info</li>
-                                            <li data-tab="#prod-comment" class="tab-btn">Kegiatan</li>
+                                            <li data-tab="#prod-info" class="tab-btn active-btn">Info</li>
+                                            <li data-tab="#prod-kegiatan" class="tab-btn">Kegiatan</li>
                                         </ul>
 
                                         <!--Tabs Container-->
                                         <div class="tabs-content">
 
                                             <!--Tab / Active Tab-->
-                                            <div class="tab active-tab" id="prod-popular">
+                                            <div class="tab active-tab" id="prod-info">
                                                 <div class="content">
+                                                    <?php
+                                                    if (empty($sectionContent['info']['data'])) {
+                                                        echo '
+                                                                <article class="widget-post">
+                                                                <figure class="post-thumb"><a href="#"><img src="images/resource/post-thumb-1.jpg" alt=""></a>
+                                                                </figure>
+                                                                <div class="text"><a href="#">Lorem Ipsum is simply dummy text </a></div>
+                                                                <div class="post-info">Month Day, Year</div>
+                                                            </article>
+                                                                ';
+                                                    }
+                                                    foreach ($sectionContent['info']['data'] as $key => $value) :
 
-                                                    <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-1.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
-                                                        </figure>
-                                                        <div class="text"><a href="blog-single.html">Historical Placed &
-                                                                his photoshopped</a></div>
-                                                        <div class="post-info">April 01, 2017</div>
-                                                    </article>
+                                                    ?>
+                                                        <article class="widget-post">
+                                                            <figure class="post-thumb">
+                                                                <a href="<?= $sectionContent['info']['section']['link'] ?>">
+                                                                    <?= LazyLoad::widget([
+                                                                        'src' => Url::to(['/document/get-file', 'id' =>  $value['gambar'] ?? NULL]),
+                                                                    ]); ?>
+                                                                </a>
+                                                            </figure>
+                                                            <div class="text"><a href="<?= $sectionContent['info']['section']['link'] ?>"><?= implode(' ', array_slice(explode(' ', $value['judul']), 0, 25)) ?></a>
+                                                            </div>
+                                                            <div class="post-info">
+                                                                <?= Yii::$app->formatter->asDate($value['created_at'], 'php: d mm Y') ?>
+                                                            </div>
+                                                        </article>
+                                                    <?php endforeach;
+                                                    ?>
 
-                                                    <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-2.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
-                                                        </figure>
-                                                        <div class="text"><a href="blog-single.html">the Poor Man use
-                                                                cycling for is Business improvement</a></div>
-                                                        <div class="post-info">April 02, 2017</div>
-                                                    </article>
-
-                                                    <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-3.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
-                                                        </figure>
-                                                        <div class="text"><a href="blog-single.html">American Black Film
-                                                                Festival New projects from film TV</a></div>
-                                                        <div class="post-info">April 03, 2017</div>
-                                                    </article>
-
-                                                    <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-4.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
-                                                        </figure>
-                                                        <div class="text"><a href="blog-single.html">Amy Schumer swaps
-                                                                lives with Anna Wintour</a></div>
-                                                        <div class="post-info">April 04, 2017</div>
-                                                    </article>
-
-                                                    <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-9.jpg" alt=""></a>
-                                                            <div class="overlay"><span class="icon qb-play-arrow"></span></div>
-                                                        </figure>
-                                                        <div class="text"><a href="blog-single.html">Historical Placed &
-                                                                his photoshopped</a></div>
-                                                        <div class="post-info">April 26, 2017</div>
-                                                    </article>
 
                                                 </div>
                                             </div>
@@ -387,7 +407,7 @@ $sliderJumbotron = Yii::$app->Template->SliderJumbotron(2);
                                             </div>
 
                                             <!--Tab-->
-                                            <div class="tab" id="prod-comment">
+                                            <div class="tab" id="prod-kegiatan">
                                                 <div class="content">
 
                                                     <article class="widget-post">

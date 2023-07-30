@@ -25,22 +25,19 @@ use yii\helpers\Url;
                 <li class="share">Share:</li>
 
                 <li class="whatsapp">
-                    <a target="_blank"
-                        href="whatsapp://send?text=<?= 'http://dinkes.sumutprov.go.id/artikel/' . $data->sub_judul ?>">
+                    <a target="_blank" href="whatsapp://send?text=<?= 'http://dinkes.sumutprov.go.id/artikel/' . $data->sub_judul ?>">
                         <!-- <span class="fa fa-whatsapp"></span> -->
                         <i class="fa fa-brands fa-whatsapp"></i>
                     </a>
                 </li>
                 <li class="twitter">
-                    <a target="_blank"
-                        href="whatsapp://send?text=<?= 'http://dinkes.sumutprov.go.id/artikel/' . $data->sub_judul ?>">
+                    <a target="_blank" href="whatsapp://send?text=<?= 'http://dinkes.sumutprov.go.id/artikel/' . $data->sub_judul ?>">
                         <!-- <span class="fa fa-whatsapp"></span> -->
                         <i class="fa fa-brands fa-twitter"></i>
                     </a>
                 </li>
                 <li class="g_plus">
-                    <a target="_blank"
-                        href="whatsapp://send?text=<?= 'http://dinkes.sumutprov.go.id/artikel/' . $data->sub_judul ?>">
+                    <a target="_blank" href="whatsapp://send?text=<?= 'http://dinkes.sumutprov.go.id/artikel/' . $data->sub_judul ?>">
                         <!-- <span class="fa fa-whatsapp"></span> -->
                         <i class="fa fa-brands fa-google-plus"></i>
                     </a>
@@ -81,7 +78,7 @@ use yii\helpers\Url;
                 foreach (array_keys($data->getAllTags()) as $value) {
                     if ($value !== '-') {
                 ?>
-                <a href="#"><?= $value ?></a>
+                        <a href="#"><?= $value ?></a>
                 <?php
                     }
                 }

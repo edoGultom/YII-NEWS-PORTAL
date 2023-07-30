@@ -30,14 +30,14 @@ class m230727_161718_table_artikel extends Migration
             'updated_at'    => $this->integer()
         ]);
 
-        $this->createTable('kategori_artikel', [
-            'id'                => $this->primaryKey(),
-            'keterangan'        => $this->string(),
-            'id_user'           => $this->integer(),
-            'status'           => $this->tinyInteger(),
-            'created_at'        => $this->integer(),
-            'updated_at'        => $this->integer()
-        ]);
+        // $this->createTable('kategori_artikel', [
+        //     'id'                => $this->primaryKey(),
+        //     'keterangan'        => $this->string(),
+        //     'id_user'           => $this->integer(),
+        //     'status'           => $this->tinyInteger(),
+        //     'created_at'        => $this->integer(),
+        //     'updated_at'        => $this->integer()
+        // ]);
     }
 
     /**

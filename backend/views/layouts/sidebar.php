@@ -47,12 +47,12 @@ use yii\widgets\Menu;
             'template' => '<a href="{url}" class="nav-link has-dropdown" aria-expanded="false">{label}</a>',
             'url' => "#",
             'items' => [
-                [
-                    'label' => 'Halaman',
-                    'url' => ['/halaman'],
-                    'options' => ['class' => (Yii::$app->controller->id == 'halaman') ? 'active' : ''],
-                    'template' => '<a href="{url}" class="nav-link">{label}</a>',
-                ],
+                // [
+                //     'label' => 'Halaman',
+                //     'url' => ['/halaman'],
+                //     'options' => ['class' => (Yii::$app->controller->id == 'halaman') ? 'active' : ''],
+                //     'template' => '<a href="{url}" class="nav-link">{label}</a>',
+                // ],
                 [
                     'label' => 'Kategori',
                     'url' => ['/kategori-artikel'],
@@ -89,7 +89,7 @@ use yii\widgets\Menu;
         ];
 
         $menuItems[] = [
-            'label' => '<i data-feather="file-text"></i><span>Pengguna</span>',
+            'label' => '<i class="fa-solid fa-users"></i><span>Pengguna</span>',
             'options' => ['class' =>  Yii::$app->controller->id == 'pengguna' ? 'nav-item active' : 'nav-item'],
             'url' => ['/pengguna']
         ];

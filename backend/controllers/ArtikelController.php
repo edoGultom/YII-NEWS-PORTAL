@@ -210,7 +210,7 @@ class ArtikelController extends Controller
                 $upload->file = UploadedFile::getInstance($model, 'file');
                 $upload->upload();
 
-                return $this->redirect(['index', 'id' => $model->id]);
+                return $this->redirect(['index', 'idkategori' => $idkategori]);
             } else {
                 return $this->render('create', [
                     'model' => $model,
@@ -270,7 +270,7 @@ class ArtikelController extends Controller
                         'tags' => $tags,
                     ]),
                     'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
-                        Html::a('Edit', ['update', 'id' => $id], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
+                        Html::a('Edit', ['update', 'id' => $id, 'idkategori' => $idkategori], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
                 ];
             } else {
                 return [
@@ -295,7 +295,7 @@ class ArtikelController extends Controller
                 $upload->file = UploadedFile::getInstance($model, 'file');
 
                 $upload->upload();
-                return $this->redirect(['index', 'id' => $model->id]);
+                return $this->redirect(['index', 'idkategori' => $idkategori]);
             } else {
                 return $this->render('update', [
                     'model' => $model,

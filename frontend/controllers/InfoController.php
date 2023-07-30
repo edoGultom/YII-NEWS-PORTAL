@@ -9,29 +9,9 @@ use yii\data\Pagination;
 
 use yii;
 
-class NewsController extends \yii\web\Controller
+class InfoController extends \yii\web\Controller
 {
-    // public function init()
-    // {
 
-    //     parent::init();
-    //     $this->layout = '@frontend/views/layouts/main_halaman';
-    // }
-
-    public function actionIndex()
-    {
-        $title = 'News';
-        $idKategori = KategoriArtikel::find()->where(['ilike', 'lower(keterangan)', 'berita'])->one();
-        $query = Artikel::find()->where(['aktif' => 1])->andWhere(['=', 'kategori', ($idKategori) ? $idKategori->id : '']);
-        $count = $query->count();
-        $pagination = new Pagination(['totalCount' => $count, 'pageSize' => 8]);
-        $data = $query->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->orderBy(['created_at' => SORT_DESC])
-            ->all();
-
-        return $this->render('index', ['data' => $data, 'title' => $title, 'pagination' => $pagination]);
-    }
 
     public function actionSlug($slug)
     {
@@ -55,7 +35,7 @@ class NewsController extends \yii\web\Controller
                 ]));
             }
 
-            return $this->render('sub-news', [
+            return $this->render('index', [
                 'data' => $data,
             ]);
         }

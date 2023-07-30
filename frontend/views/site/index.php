@@ -4,390 +4,164 @@
 
 $this->title = 'Desa Beringin';
 ?>
-<!--Economics Blog Boxed-->
-<div class="economics-category">
-    <!--Sec Title-->
-    <div class="sec-title">
-        <h2>Popular News</h2>
-    </div>
-    <div class="economics-items-carousel owl-carousel owl-theme">
-
-        <div class="slide">
-            <div class="row clearfix">
-                <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                    <!--News Block Two-->
-                    <div class="news-block-two with-margin">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="blog-single.html"><img src="images/resource/news-5.jpg" alt="" /></a>
-                                <div class="category"><a href="blog-single.html">Sports</a>
-                                </div>
-                            </div>
-                            <div class="lower-box">
-                                <h3><a href="blog-single.html">Wooden skyscrapers are springing
-                                        up across the world universal</a></h3>
-                                <ul class="post-meta">
-                                    <li><span class="icon fa fa-clock-o"></span>March 26, 2017
-                                    </li>
-                                    <li><span class="icon fa fa-comment-o"></span>3</li>
-                                    <li><span class="icon fa fa-eye"></span>7420</li>
-                                </ul>
-                                <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                    adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                    Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                    dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-5.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">Wooden skyscrapers are
-                                springing up across the world</a></div>
-                        <div class="post-info">August 16, 2017</div>
-                    </article>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-6.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">New York state and
-                                california are also close to cracking</a></div>
-                        <div class="post-info">August 17, 2017</div>
-                    </article>
-
-                </div>
-
-                <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                    <!--News Block Two-->
-                    <div class="news-block-two with-margin">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="blog-single.html"><img src="images/resource/news-6.jpg" alt="" /></a>
-                                <div class="category"><a href="blog-single.html">Design</a>
-                                </div>
-                            </div>
-                            <div class="lower-box">
-                                <h3><a href="blog-single.html">A great personality in the world,
-                                        What he use for his personality ?</a></h3>
-                                <ul class="post-meta">
-                                    <li><span class="icon fa fa-clock-o"></span>March 27, 2017
-                                    </li>
-                                    <li><span class="icon fa fa-comment-o"></span>4</li>
-                                    <li><span class="icon fa fa-eye"></span>5740</li>
-                                </ul>
-                                <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                    adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                    Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                    dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-7.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">Critics of sites like
-                                Airbnb have long claimed that the remove</a></div>
-                        <div class="post-info">August 18, 2017</div>
-                    </article>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-8.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">Six of the displaced Food
-                                filed a lawsuit against</a></div>
-                        <div class="post-info">August 19, 2017</div>
-                    </article>
-
-                </div>
-            </div>
+<!--Content Side-->
+<div class="content-side col-lg-12 col-md-12 col-sm-12">
+    <div class="content">
+        <!--Sec Title-->
+        <div class="sec-title">
+            <h2>Popular</h2>
         </div>
 
-        <div class="slide">
-            <div class="row clearfix">
-                <div class="column col-lg-6 col-md-6 col-sm-12">
+        <div class="row clearfix">
 
-                    <!--News Block Two-->
-                    <div class="news-block-two with-margin">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="blog-single.html"><img src="images/resource/news-5.jpg" alt="" /></a>
-                                <div class="category"><a href="blog-single.html">Sports</a>
-                                </div>
-                            </div>
-                            <div class="lower-box">
-                                <h3><a href="blog-single.html">Wooden skyscrapers are springing
-                                        up across the world universal</a></h3>
-                                <ul class="post-meta">
-                                    <li><span class="icon fa fa-clock-o"></span>March 26, 2017
-                                    </li>
-                                    <li><span class="icon fa fa-comment-o"></span>3</li>
-                                    <li><span class="icon fa fa-eye"></span>7420</li>
-                                </ul>
-                                <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                    adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                    Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                    dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                            </div>
-                        </div>
+            <!--News Block One-->
+            <div class="news-block-one col-lg-6 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <div class="image">
+                        <a href="blog-single.html"><img src="images/resource/news-1.jpg" alt="" /></a>
                     </div>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-5.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">Wooden skyscrapers are
-                                springing up across the world</a></div>
-                        <div class="post-info">August 16, 2017</div>
-                    </article>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-6.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">New York state and
-                                california are also close to cracking</a></div>
-                        <div class="post-info">August 17, 2017</div>
-                    </article>
-
-                </div>
-
-                <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                    <!--News Block Two-->
-                    <div class="news-block-two with-margin">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="blog-single.html"><img src="images/resource/news-6.jpg" alt="" /></a>
-                                <div class="category"><a href="blog-single.html">Design</a>
-                                </div>
-                            </div>
-                            <div class="lower-box">
-                                <h3><a href="blog-single.html">A great personality in the world,
-                                        What he use for his personality ?</a></h3>
-                                <ul class="post-meta">
-                                    <li><span class="icon fa fa-clock-o"></span>March 27, 2017
-                                    </li>
-                                    <li><span class="icon fa fa-comment-o"></span>4</li>
-                                    <li><span class="icon fa fa-eye"></span>5740</li>
-                                </ul>
-                                <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                    adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                    Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                    dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                            </div>
-                        </div>
+                    <div class="lower-box">
+                        <h3><a href="blog-single.html">Mobile world</a></h3>
+                        <div class="post-date">Jan 10, 2017 / Recipes / by Andrea</div>
+                        <div class="text">It is a long established fact that a reader will be distracted by the readable
+                            content of a page when looking at its layout.</div>
+                        <a href="blog-single.html" class="read-more">Read More <span class="arrow ion-ios-arrow-thin-right"></span></a>
                     </div>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-7.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">Critics of sites like
-                                Airbnb have long claimed that the remove</a></div>
-                        <div class="post-info">August 18, 2017</div>
-                    </article>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-8.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">Six of the displaced Food
-                                filed a lawsuit against</a></div>
-                        <div class="post-info">August 19, 2017</div>
-                    </article>
-
                 </div>
             </div>
-        </div>
+            <!--End News Block-->
 
-        <div class="slide">
-            <div class="row clearfix">
-                <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                    <!--News Block Two-->
-                    <div class="news-block-two with-margin">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="blog-single.html"><img src="images/resource/news-5.jpg" alt="" /></a>
-                                <div class="category"><a href="blog-single.html">Sports</a>
-                                </div>
-                            </div>
-                            <div class="lower-box">
-                                <h3><a href="blog-single.html">Wooden skyscrapers are springing
-                                        up across the world universal</a></h3>
-                                <ul class="post-meta">
-                                    <li><span class="icon fa fa-clock-o"></span>March 26, 2017
-                                    </li>
-                                    <li><span class="icon fa fa-comment-o"></span>3</li>
-                                    <li><span class="icon fa fa-eye"></span>7420</li>
-                                </ul>
-                                <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                    adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                    Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                    dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                            </div>
-                        </div>
+            <!--News Block One-->
+            <div class="news-block-one col-lg-6 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <div class="image">
+                        <a href="blog-single.html"><img src="images/resource/news-21.jpg" alt="" /></a>
                     </div>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-5.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">Wooden skyscrapers are
-                                springing up across the world</a></div>
-                        <div class="post-info">August 16, 2017</div>
-                    </article>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-6.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">New York state and
-                                california are also close to cracking</a></div>
-                        <div class="post-info">August 17, 2017</div>
-                    </article>
-
-                </div>
-
-                <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                    <!--News Block Two-->
-                    <div class="news-block-two with-margin">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="blog-single.html"><img src="images/resource/news-6.jpg" alt="" /></a>
-                                <div class="category"><a href="blog-single.html">Design</a>
-                                </div>
-                            </div>
-                            <div class="lower-box">
-                                <h3><a href="blog-single.html">A great personality in the world,
-                                        What he use for his personality ?</a></h3>
-                                <ul class="post-meta">
-                                    <li><span class="icon fa fa-clock-o"></span>March 27, 2017
-                                    </li>
-                                    <li><span class="icon fa fa-comment-o"></span>4</li>
-                                    <li><span class="icon fa fa-eye"></span>5740</li>
-                                </ul>
-                                <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                    adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                    Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                    dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                            </div>
-                        </div>
+                    <div class="lower-box">
+                        <h3><a href="blog-single.html">Happy Childrens</a></h3>
+                        <div class="post-date">Jan 10, 2017 / Recipes / by Andrea</div>
+                        <div class="text">It is a long established fact that a reader will be distracted by the readable
+                            content of a page when looking at its layout.</div>
+                        <a href="blog-single.html" class="read-more">Read More <span class="arrow ion-ios-arrow-thin-right"></span></a>
                     </div>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-7.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">Critics of sites like
-                                Airbnb have long claimed that the remove</a></div>
-                        <div class="post-info">August 18, 2017</div>
-                    </article>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-8.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">Six of the displaced Food
-                                filed a lawsuit against</a></div>
-                        <div class="post-info">August 19, 2017</div>
-                    </article>
-
                 </div>
             </div>
-        </div>
+            <!--End News Block-->
 
-        <div class="slide">
-            <div class="row clearfix">
-                <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                    <!--News Block Two-->
-                    <div class="news-block-two with-margin">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="blog-single.html"><img src="images/resource/news-5.jpg" alt="" /></a>
-                                <div class="category"><a href="blog-single.html">Sports</a>
-                                </div>
-                            </div>
-                            <div class="lower-box">
-                                <h3><a href="blog-single.html">Wooden skyscrapers are springing
-                                        up across the world universal</a></h3>
-                                <ul class="post-meta">
-                                    <li><span class="icon fa fa-clock-o"></span>March 26, 2017
-                                    </li>
-                                    <li><span class="icon fa fa-comment-o"></span>3</li>
-                                    <li><span class="icon fa fa-eye"></span>7420</li>
-                                </ul>
-                                <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                    adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                    Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                    dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                            </div>
-                        </div>
+            <!--News Block One-->
+            <div class="news-block-one col-lg-6 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <div class="image">
+                        <a href="blog-single.html"><img src="images/resource/news-22.jpg" alt="" /></a>
                     </div>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-5.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">Wooden skyscrapers are
-                                springing up across the world</a></div>
-                        <div class="post-info">August 16, 2017</div>
-                    </article>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-6.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">New York state and
-                                california are also close to cracking</a></div>
-                        <div class="post-info">August 17, 2017</div>
-                    </article>
-
-                </div>
-
-                <div class="column col-lg-6 col-md-6 col-sm-12">
-
-                    <!--News Block Two-->
-                    <div class="news-block-two with-margin">
-                        <div class="inner-box">
-                            <div class="image">
-                                <a href="blog-single.html"><img src="images/resource/news-6.jpg" alt="" /></a>
-                                <div class="category"><a href="blog-single.html">Design</a>
-                                </div>
-                            </div>
-                            <div class="lower-box">
-                                <h3><a href="blog-single.html">A great personality in the world,
-                                        What he use for his personality ?</a></h3>
-                                <ul class="post-meta">
-                                    <li><span class="icon fa fa-clock-o"></span>March 27, 2017
-                                    </li>
-                                    <li><span class="icon fa fa-comment-o"></span>4</li>
-                                    <li><span class="icon fa fa-eye"></span>5740</li>
-                                </ul>
-                                <div class="text">Lorem ipsum dolor sit amet, consectetuer
-                                    adipiscing elit doli. Aenean commodo ligula eget dolor.
-                                    Aenean massa. Cumtipsu sociis natoque penatibus et magnis
-                                    dis montesti, nascetur ridiculus mus. Donec quam…</div>
-                            </div>
-                        </div>
+                    <div class="lower-box">
+                        <h3><a href="blog-single.html">Breakfast Time</a></h3>
+                        <div class="post-date">Jan 10, 2017 / Recipes / by Andrea</div>
+                        <div class="text">It is a long established fact that a reader will be distracted by the readable
+                            content of a page when looking at its layout.</div>
+                        <a href="blog-single.html" class="read-more">Read More <span class="arrow ion-ios-arrow-thin-right"></span></a>
                     </div>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-7.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">Critics of sites like
-                                Airbnb have long claimed that the remove</a></div>
-                        <div class="post-info">August 18, 2017</div>
-                    </article>
-
-                    <!--Widget Post-->
-                    <article class="widget-post">
-                        <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/post-thumb-8.jpg" alt=""></a></figure>
-                        <div class="text"><a href="blog-single.html">Six of the displaced Food
-                                filed a lawsuit against</a></div>
-                        <div class="post-info">August 19, 2017</div>
-                    </article>
-
                 </div>
             </div>
+            <!--End News Block-->
+
+            <!--News Block One-->
+            <div class="news-block-one col-lg-6 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <div class="image">
+                        <a href="blog-single.html"><img src="images/resource/news-23.jpg" alt="" /></a>
+                    </div>
+                    <div class="lower-box">
+                        <h3><a href="blog-single.html">Traveling Experiance</a></h3>
+                        <div class="post-date">Jan 10, 2017 / Recipes / by Andrea</div>
+                        <div class="text">It is a long established fact that a reader will be distracted by the readable
+                            content of a page when looking at its layout.</div>
+                        <a href="blog-single.html" class="read-more">Read More <span class="arrow ion-ios-arrow-thin-right"></span></a>
+                    </div>
+                </div>
+            </div>
+            <!--End News Block-->
+
+            <!--News Block One-->
+            <div class="news-block-one col-lg-6 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <div class="image">
+                        <a href="blog-single.html"><img src="images/resource/news-24.jpg" alt="" /></a>
+                    </div>
+                    <div class="lower-box">
+                        <h3><a href="blog-single.html">Camera Shoot</a></h3>
+                        <div class="post-date">Jan 10, 2017 / Recipes / by Andrea</div>
+                        <div class="text">It is a long established fact that a reader will be distracted by the readable
+                            content of a page when looking at its layout.</div>
+                        <a href="blog-single.html" class="read-more">Read More <span class="arrow ion-ios-arrow-thin-right"></span></a>
+                    </div>
+                </div>
+            </div>
+            <!--End News Block-->
+
+            <!--News Block One-->
+            <div class="news-block-one col-lg-6 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <div class="image">
+                        <a href="blog-single.html"><img src="images/resource/news-25.jpg" alt="" /></a>
+                    </div>
+                    <div class="lower-box">
+                        <h3><a href="blog-single.html">Bad Habbits</a></h3>
+                        <div class="post-date">Jan 10, 2017 / Recipes / by Andrea</div>
+                        <div class="text">It is a long established fact that a reader will be distracted by the readable
+                            content of a page when looking at its layout.</div>
+                        <a href="blog-single.html" class="read-more">Read More <span class="arrow ion-ios-arrow-thin-right"></span></a>
+                    </div>
+                </div>
+            </div>
+            <!--End News Block-->
+
+            <!--News Block One-->
+            <div class="news-block-one col-lg-6 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <div class="image">
+                        <a href="blog-single.html"><img src="images/resource/news-26.jpg" alt="" /></a>
+                    </div>
+                    <div class="lower-box">
+                        <h3><a href="blog-single.html">Childrens Walk</a></h3>
+                        <div class="post-date">Jan 10, 2017 / Recipes / by Andrea</div>
+                        <div class="text">It is a long established fact that a reader will be distracted by the readable
+                            content of a page when looking at its layout.</div>
+                        <a href="blog-single.html" class="read-more">Read More <span class="arrow ion-ios-arrow-thin-right"></span></a>
+                    </div>
+                </div>
+            </div>
+            <!--End News Block-->
+
+            <!--News Block One-->
+            <div class="news-block-one col-lg-6 col-md-6 col-sm-12">
+                <div class="inner-box">
+                    <div class="image">
+                        <a href="blog-single.html"><img src="images/resource/news-27.jpg" alt="" /></a>
+                    </div>
+                    <div class="lower-box">
+                        <h3><a href="blog-single.html">Old memory</a></h3>
+                        <div class="post-date">Jan 10, 2017 / Recipes / by Andrea</div>
+                        <div class="text">It is a long established fact that a reader will be distracted by the readable
+                            content of a page when looking at its layout.</div>
+                        <a href="blog-single.html" class="read-more">Read More <span class="arrow ion-ios-arrow-thin-right"></span></a>
+                    </div>
+                </div>
+            </div>
+            <!--End News Block-->
+
         </div>
 
     </div>
+
+    <!-- Styled Pagination -->
+    <div class="styled-pagination">
+        <ul class="clearfix">
+            <li><a href="#" class="active">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a class="next" href="#"><span class="fa fa-angle-right"></span></a></li>
+        </ul>
+    </div>
+
 </div>
-<!--End Category-->

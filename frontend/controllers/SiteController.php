@@ -85,8 +85,8 @@ class SiteController extends Controller
     }
     public function actionIndex()
     {
-        $kategoriBerita = KategoriArtikel::findOne(['keterangan' => 'Berita'])->id;
-        $querydataBerita = Artikel::find()->where(['aktif' => 1, 'kategori' => $kategoriBerita]);
+        $kategoriBerita = KategoriArtikel::find()->where(['ilike', 'lower(keterangan)', 'berita'])->one();
+        $querydataBerita = Artikel::find()->where(['aktif' => 1, 'kategori' => ($kategoriBerita) ? $kategoriBerita->id : 0]);
 
         $countdataBerita = $querydataBerita->count();
         $paginationdataBerita = new Pagination(['totalCount' => $countdataBerita, 'pageSize' => 8]);
