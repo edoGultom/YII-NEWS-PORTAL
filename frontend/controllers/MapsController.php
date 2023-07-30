@@ -11,12 +11,12 @@ use yii;
 
 class MapsController extends \yii\web\Controller
 {
-    public function init()
-    {
+    // public function init()
+    // {
 
-        parent::init();
-        $this->layout = '@frontend/views/layouts/main_halaman';
-    }
+    //     parent::init();
+    //     $this->layout = '@frontend/views/layouts/main_halaman';
+    // }
 
     public function actionIndex($kategori = NULL)
     {
