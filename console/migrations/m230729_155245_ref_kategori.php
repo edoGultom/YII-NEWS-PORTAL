@@ -25,7 +25,7 @@ class m230729_155245_ref_kategori extends Migration
                 ['Berita'],
                 ['Info'],
                 ['Kegiatan'],
-                ['Popular'],
+                // ['Popular'],
             ]
         );
     }

@@ -64,6 +64,7 @@ return [
                 'halaman' => 'halaman/index',
                 'halaman/index' => 'halaman/index',
                 'halaman/<slug>' => 'halaman/slug',
+                'site/<slug>' => 'site/slug',
                 'defaultRoute' => '/site/index',
             ],
         ],

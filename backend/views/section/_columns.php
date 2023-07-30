@@ -19,7 +19,7 @@ return [
     [
         'class' => '\kartik\grid\DataColumn',
         'header' => 'Kategori',
-        'attribute' => 'secKategori.keterangan',
+        'attribute' => 'sectionKategori.keterangan',
         'filter' => Html::activeDropDownList($searchModel, 'id_kategori', $kategori,               ['class' => 'form-control']),
 
     ],

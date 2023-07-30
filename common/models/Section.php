@@ -61,4 +61,8 @@ class Section extends \yii\db\ActiveRecord
     {
         return $this->hasMany(SectionKategori::className(), ['id' => 'id_kategori']);
     }
+    public function getSectionKategori()
+    {
+        return $this->hasOne(SectionKategori::className(), ['id' => 'id_kategori']);
+    }
 }

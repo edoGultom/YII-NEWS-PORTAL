@@ -13,6 +13,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\RefKategori;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -78,27 +79,55 @@ class SiteController extends Controller
      * @return mixed
      */
 
-    public function init()
-    {
-        parent::init();
-        $this->layout = '@frontend/views/layouts/main';
-    }
+    // public function init()
+    // {
+    //     parent::init();
+    //     $this->layout = '@frontend/views/layouts/main';
+    // }
     public function actionIndex()
     {
-        $kategoriBerita = KategoriArtikel::find()->where(['ilike', 'lower(keterangan)', 'berita'])->one();
-        $querydataBerita = Artikel::find()->where(['aktif' => 1, 'kategori' => ($kategoriBerita) ? $kategoriBerita->id : 0]);
+        $kategoriPopular = RefKategori::find()->where(['ilike', 'lower(keterangan)', 'popular'])->one();
+        $queryPopular = Artikel::find()->where(['aktif' => 1, 'kategori' => ($kategoriPopular) ? $kategoriPopular->id : 0]);
 
-        $countdataBerita = $querydataBerita->count();
-        $paginationdataBerita = new Pagination(['totalCount' => $countdataBerita, 'pageSize' => 8]);
-        $berita = $querydataBerita->offset($paginationdataBerita->offset)
-            ->limit($paginationdataBerita->limit)
+        $countPopular = $queryPopular->count();
+        $paginationdataPopular = new Pagination(['totalCount' => $countPopular, 'pageSize' => 5]);
+        $popular = $queryPopular->offset($paginationdataPopular->offset)
+            ->limit($paginationdataPopular->limit)
             ->orderBy(['created_at' => SORT_DESC])
             ->all();
         return $this->render('index', [
-            'berita' => $berita
+            'popular' => $popular,
+            'kategoriPopular' => $kategoriPopular,
+            'paginationdataPopular' => $paginationdataPopular
         ]);
     }
+    public function actionSlug($slug)
+    {
+        $data = Artikel::find()->where(['sub_judul' => $slug])->one();
 
+        if (!is_null($data)) {
+
+            $data->jumlah_visit = $data->jumlah_visit + 1;
+            $data->save(false);
+
+            $request = Yii::$app->request->cookies;
+            if ($request->has($slug)) {
+                $cookieValue = $request->getValue($slug);
+            } else {
+
+                $setcookies = Yii::$app->response->cookies;
+                $setcookies->add(new \yii\web\Cookie([
+                    'name' => $slug,
+                    'value' => 'Aktif',
+                    'expire' => strtotime('+1 days'),
+                ]));
+            }
+
+            return $this->render('detail', [
+                'data' => $data,
+            ]);
+        }
+    }
     /**
      * Logs in a user.
      *
