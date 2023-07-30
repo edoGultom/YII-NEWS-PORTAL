@@ -30,7 +30,9 @@
         "moonlandsoft/yii2-phpexcel": "*",
         "2amigos/yii2-ckeditor-widget" : "~2.1",
         "toriphes/yii2-widget-lazyload": "*",
-        "mdmsoft/yii2-admin": "~2.0"
+        "mdmsoft/yii2-admin": "~2.0",
+        "filsh/yii2-oauth2-server": "*"
+
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

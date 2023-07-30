@@ -18,9 +18,9 @@ CrudAsset::register($this);
 
 ?>
 <style>
-    .kv-grid-container {
-        overflow-x: hidden;
-    }
+.kv-grid-container {
+    overflow-x: hidden;
+}
 </style>
 <section class="section">
     <div class="section-header d-flex justify-content-between ">
@@ -28,11 +28,13 @@ CrudAsset::register($this);
             <?= $this->title ?>
         </h1>
         <div>
-            <?= Html::a(
-                '<i class="fa fa-circle-plus"></i> Tambah Data',
-                ['create'],
-                ['class' => 'btn btn-success', 'role' => 'modal-remote']
-            ) ?>
+            <?php 
+            // Html::a(
+            //     '<i class="fa fa-circle-plus"></i> Tambah Data',
+            //     ['create'],
+            //     ['class' => 'btn btn-success', 'role' => 'modal-remote']
+            // ) 
+            ?>
         </div>
     </div>
 </section>

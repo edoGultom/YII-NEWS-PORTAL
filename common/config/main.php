@@ -20,6 +20,9 @@ return [
         'Template' => [
             'class' => 'common\components\Template'
         ],
+        'api' => [
+            'class' => 'common\components\Api',
+        ],
         'formatter' => [
             'dateFormat' => 'dd.MM.yyyy',
             'decimalSeparator' => ',',

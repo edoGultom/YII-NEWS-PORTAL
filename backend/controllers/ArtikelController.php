@@ -20,6 +20,7 @@ use common\models\KategoriArtikel;
 
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\RefKategori;
 
 /**
  * ArtikelController implements the CRUD actions for Artikel model.
@@ -80,7 +81,7 @@ class ArtikelController extends Controller
     {
         $searchModel = new ArtikelSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $kategori = ArrayHelper::map(KategoriArtikel::find()->all(), 'id', 'keterangan');
+        $kategori = ArrayHelper::map(RefKategori::find()->all(), 'id', 'keterangan');
         $identity = Yii::$app->user->identity->id;
         if (isset($identity)) {
             $auth_assignment = AuthAssignment::findOne(['user_id' => $identity, 'item_name' => "Super Admin"]);

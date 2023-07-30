@@ -15,6 +15,7 @@ use common\models\AuthAssignment;
 
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\RefKategori;
 
 /**
  * KategoriArtikelController implements the CRUD actions for KategoriArtikel model.
@@ -89,7 +90,7 @@ class KategoriArtikelController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new KategoriArtikel();
+        $model = new RefKategori();
 
         if ($request->isAjax) {
             /*

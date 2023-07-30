@@ -86,8 +86,8 @@ class SiteController extends Controller
     // }
     public function actionIndex()
     {
-        $kategoriPopular = RefKategori::find()->where(['ilike', 'lower(keterangan)', 'popular'])->one();
-        $queryPopular = Artikel::find()->where(['aktif' => 1, 'kategori' => ($kategoriPopular) ? $kategoriPopular->id : 0]);
+        // $kategoriPopular = RefKategori::find()->where(['ilike', 'lower(keterangan)', 'popular'])->one();
+        $queryPopular = Artikel::find()->where(['aktif' => 1, 'popular' => 1]);
 
         $countPopular = $queryPopular->count();
         $paginationdataPopular = new Pagination(['totalCount' => $countPopular, 'pageSize' => 5]);
@@ -97,7 +97,6 @@ class SiteController extends Controller
             ->all();
         return $this->render('index', [
             'popular' => $popular,
-            'kategoriPopular' => $kategoriPopular,
             'paginationdataPopular' => $paginationdataPopular
         ]);
     }

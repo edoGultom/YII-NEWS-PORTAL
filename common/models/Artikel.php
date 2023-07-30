@@ -45,7 +45,7 @@ class Artikel extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['kategori', 'baru', 'aktif', 'gambar', 'gambart_thumbnail', 'id_user', 'created_at', 'updated_at', 'jumlah_visit'], 'integer'],
+            [['kategori', 'baru', 'popular', 'aktif', 'gambar', 'gambart_thumbnail', 'id_user', 'created_at', 'updated_at', 'jumlah_visit'], 'integer'],
             [['isi', 'keterangan_gambar'], 'string'],
             [['judul', 'sub_judul', 'tag'], 'string', 'max' => 255],
             [['judul'], 'required', 'message' => 'Judul tidak boleh kosong.'],

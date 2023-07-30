@@ -75,14 +75,21 @@ use yii\helpers\Url;
             <?= $data->isi ?>
         </div>
         <!--post-share-options-->
+
         <div class="post-share-options">
             <div class="tags clearfix">
                 <?php
-                foreach (array_keys($data->getAllTags()) as $value) {
-                    if ($value !== '-') {
+
+                if (!array_key_exists('tag', $data->getAllTags())) {
+                    echo '';
+                } else {
+                    
+                    foreach (array_keys($data->getAllTags()) as $value) {
+                        if ($value !== '-') {
                 ?>
                 <a href="#"><?= $value ?></a>
                 <?php
+                        }
                     }
                 }
                 ?>

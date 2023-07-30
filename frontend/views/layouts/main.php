@@ -50,7 +50,8 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                     <div class="inner-container clearfix">
 
                         <div class="pull-left logo-outer">
-                            <div class="logo"><a href="/"><span class="letter">Desa</span><img src="<?= Url::to('@web/img/logo.svg') ?>" width="100" height="100" alt="" /></a>
+                            <div class="logo"><a href="/"><span class="letter">Desa</span><img
+                                        src="<?= Url::to('@web/img/logo.svg') ?>" width="100" height="100" alt="" /></a>
                             </div>
                         </div>
 
@@ -95,7 +96,9 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                         <nav class="main-menu navbar-expand-md">
                             <div class="navbar-header">
                                 <!-- Toggle Button -->
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
@@ -107,10 +110,10 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                     <?php
                                     if (empty($sectionHeader)) {
                                     ?>
-                                        <li><a href="#">Lorem Ipsum</a></li>
-                                        <li><a href="#">Lorem Ipsum</a></li>
-                                        <li><a href="#">Lorem Ipsum</a></li>
-                                        <?php
+                                    <li><a href="#">Lorem Ipsum</a></li>
+                                    <li><a href="#">Lorem Ipsum</a></li>
+                                    <li><a href="#">Lorem Ipsum</a></li>
+                                    <?php
                                     } else {
                                         foreach ($sectionHeader as $key => $value) {
                                             $status = ' ';
@@ -121,9 +124,10 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                                 $status = 'current';
                                             }
                                         ?>
-                                            <li class='<?= str_contains($value->link, Yii::$app->controller->id) ? 'current' : (Yii::$app->controller->id === 'site' && strtolower($value->link) == '/') ? 'current' : '' ?>'>
-                                                <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
-                                            </li>
+                                    <li
+                                        class='<?= str_contains($value->link, Yii::$app->controller->id) ? 'current' : (Yii::$app->controller->id === 'site' && strtolower($value->link) == '/') ? 'current' : '' ?>'>
+                                        <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
+                                    </li>
                                     <?php
                                         }
                                     }
@@ -136,7 +140,6 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                         <div class="outer-box">
                             <div class="pull-right mt-2">
                                 <?= Html::a('Login', ['/admin'], ['class' => 'theme-btn cart-btn btn-style-four btn-sm btn', 'data-pjax' => 0, 'target' => '_blank']) ?>
-                                <?= Html::a('Register', ['/admin'], ['class' => 'theme-btn cart-btn btn-style-four btn-sm btn', 'data-pjax' => 0, 'target' => '_blank']) ?>
                             </div>
                         </div>
 
@@ -166,7 +169,9 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                     <div class="right-col pull-right">
                         <!-- Main Menu -->
                         <nav class="main-menu navbar-expand-md">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
+                                aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -177,10 +182,10 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                     <?php
                                     if (empty($sectionHeader)) {
                                     ?>
-                                        <li><a href="#">Lorem Ipsum</a></li>
-                                        <li><a href="#">Lorem Ipsum</a></li>
-                                        <li><a href="#">Lorem Ipsum</a></li>
-                                        <?php
+                                    <li><a href="#">Lorem Ipsum</a></li>
+                                    <li><a href="#">Lorem Ipsum</a></li>
+                                    <li><a href="#">Lorem Ipsum</a></li>
+                                    <?php
                                     } else {
                                         foreach ($sectionHeader as $key => $value) {
                                             $status = ' ';
@@ -191,9 +196,10 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                                 $status = 'current';
                                             }
                                         ?>
-                                            <li class='<?= str_contains($value->link, Yii::$app->controller->id) ? 'current' : (Yii::$app->controller->id === 'site' && strtolower($value->link) == '/') ? 'current' : '' ?>'>
-                                                <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
-                                            </li>
+                                    <li
+                                        class='<?= str_contains($value->link, Yii::$app->controller->id) ? 'current' : (Yii::$app->controller->id === 'site' && strtolower($value->link) == '/') ? 'current' : '' ?>'>
+                                        <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
+                                    </li>
                                     <?php
                                         }
                                     }
@@ -232,10 +238,10 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                         <?php
                         if (empty($sectionHeader)) {
                         ?>
-                            <li><a href="#">Lorem Ipsum</a></li>
-                            <li><a href="#">Lorem Ipsum</a></li>
-                            <li><a href="#">Lorem Ipsum</a></li>
-                            <?php
+                        <li><a href="#">Lorem Ipsum</a></li>
+                        <li><a href="#">Lorem Ipsum</a></li>
+                        <li><a href="#">Lorem Ipsum</a></li>
+                        <?php
                         } else {
                             foreach ($sectionHeader as $key => $value) {
                                 $status = ' ';
@@ -246,9 +252,10 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                     $status = 'current';
                                 }
                             ?>
-                                <li class='<?= str_contains($value->link, Yii::$app->controller->id) ? 'current' : (Yii::$app->controller->id === 'site' && strtolower($value->link) == '/') ? 'current' : '' ?>'>
-                                    <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
-                                </li>
+                        <li
+                            class='<?= str_contains($value->link, Yii::$app->controller->id) ? 'current' : (Yii::$app->controller->id === 'site' && strtolower($value->link) == '/') ? 'current' : '' ?>'>
+                            <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
+                        </li>
                         <?php
                             }
                         }
@@ -308,11 +315,27 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                             }
 
                         ?>
-                            <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-<?= $key + 1 ?>" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="<?= $image ?>" data-title="Slide Title" data-transition="parallaxvertical">
-                                <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="<?= Url::to(['/document/get-file', 'id' =>  $value->ambilgambar->id ?? NULL]) ?>">
-                                <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['600','600','650','450']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['-20','0','0','0']" data-x="['right','right','right','right']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":10000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;text-transform:left;">
-                                </div>
-                            </li>
+                        <li data-description="Slide Description" data-easein="default" data-easeout="default"
+                            data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade"
+                            data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-<?= $key + 1 ?>"
+                            data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3=""
+                            data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
+                            data-rotate="0" data-saveperformance="off" data-slotamount="default"
+                            data-thumb="<?= $image ?>" data-title="Slide Title" data-transition="parallaxvertical">
+                            <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10"
+                                data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina=""
+                                src="<?= Url::to(['/document/get-file', 'id' =>  $value->ambilgambar->id ?? NULL]) ?>">
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
+                                data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on"
+                                data-type="text" data-height="none" data-width="['600','600','650','450']"
+                                data-whitespace="normal" data-hoffset="['15','15','15','15']"
+                                data-voffset="['-20','0','0','0']" data-x="['right','right','right','right']"
+                                data-y="['middle','middle','middle','middle']"
+                                data-textalign="['top','top','top','top']"
+                                data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":10000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+                                style="z-index: 7; white-space: nowrap;text-transform:left;">
+                            </div>
+                        </li>
                         <?php
                         }
                         ?>
@@ -330,7 +353,7 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                 <div class="row clearfix">
 
                     <!--Content Side-->
-                    <div class="content-side pull-right col-lg-8 col-md-12 col-sm-12">
+                    <div class="content-side col-lg-8 col-md-12 col-sm-12">
                         <?= $content ?>
                     </div>
 
@@ -339,14 +362,14 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                         <aside class="sidebar default-sidebar left-sidebar">
 
                             <!-- Search -->
-                            <div class="sidebar-widget search-box">
+                            <!-- <div class="sidebar-widget search-box">
                                 <form method="post" action="contact.html">
                                     <div class="form-group">
                                         <input type="search" name="search-field" value="" placeholder="Search" required>
                                         <button type="submit"><span class="icon fa fa-search"></span></button>
                                     </div>
                                 </form>
-                            </div>
+                            </div> -->
 
 
 
@@ -370,57 +393,29 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                             <div class="tab active-tab" id="prod-info">
                                                 <div class="content">
                                                     <?php
-                                                    // echo count($sectionContent);
-                                                    // die();
-                                                    if (count($sectionContent) < 1) {
-                                                        echo '
-                                                                <article class="widget-post">
-                                                                <figure class="post-thumb"><a href="#"><img src="images/resource/post-thumb-1.jpg" alt=""></a>
-                                                                </figure>
-                                                                <div class="text"><a href="#">Lorem Ipsum is simply dummy text </a></div>
-                                                                <div class="post-info">Month Day, Year</div>
-                                                            </article>
-                                                                ';
-                                                    } else {
+                                                    if (count($sectionContent) >  0 && isset($sectionContent['info']) && $sectionContent['info']['data']) {
+
                                                         foreach ($sectionContent['info']['data'] as $key => $value) :
-
                                                     ?>
-                                                            <article class="widget-post">
-                                                                <figure class="post-thumb">
-                                                                    <a href="<?= $sectionContent['info']['section']['link'] ?>">
-                                                                        <?= LazyLoad::widget([
-                                                                            'src' => Url::to(['/document/get-file', 'id' =>  $value['gambar'] ?? NULL]),
+                                                    <article class="widget-post">
+                                                        <figure class="post-thumb">
+                                                            <a href="<?= $sectionContent['info']['section']['link'] ?>">
+                                                                <?= LazyLoad::widget([
+                                                                            'src' => Url::to(['/document/get-file', 'id' =>  $value['gambar'] ?? NULL,]),
                                                                         ]); ?>
-                                                                    </a>
-                                                                </figure>
-                                                                <div class="text"><a href="<?= $sectionContent['info']['section']['link'] ?>"><?= implode(' ', array_slice(explode(' ', $value['judul']), 0, 25)) ?></a>
-                                                                </div>
-                                                                <div class="post-info">
-                                                                    <?= Yii::$app->formatter->asDate($value['created_at'], 'php: d mm Y') ?>
-                                                                </div>
-                                                            </article>
-                                                    <?php endforeach;
-                                                    }
-                                                    ?>
-                                                </div>
-                                            </div>
-
-                                            <!--Tab-->
-                                            <div class="tab" id="prod-kegiatan">
-                                                <div class="content">
-                                                    <!-- <article class="widget-post">
-                                                        <figure class="post-thumb"><a href="blog-single.html"><img
-                                                                    src="images/resource/post-thumb-3.jpg" alt=""></a>
-                                                            <div class="overlay"><span
-                                                                    class="icon qb-play-arrow"></span></div>
+                                                            </a>
                                                         </figure>
-                                                        <div class="text"><a href="blog-single.html">American Black Film
-                                                                Festival New projects from film TV</a></div>
-                                                        <div class="post-info">April 03, 2017</div>
-                                                    </article> -->
-
+                                                        <div class="text"><a
+                                                                href="<?= $sectionContent['info']['section']['link'] ?>"><?= implode(' ', array_slice(explode(' ', $value['judul']), 0, 25)) ?></a>
+                                                        </div>
+                                                        <div class="post-info">
+                                                            <?= Yii::$app->formatter->asDate($value['created_at'], 'php: d mm Y') ?>
+                                                        </div>
+                                                    </article>
+                                                    <?php endforeach;
+                                                        ?>
                                                     <?php
-                                                    if (count($sectionContent) <  1) {
+                                                    } else {
                                                         echo '
                                                         <article class="widget-post">
                                                             <figure class="post-thumb"><a href="#"><img src="images/resource/post-thumb-3.jpg" alt=""></a>
@@ -430,26 +425,52 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                                             <div class="post-info">Month Day, Year</div>
                                                         </article>
                                                                 ';
-                                                    } else {
-                                                        foreach ($sectionContent['kegiatan']['data'] as $key => $value) :
-                                                    ?>
-                                                            <article class="widget-post">
-                                                                <figure class="post-thumb">
-                                                                    <a href="<?= $sectionContent['kegiatan']['section']['link'] ?>">
-                                                                        <?= LazyLoad::widget([
-                                                                            'src' => Url::to(['/document/get-file', 'id' =>  $value['gambar'] ?? NULL,]),
-                                                                        ]); ?>
-                                                                    </a>
-                                                                </figure>
-                                                                <div class="text"><a href="<?= $sectionContent['kegiatan']['section']['link'] ?>"><?= implode(' ', array_slice(explode(' ', $value['judul']), 0, 25)) ?></a>
-                                                                </div>
-                                                                <div class="post-info">
-                                                                    <?= Yii::$app->formatter->asDate($value['created_at'], 'php: d mm Y') ?>
-                                                                </div>
-                                                            </article>
-                                                    <?php endforeach;
                                                     }
                                                     ?>
+
+                                                </div>
+                                            </div>
+
+                                            <!--Tab-->
+                                            <div class="tab" id="prod-kegiatan">
+                                                <div class="content">
+
+                                                    <?php
+                                                    if (count($sectionContent) >  0 && isset($sectionContent['kegiatan']) && $sectionContent['kegiatan']['data']) {
+                                                        foreach ($sectionContent['kegiatan']['data'] as $key => $value) :
+                                                    ?>
+                                                    <article class="widget-post">
+                                                        <figure class="post-thumb">
+                                                            <a
+                                                                href="<?= $sectionContent['kegiatan']['section']['link'] ?>">
+                                                                <?= LazyLoad::widget([
+                                                                            'src' => Url::to(['/document/get-file', 'id' =>  $value['gambar'] ?? NULL,]),
+                                                                        ]); ?>
+                                                            </a>
+                                                        </figure>
+                                                        <div class="text"><a
+                                                                href="<?= $sectionContent['kegiatan']['section']['link'] ?>"><?= implode(' ', array_slice(explode(' ', $value['judul']), 0, 25)) ?></a>
+                                                        </div>
+                                                        <div class="post-info">
+                                                            <?= Yii::$app->formatter->asDate($value['created_at'], 'php: d mm Y') ?>
+                                                        </div>
+                                                    </article>
+                                                    <?php endforeach;
+                                                        ?>
+                                                    <?php
+                                                    } else {
+                                                        echo '
+                                                        <article class="widget-post">
+                                                            <figure class="post-thumb"><a href="#"><img src="images/resource/post-thumb-3.jpg" alt=""></a>
+                                                                <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                            </figure>
+                                                            <div class="text"><a href="#">Lorem Ipsum is simply dummy tex</a></div>
+                                                            <div class="post-info">Month Day, Year</div>
+                                                        </article>
+                                                                ';
+                                                    }
+                                                    ?>
+
 
 
                                                 </div>

@@ -18,6 +18,7 @@ class m230727_161718_table_artikel extends Migration
             'sub_judul'     => $this->string(),
             'kategori'      => $this->integer(),
             'baru'          => $this->tinyInteger(Null),
+            'popular'       => $this->tinyInteger(Null),
             'aktif'         => $this->tinyInteger(Null),
             'isi'           => $this->text(),
             'gambar'        => $this->integer(),
