@@ -41,7 +41,7 @@ return [
     ],
     'components' => [
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'api\models\UserApi',
             'enableAutoLogin' => false,
             'identityCookie' => ['name' => '_identity-api', 'httpOnly' => true],
         ],
