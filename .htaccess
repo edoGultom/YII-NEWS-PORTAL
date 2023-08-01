@@ -23,16 +23,16 @@ RewriteRule ^.*$ backend/web/index.php [L]
 #---- api ----#
 RewriteCond %{REQUEST_URI} ^/(api) 
 RewriteRule ^api/assets/(.*)$ api/web/assets/$1 [L]
-RewriteRule ^api/css/(.*)$ frontend/web/css/$1 [L]
-RewriteRule ^api/fonts/(.*)$ frontend/web/fonts/$1 [L]
-RewriteRule ^api/img/(.*)$ frontend/web/img/$1 [L]
-RewriteRule ^api/js/(.*)$ frontend/web/js/$1 [L] 
-RewriteRule ^api/lib/(.*)$ frontend/web/lib/$1 [L]
-RewriteRule ^api/images/(.*)$ frontend/web/images/$1 [L]
-RewriteRule ^api/scss/(.*)$ frontend/web/scss/$1 [L]
-RewriteRule ^api/bootstrap/(.*)$ frontend/web/bootstrap/$1 [L]
+RewriteRule ^api/css/(.*)$ api/web/css/$1 [L]
+RewriteRule ^api/fonts/(.*)$ api/web/fonts/$1 [L]
+RewriteRule ^api/img/(.*)$ api/web/img/$1 [L]
+RewriteRule ^api/js/(.*)$ api/web/js/$1 [L] 
+RewriteRule ^api/lib/(.*)$ api/web/lib/$1 [L]
+RewriteRule ^api/images/(.*)$ api/web/images/$1 [L]
+RewriteRule ^api/scss/(.*)$ api/web/scss/$1 [L]
+RewriteRule ^api/bootstrap/(.*)$ api/web/bootstrap/$1 [L]
 
-RewriteCond %{REQUEST_URI} !^/frontend/web/(assets|css)/  
+RewriteCond %{REQUEST_URI} !^/api/web/(assets|css|images)/  
 RewriteCond %{REQUEST_URI} ^/(api)  
 RewriteRule ^.*$ api/web/index.php [L]
 #---- end of api ----#

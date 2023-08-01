@@ -39,9 +39,9 @@ class UploadForm extends Model
                 $newNameFile =   'profil_' . Yii::$app->user->identity->id . '_compressed.' . $ext;
                 Image::getImagine()->open(Yii::getAlias('@temp/') . $nameFile)
                     ->thumbnail(new Box(200, 200))
-                    ->save(Yii::getAlias('@uploads/' . $newNameFile), ['quality' => 100]);
+                    ->save(Yii::getAlias('@upload/' . $newNameFile), ['quality' => 100]);
                 unlink(Yii::getAlias('@temp/') . $nameFile);
-                $path = 'uploads/' . $newNameFile;
+                $path = '@upload/' . $newNameFile;
                 $user = User::find()->where(['id' => Yii::$app->user->identity->id])->one();
 
                 if ($user) {
