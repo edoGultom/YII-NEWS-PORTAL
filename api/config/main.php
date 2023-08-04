@@ -40,6 +40,11 @@ return [
         ]
     ],
     'components' => [
+        'formatter' => [
+            'dateFormat' => 'dd-MM-Y',
+            'class' => 'yii\i18n\Formatter',
+            'nullDisplay' => '-',
+        ],
         'user' => [
             'identityClass' => 'api\models\UserApi',
             'enableAutoLogin' => false,

@@ -1,9 +1,10 @@
 <?php
+
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\Modal;
 use kartik\grid\GridView;
-use johnitvn\ajaxcrud\CrudAsset; 
+use johnitvn\ajaxcrud\CrudAsset;
 use johnitvn\ajaxcrud\BulkButtonWidget;
 
 /* @var $this yii\web\View */
@@ -28,7 +29,7 @@ CrudAsset::register($this);
         </h1>
         <div>
             <?= Html::a(
-                '<i class="fa fa-circle-plus"></i> Tambah Data',
+                '<i class="fas fa-plus"></i> Tambah Data',
                 ['create'],
                 ['class' => 'btn btn-success', 'role' => 'modal-remote']
             ) ?>
@@ -68,7 +69,7 @@ CrudAsset::register($this);
     </div>
 </div>
 <?php Modal::begin([
-    "id"=>"ajaxCrudModal",
-    "footer"=>"",// always need it for jquery plugin
-])?>
+    "id" => "ajaxCrudModal",
+    "footer" => "", // always need it for jquery plugin
+]) ?>
 <?php Modal::end(); ?>

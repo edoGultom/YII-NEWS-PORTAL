@@ -64,6 +64,7 @@ class PortalController extends Controller
 
                 $idGambar = $value->ambilgambar->id ?? NULL;
                 $idGambarThumb = $value->ambilgambarthumbnail->id ?? NULL;
+                $arr[$key]['id'] = $value->id;
                 $arr[$key]['judul'] = $value->judul;
                 $arr[$key]['sub_judul'] = $value->sub_judul;
                 $arr[$key]['isi'] = strip_tags($value->isi);
@@ -72,6 +73,7 @@ class PortalController extends Controller
                 $arr[$key]['aktif'] = $value->aktif;
                 $arr[$key]['popular'] = $value->popular;
                 $arr[$key]['jumlah_visit'] = $value->jumlah_visit;
+                $arr[$key]['tanggal_posting'] =  date('dd-mm-YYYY', $value->created_at);
                 $arr[$key]['picturePath'] = Yii::$app->request->hostInfo . '/api/lihat-file/by-id?id=' . $idGambar;
                 $arr[$key]['picturePathThumb'] = Yii::$app->request->hostInfo . '/api/lihat-file/by-id?id=' . $idGambarThumb;
             }
@@ -90,8 +92,12 @@ class PortalController extends Controller
     }
     public function actionArticleByType($type)
     {
+        $query =  Artikel::find();
         if ($type == 'popular') {
-            $data =   Artikel::find()->where(['aktif' => 1, 'popular' => 1])->all();
+            $data =  $query->where(['aktif' => 1, 'kategori' => 1, 'popular' => 1])->all();
+        }
+        if ($type == 'kegiatan') {
+            $data =   Artikel::find()->where(['aktif' => 1, 'kategori' => 3])->all();
         }
 
         if ($data) {
@@ -105,12 +111,14 @@ class PortalController extends Controller
                 $arr[$key]['id'] = $value->id;
                 $arr[$key]['judul'] = $value->judul;
                 $arr[$key]['sub_judul'] = $value->sub_judul;
-                $arr[$key]['isi'] = strip_tags($value->isi);
+                // $arr[$key]['isi'] = strip_tags($value->isi);
+                $arr[$key]['isi'] = $value->isi;
                 $arr[$key]['kategori'] = $value->kategoriArtikel->keterangan ?? '-';
                 $arr[$key]['baru'] = $value->baru;
                 $arr[$key]['aktif'] = $value->aktif;
                 $arr[$key]['popular'] = $value->popular;
                 $arr[$key]['jumlah_visit'] = $value->jumlah_visit;
+                $arr[$key]['tanggal_posting'] =   Yii::$app->formatter->asDate($value->created_at, 'php: d mm Y');
                 $arr[$key]['picturePath'] = Yii::$app->request->hostInfo . '/api/lihat-file/by-id?id=' . $idGambar;
                 $arr[$key]['picturePathThumb'] = Yii::$app->request->hostInfo . '/api/lihat-file/by-id?id=' . $idGambarThumb;
             }
