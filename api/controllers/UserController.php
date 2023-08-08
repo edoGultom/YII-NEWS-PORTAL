@@ -139,13 +139,13 @@ class UserController extends \yii\rest\Controller
                     'item_name',
                     'created_at'
                 ], [
-                    [$user->id, 'user', time()],
+                    [$user->id, 'User', time()],
                 ])->execute();
                 $transaction->commit();
                 $query = (new \yii\db\Query());
                 $query->select('*')
                     ->from('user')
-                    ->where(['like', 'lower(username)',  strtolower($user->username)])->one();
+                    ->where(['ilike', 'lower(username)',  strtolower($user->username)])->one();
                 $command = $query->createCommand();
                 $data = $command->queryOne();
 

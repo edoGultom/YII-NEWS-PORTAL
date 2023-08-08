@@ -22,7 +22,7 @@ class NewsController extends \yii\web\Controller
     public function actionIndex()
     {
         $title = 'News';
-        $idKategori = RefKategori::find()->where(['like', 'lower(keterangan)', 'berita'])->one();
+        $idKategori = RefKategori::find()->where(['ilike', 'lower(keterangan)', 'berita'])->one();
         $query = Artikel::find()->where(['aktif' => 1])->andWhere(['=', 'kategori', ($idKategori) ? $idKategori->id : '']);
         $count = $query->count();
         $pagination = new Pagination(['totalCount' => $count, 'pageSize' => 8]);
