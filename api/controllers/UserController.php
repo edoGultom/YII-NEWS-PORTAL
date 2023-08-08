@@ -145,7 +145,7 @@ class UserController extends \yii\rest\Controller
                 $query = (new \yii\db\Query());
                 $query->select('*')
                     ->from('user')
-                    ->where([''like'', 'lower(username)',  strtolower($user->username)])->one();
+                    ->where(['like', 'lower(username)',  strtolower($user->username)])->one();
                 $command = $query->createCommand();
                 $data = $command->queryOne();
 

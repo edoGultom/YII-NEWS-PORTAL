@@ -82,12 +82,12 @@ $this->title = 'Desa Beringin';
                                                 LazyLoad::widget(['src' => Url::to(['/document/get-file', 'id' => $value->ambilgambar->id ?? NULL])]);
                                                 ?>
 
-                                                <div class="category"><a href="<?= Url::to(['/artikel/' . $value->sub_judul]) ?>"><?= $value->kategoriArtikel ? $value->kategoriArtikel->keterangan : '' ?></a>
+                                                <div class="category"><a href="<?= Url::to(['/site/' . $value->sub_judul]) ?>"><?= $value->kategoriArtikel ? $value->kategoriArtikel->keterangan : '' ?></a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="lower-box">
-                                            <h3><a href="<?= Url::to(['/artikel/' . $value->sub_judul]) ?>"><?= $value->judul ?></a>
+                                            <h3><a href="<?= Url::to(['/site/' . $value->sub_judul]) ?>"><?= $value->judul ?></a>
                                             </h3>
                                             <ul class="post-meta">
                                                 <li><span class="icon fa fa-clock-o"></span><?= date("d-m-Y", substr($value->created_at, 0, 10)) ?>
@@ -96,7 +96,7 @@ $this->title = 'Desa Beringin';
                                                 <li><span class="icon fa fa-eye"></span><?= $value->jumlah_visit ?></li>
                                             </ul>
                                             <div class="text"><?= implode(' ', array_slice(explode(' ', $isi), 0, 35)) ?></div>
-                                            <a href="<?= Url::to(['/artikel/' . $value->sub_judul]) ?>" class="read-more">Read
+                                            <a href="<?= Url::to(['/site/' . $value->sub_judul]) ?>" class="read-more">Read
                                                 More
                                             </a>
                                         </div>
