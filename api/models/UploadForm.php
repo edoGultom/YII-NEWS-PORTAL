@@ -41,7 +41,7 @@ class UploadForm extends Model
                     ->thumbnail(new Box(200, 200))
                     ->save(Yii::getAlias('@upload/' . $newNameFile), ['quality' => 100]);
                 unlink(Yii::getAlias('@temp/') . $nameFile);
-                $path = '@upload/' . $newNameFile;
+                $path = 'upload/' . $newNameFile;
                 $user = User::find()->where(['id' => Yii::$app->user->identity->id])->one();
 
                 if ($user) {

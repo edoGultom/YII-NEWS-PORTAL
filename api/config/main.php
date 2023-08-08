@@ -14,15 +14,6 @@ return [
     'modules' => [
         'oauth2' => [
             'class' => 'filsh\yii2\oauth2server\Module',
-            'components' => [
-                'request' => function () {
-                    return \filsh\yii2\oauth2server\Request::createFromGlobals();
-                },
-                'response' => [
-                    'class' => \filsh\yii2\oauth2server\Response::class,
-                ],
-
-            ],
             'tokenParamName' => 'accessToken',
             'tokenAccessLifetime' => 3600 * 24,
             'storageMap' => [
@@ -41,19 +32,27 @@ return [
     ],
     'components' => [
         'formatter' => [
-            'dateFormat' => 'dd-MM-Y',
-            'class' => 'yii\i18n\Formatter',
-            'nullDisplay' => '-',
+            'dateFormat' => 'dd.MM.yyyy',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'Rp.',
         ],
+      
         'user' => [
             'identityClass' => 'api\models\UserApi',
-            'enableAutoLogin' => false,
-            'identityCookie' => ['name' => '_identity-api', 'httpOnly' => true],
+            'enableAutoLogin' => true,
+            'identityCookie' => [
+                'name' => '_identity-app',
+                'httpOnly' => true,
+            ],
         ],
-        'session' => [
-            // this is the name of the session cookie used for login on the api
-            'name' => 'advanced-api',
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager', // only support DbManager
         ],
+        // 'session' => [
+        //     // this is the name of the session cookie used for login on the api
+        //     'name' => 'advanced-api',
+        // ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -88,11 +87,11 @@ return [
     ],
 
     'params' => $params,
-    'as access' => [
-        'class' => '\hscstudio\mimin\components\AccessControl',
-        'allowActions' => [
-            '*',
-            'file/*',
-        ],
-    ],
+    // 'as access' => [
+    //     'class' => '\hscstudio\mimin\components\AccessControl',
+    //     'allowActions' => [
+    //         '*',
+    //         'file/*',
+    //     ],
+    // ],
 ];

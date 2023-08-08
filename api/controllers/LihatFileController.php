@@ -15,7 +15,8 @@ class LihatFileController extends Controller
 {
     public function actionProfile($path) // khusus lihat foto
     {
-        $file = \Yii::getAlias("@" . $path);
+        // $file = \Yii::getAlias("@"  . $path);
+        $file = \Yii::getAlias("@"  . $path);
         $response = Yii::$app->getResponse();
         if (file_exists($file)) {
             return $response->sendFile($file, 'file', [

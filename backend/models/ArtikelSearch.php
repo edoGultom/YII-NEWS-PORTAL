@@ -66,7 +66,7 @@ class ArtikelSearch extends Artikel
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['ilike', 'judul', $this->judul])
+        $query->andFilterWhere(['like', 'judul', $this->judul])
             ->andFilterWhere(['like', 'baru', $this->baru])
             ->andFilterWhere(['like', 'aktif', $this->aktif])
             ->andFilterWhere(['like', 'isi', $this->isi])

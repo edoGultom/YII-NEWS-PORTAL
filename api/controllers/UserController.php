@@ -38,9 +38,11 @@ class UserController extends \yii\rest\Controller
     {
         $response = Yii::$app->getModule('oauth2')->getServer()->handleTokenRequest();
         $result = $response->getParameters();
+      
         $data = [];
         if (isset($result['access_token'])) {
             $model = OauthAccessTokens::find()->where(['access_token' => $result['access_token']])->one();
+           
             $query = (new \yii\db\Query());
             $query->select('*')
                 ->from('user')
@@ -48,9 +50,6 @@ class UserController extends \yii\rest\Controller
             $command = $query->createCommand();
             $user = $command->queryOne();
 
-            // $data['id'] = $model->user_id;
-            // $data['email'] = $user->email;
-            // $data['username'] = $user->username;
             $data['user'] = $user;
 
             $hakAkses = AuthAssignment::find()->select(['item_name'])->where(['user_id' => $model->user_id])->asArray()->all();
@@ -60,10 +59,11 @@ class UserController extends \yii\rest\Controller
             });
 
             $data['access_token'] = $result['access_token'];
+          
             $data['token_type'] = $result['token_type'];
             $data['refresh_token'] = $result['refresh_token'];
             $model->scope = implode(" ", $data['scope']);
-            $model->save();
+            // $model->save();
             return $data;
         }
         return false;
@@ -80,7 +80,6 @@ class UserController extends \yii\rest\Controller
             $model = OauthAccessTokens::find()->where(['access_token' => $result['access_token']])->one();
             $user = User::find()->where(['id' => $model->user_id])->one();
             $data['user_id'] = $model->user_id;
-            $data['pin'] = $user->pin;
 
             $hakAkses = AuthAssignment::find()->select(['item_name'])->where(['user_id' => $model->user_id])->asArray()->all();
             $data['expires'] = strtotime($model->expires);
@@ -145,7 +144,7 @@ class UserController extends \yii\rest\Controller
                 $query = (new \yii\db\Query());
                 $query->select('*')
                     ->from('user')
-                    ->where(['ilike', 'lower(username)',  strtolower($user->username)])->one();
+                    ->where(['like', 'lower(username)',  strtolower($user->username)])->one();
                 $command = $query->createCommand();
                 $data = $command->queryOne();
 

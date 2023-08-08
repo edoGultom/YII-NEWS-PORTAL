@@ -53,7 +53,7 @@ class PortalController extends Controller
 
     public function actionArticles()
     {
-        // return Yii::$app->request->hostInfo;
+        return Yii::$app->request->hostInfo;
         $data =   Artikel::find()->where(['aktif' => 1])->all();
 
         if ($data) {
