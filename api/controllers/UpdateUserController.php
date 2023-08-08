@@ -80,7 +80,7 @@ class UpdateUserController extends Controller
             $query = (new \yii\db\Query());
             $query->select('*')
                 ->from('user')
-                ->where(['ilike', 'lower(username)',  strtolower($data->username)])->one();
+                ->where([''like'', 'lower(username)',  strtolower($data->username)])->one();
             $command = $query->createCommand();
             $data = $command->queryOne();
 

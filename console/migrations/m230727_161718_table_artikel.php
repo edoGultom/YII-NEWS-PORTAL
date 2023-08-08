@@ -20,7 +20,7 @@ class m230727_161718_table_artikel extends Migration
             'baru'          => $this->tinyInteger(Null),
             'popular'       => $this->tinyInteger(Null),
             'aktif'         => $this->tinyInteger(Null),
-            'isi'           => $this->text(),
+            'isi'           => $this->getDb()->getSchema()->createColumnSchemaBuilder('longtext'),
             'gambar'        => $this->integer(),
             'gambart_thumbnail'         => $this->integer(),
             'keterangan_gambar'         => $this->text(),

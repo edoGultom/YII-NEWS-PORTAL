@@ -274,7 +274,7 @@ class Artikel extends \yii\db\ActiveRecord
 
     public function getCariArtikel($cari)
     {
-        $query = Artikel::find()->where(['ilike', 'judul', $cari])->orWhere(['ilike', 'isi', $cari])->orderBy(['created_at' => SORT_DESC]);
+        $query = Artikel::find()->where([''like'', 'judul', $cari])->orWhere([''like'', 'isi', $cari])->orderBy(['created_at' => SORT_DESC]);
         return $query;
     }
 }

@@ -86,7 +86,6 @@ class SiteController extends Controller
     // }
     public function actionIndex()
     {
-        // $kategoriPopular = RefKategori::find()->where(['ilike', 'lower(keterangan)', 'popular'])->one();
         $queryPopular = Artikel::find()->where(['aktif' => 1, 'popular' => 1]);
 
         $countPopular = $queryPopular->count();

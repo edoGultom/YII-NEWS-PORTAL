@@ -24,7 +24,7 @@ class MapsController extends \yii\web\Controller
         // if (isset($kategori)) {
         //     $kategori = str_replace('-', ' ', $kategori);
         //     $title = $kategori;
-        //     $idkategori = SectionKategori::find()->where(['ilike', 'keterangan', $kategori])->one()->id;
+        //     $idkategori = SectionKategori::find()->where([''like'', 'keterangan', $kategori])->one()->id;
         //     $query = Artikel::find()->where(['aktif' => 1, 'kategori' => $idkategori]);
         // } else {
         //     $title = 'News';

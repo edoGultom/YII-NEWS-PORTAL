@@ -39,7 +39,7 @@ class Template extends Component
         $keterangaSection = Section::find()->innerjoinWith('secKategori')->where(['id_kategori' => $id_kategori])->orderBy(['id' => SORT_ASC])->asArray()->all();
         // return $keterangaSection;
         foreach ($keterangaSection as $key => $value) {
-            $val = RefKategori::find()->select(['artikel.*'])->innerjoinWith('artikel')->where(['ilike', 'lower(keterangan)', strtolower($value['keterangan'])])->asArray()->all();
+            $val = RefKategori::find()->select(['artikel.*'])->innerjoinWith('artikel')->where([''like'', 'lower(keterangan)', strtolower($value['keterangan'])])->asArray()->all();
             $data[strtolower($value['keterangan'])]['section'] = $value;
             $data[strtolower($value['keterangan'])]['data'] = $val;
         }
