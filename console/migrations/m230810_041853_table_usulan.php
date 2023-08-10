@@ -43,9 +43,10 @@ class m230810_041853_table_usulan extends Migration
         $this->createTable('ta_pengusulan_surat', [
             'id'            => $this->primaryKey(),
             'id_jenis_surat' => $this->integer(),
+            'id_file'        => $this->tinyInteger(),
+            'id_user'        => $this->integer(),
             'jenis_surat' => $this->string(255),
             'tanggal' => $this->date(),
-            'id_file'        => $this->tinyInteger(),
             'keterangan'        => $this->text(),
             'status'        => $this->tinyInteger(),
         ]);

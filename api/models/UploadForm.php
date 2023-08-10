@@ -100,6 +100,7 @@ class UploadForm extends Model
                     $model = new TaPengusulanSurat();
                     $model->id_jenis_surat = 1;
                     $model->id_file = $fileDb->id;
+                    $model->id_user =  Yii::$app->user->identity->id;
                     $model->jenis_surat = $jenisSurat->jenis;
                     $model->tanggal = date('Y-m-d');
 

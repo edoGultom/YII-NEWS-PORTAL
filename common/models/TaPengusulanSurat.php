@@ -31,7 +31,7 @@ class TaPengusulanSurat extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_jenis_surat', 'id_file', 'status'], 'integer'],
+            [['id_jenis_surat', 'id_file', 'id_user', 'status'], 'integer'],
             [['tanggal'], 'safe'],
             [['keterangan'], 'string'],
             [['jenis_surat'], 'string', 'max' => 255],
@@ -49,6 +49,7 @@ class TaPengusulanSurat extends \yii\db\ActiveRecord
             'jenis_surat' => 'Jenis Surat',
             'tanggal' => 'Tanggal',
             'id_file' => 'Id File',
+            'id_user' => 'Id User',
             'keterangan' => 'keterangan',
             'status' => 'Status',
         ];
