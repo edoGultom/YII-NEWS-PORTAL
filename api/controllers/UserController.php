@@ -57,13 +57,13 @@ class UserController extends \yii\rest\Controller
             $data['scope'] = ArrayHelper::getColumn($hakAkses, function ($m) {
                 return str_replace(" ", "_", $m['item_name']);
             });
-
+         
             $data['access_token'] = $result['access_token'];
-          
             $data['token_type'] = $result['token_type'];
             $data['refresh_token'] = $result['refresh_token'];
-            $model->scope = implode(" ", $data['scope']);
-            // $model->save();
+            $model->expires =Yii::$app->formatter->asDate($data['expires'], 'php: Y-m-d H:i:s');
+            $model->setAttribute('scope',implode(" ", $data['scope']));
+            $model->save();
             return $data;
         }
         return false;

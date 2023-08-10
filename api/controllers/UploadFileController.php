@@ -43,11 +43,35 @@ class UploadFileController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'upload'  => ['POST'],
+                    'upload-ktp'  => ['POST'],
                 ],
             ],
         ]);
     }
+    public function actionUploadKtp($userId)
+    {
+        $post = Yii::$app->request->post();
+        $model = new UploadForm();
+        $model->imageFile =  UploadedFile::getInstanceByName('file');
+        $resp = $model->uploadFileKtp();
+        echo "<pre>";
+        print_r($resp);
+        echo "</pre>";
+        exit();
+        if ($resp) {
+            $this->status = $resp;
+            $this->pesan = "Berhasil Upload Dokumen";
+        } else {
+            $this->status = $resp;
+            $this->pesan = $model->uploadFileKtp();
+        }
 
+        return [
+            'status' => $this->status,
+            'pesan' => $this->pesan,
+            'data' => $this->data,
+        ];
+    }
     public function actionUpload()
     {
         $post = Yii::$app->request->post();
