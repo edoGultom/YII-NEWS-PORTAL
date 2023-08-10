@@ -63,4 +63,28 @@ class TaPengusulanSurat extends \yii\db\ActiveRecord
         }
         return false;
     }
+    public function getJenisSurat()
+    {
+        return $this->hasOne(RefJenisSurat::className(), ['id' => 'id_jenis_surat']);
+    }
+    public function getTahap()
+    {
+        $model = $this->hasOne(RefTahapUsulan::className(), ['id' => 'status'])->one();
+        if ($model) {
+            if ($this->status == 1) {
+                return '<span class="badge bade-primary ">' . $model->tahap . '</span>';
+            } else if ($this->status == 2) {
+                return '<span class="badge badge-success">' . $model->tahap . '</span>';
+            } else {
+                $status =  '<span class="badge badge-danger">' . $model->tahap . '</span>';
+                $alasan = '<p class="text-muted">Keterangan : ' . $this->keterangan . '</p>';
+                return $status . $alasan;
+            }
+        }
+        return false;
+    }
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'id_user']);
+    }
 }

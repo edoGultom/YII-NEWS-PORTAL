@@ -37,6 +37,7 @@ class m230810_041853_table_usulan extends Migration
             [
                 ['Mengusulkan Surat'],
                 ['Diverifikasi'],
+                ['Selesai'],
                 ['Ditolak'],
             ]
         );

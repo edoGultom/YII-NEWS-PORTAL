@@ -87,7 +87,11 @@ use yii\widgets\Menu;
                 ],
             ],
         ];
-
+        $menuItems[] = [
+            'label' => '<i class="fa-solid fa-users"></i><span>Usulan Surat</span>',
+            'options' => ['class' =>  Yii::$app->controller->id == 'usulan-surat' ? 'nav-item active' : 'nav-item'],
+            'url' => ['/usulan-surat/index']
+        ];
         $menuItems[] = [
             'label' => '<i class="fa-solid fa-users"></i><span>Pengguna</span>',
             'options' => ['class' =>  Yii::$app->controller->id == 'pengguna' ? 'nav-item active' : 'nav-item'],
