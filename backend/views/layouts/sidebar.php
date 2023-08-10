@@ -88,7 +88,7 @@ use yii\widgets\Menu;
             ],
         ];
         $menuItems[] = [
-            'label' => '<i class="fa-solid fa-users"></i><span>Usulan Surat</span>',
+            'label' => '<i class="fa-solid fa-envelope-circle-check"></i><span>Usulan Surat</span>',
             'options' => ['class' =>  Yii::$app->controller->id == 'usulan-surat' ? 'nav-item active' : 'nav-item'],
             'url' => ['/usulan-surat/index']
         ];
