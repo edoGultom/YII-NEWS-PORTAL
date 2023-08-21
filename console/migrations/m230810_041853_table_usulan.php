@@ -35,10 +35,10 @@ class m230810_041853_table_usulan extends Migration
                 'tahap',
             ],
             [
-                ['Mengusulkan Surat'],
-                ['Diverifikasi'],
+                ['Mengusulkan'],
+                ['Verifikasi'],
                 ['Selesai'],
-                ['Ditolak'],
+                ['Tolak'],
             ]
         );
         $this->createTable('ta_pengusulan_surat', [

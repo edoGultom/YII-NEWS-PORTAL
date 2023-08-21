@@ -3,6 +3,7 @@
 namespace api\models;
 
 use common\models\RefJenisSurat;
+use common\models\TaPengaduan;
 use common\models\TaPengusulanSurat;
 use common\models\UploadedFiledb;
 use Yii;
@@ -67,9 +68,7 @@ class UploadForm extends Model
     }
     public function uploadFileKtp()
     {
-
         if (!empty($this->imageFile) && $this->validate()) {
-
             $connection = Yii::$app->db;
             $transaction = $connection->beginTransaction();
             try {
@@ -105,6 +104,55 @@ class UploadForm extends Model
                     $model->tanggal = date('Y-m-d');
 
                     if ($model->setTahap(1)) {
+                        $transaction->commit();
+                        return true;
+                    }
+                }
+                return  false;
+            } catch (\Exception $e) {
+                $transaction->rollBack();
+                return $e->getMessage();
+            } catch (\Throwable $e) {
+                $transaction->rollBack();
+                return $e->getMessage();
+            }
+        } else {
+            return false;
+        }
+    }
+    public function uploadFilePengaduan($id)
+    {
+        if (!empty($this->imageFile) && $this->validate()) {
+            $connection = Yii::$app->db;
+            $transaction = $connection->beginTransaction();
+            try {
+
+
+                $ext = $this->imageFile->extension;
+                $nameFile =  'PengaduanFile_' . Yii::$app->user->identity->id . '_' . $id . '.' . $ext;
+                $this->imageFile->saveAs('@temp/' . $nameFile);
+
+                $newNameFile =   'PengaduanFile_' . Yii::$app->user->identity->id . '_' . $id . '_compressed.' . $ext;
+                $newPath = Yii::getAlias('@upload/FilePengaduan/' . $newNameFile);
+
+                $fileDb = new UploadedFiledb();
+                $fileDb->name = $this->imageFile->name;
+                $fileDb->size = $this->imageFile->size;
+                $fileDb->filename = $newPath;
+                $fileDb->type = $this->imageFile->type;
+                if (!$fileDb->validate()) {
+                    return $fileDb->getErrors();
+                }
+                if ($fileDb->save()) {
+                    Image::getImagine()->open(Yii::getAlias('@temp/') . $nameFile)
+                        ->thumbnail(new Box(500, 500))
+                        ->save($newPath, ['quality' => 100]);
+                    unlink(Yii::getAlias('@temp/') . $nameFile);
+                    $this->imageFile->saveAs($newPath);
+
+                    $pengaduan = TaPengaduan::findOne(['id' => $id]);
+                    $pengaduan->id_file = $fileDb->id;
+                    if ($pengaduan->save()) {
                         $transaction->commit();
                         return true;
                     }

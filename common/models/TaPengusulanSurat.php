@@ -67,6 +67,10 @@ class TaPengusulanSurat extends \yii\db\ActiveRecord
     {
         return $this->hasOne(RefJenisSurat::className(), ['id' => 'id_jenis_surat']);
     }
+    public function getTahapUsulan()
+    {
+        return $this->hasOne(RefTahapUsulan::className(), ['id' => 'status']);
+    }
     public function getTahap()
     {
         $model = $this->hasOne(RefTahapUsulan::className(), ['id' => 'status'])->one();

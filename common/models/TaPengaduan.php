@@ -31,8 +31,9 @@ class TaPengaduan extends \yii\db\ActiveRecord
     {
         return [
             [['id_user', 'tgl_pengaduan', 'status'], 'default', 'value' => null],
-            [['id_user', 'tgl_pengaduan', 'status'], 'integer'],
+            [['id_user', 'status', 'id_file'], 'integer'],
             [['subjek', 'isi'], 'string'],
+            ['tgl_pengaduan', 'safe'],
         ];
     }
 
@@ -49,5 +50,21 @@ class TaPengaduan extends \yii\db\ActiveRecord
             'isi' => 'Isi',
             'status' => 'Status',
         ];
+    }
+    public function setTahap($tahap, $keterangan = NULL)
+    {
+        $this->status = $tahap;
+        if ($this->save()) {
+            return true;
+        }
+        return false;
+    }
+    public function getTahap()
+    {
+        return $this->hasOne(RefTahapUsulan::className(), ['id' => 'status']);
+    }
+    public function getFile()
+    {
+        return $this->hasOne(UploadedFiledb::className(), ['id' => 'id_file']);
     }
 }

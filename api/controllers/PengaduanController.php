@@ -3,6 +3,7 @@
 namespace api\controllers;
 
 use api\models\UploadForm;
+use common\models\TaPengaduan;
 use common\models\TaPengusulanSurat;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -15,7 +16,7 @@ use filsh\yii2\oauth2server\filters\auth\CompositeAuth;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
-class PengusulanSuratController extends Controller
+class PengaduanController extends Controller
 
 {
     public $pesan = '';
@@ -43,22 +44,39 @@ class PengusulanSuratController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'cek-surat'  => ['GET'],
-                    'notification'  => ['GET'],
+                    'pengaduan'  => ['POST'],
+                    'data'  => ['GET'],
                 ],
             ],
         ]);
     }
-    public function actionCekSurat($userId)
-    {
-        $resp = TaPengusulanSurat::findOne(['id_user' => $userId]);
 
-        if ($resp) {
+    public function actionTambah()
+    {
+
+        $post = Yii::$app->request->post();
+
+        $model = new TaPengaduan();
+        $model->id_user = Yii::$app->user->identity->id;
+        $model->tgl_pengaduan = date('Y-m-d');
+        $model->subjek = $post['subjek'];
+        $model->isi = $post['isi'];
+        if ($model->setTahap(1)) {
             $this->status = true;
-            $this->pesan = "Sudah mengusulkan tanggal " . Yii::$app->formatter->asDate($resp->tanggal, 'php:d F Y');
+            $this->pesan = "Data Berhasil Disimpan";
+            $upload = new UploadForm();
+            $upload->imageFile =  UploadedFile::getInstanceByName('file');
+            if (!empty($upload->imageFile)) {
+                $resp = $upload->uploadFilePengaduan($model->id);
+                if (!$resp) {
+                    $this->pesan = $resp;
+                    $this->status = false;
+                }
+            }
+            $this->data = $model;
         } else {
             $this->status = false;
-            $this->pesan = 'Data Tidak Ditemukan';
+            $this->pesan = $model->getErrors();
         }
 
         return [
@@ -67,26 +85,29 @@ class PengusulanSuratController extends Controller
             'data' => $this->data,
         ];
     }
-    public function actionNotification($userId)
+    public function actionData()
     {
-        $resp = TaPengusulanSurat::find()->where(['id_user' => $userId])->orderBy(['tanggal' => SORT_DESC])->all();
+        $query =  TaPengaduan::find()->where(['id_user' => Yii::$app->user->identity->id])->orderBy(['tgl_pengaduan' => SORT_DESC, 'id' => SORT_DESC])->all();
 
-        $arr = [];
-        if ($resp) {
+        if ($query) {
             $this->status = true;
-            foreach ($resp as $key => $value) {
+            $this->pesan = "Data ditemukan";
+            $arr = [];
+            foreach ($query as $key => $value) {
+                $idGambar = $value->file->id ?? NULL;
                 $arr[$key]['id'] = $value->id;
-                $arr[$key]['jenis_surat'] = $value->jenis_surat;
-                $arr[$key]['tanggal'] = Yii::$app->formatter->asDate($value->tanggal, 'php:d F Y');
-                $arr[$key]['keterangan'] = $value->keterangan;
-                $arr[$key]['status'] = $value->tahapUsulan->tahap ?? '-';
+                $arr[$key]['subjek'] = $value->subjek;
+                $arr[$key]['isi'] = $value->isi;
+                $arr[$key]['tgl_pengaduan'] = Yii::$app->formatter->asDate($value->tgl_pengaduan, 'php:d F Y');
+                $arr[$key]['status'] = $value->tahap->tahap ?? '';
+                $arr[$key]['picturePath'] = Yii::$app->request->hostInfo . '/api/lihat-file/by-id?id=' . $idGambar;
             }
             $this->data = $arr;
-            $this->pesan = "Data Ditemukan";
         } else {
             $this->status = false;
-            $this->pesan = 'Data Tidak Ditemukan';
+            $this->pesan = 'Data tidak ditemukan';
         }
+
 
         return [
             'status' => $this->status,
