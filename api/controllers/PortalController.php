@@ -66,13 +66,13 @@ class PortalController extends Controller
                 $arr[$key]['id'] = $value->id;
                 $arr[$key]['judul'] = $value->judul;
                 $arr[$key]['sub_judul'] = $value->sub_judul;
-                $arr[$key]['isi'] = strip_tags($value->isi);
+                $arr[$key]['isi'] = trim(preg_replace('/\s\s+/', ' ', strip_tags($value->isi)));
                 $arr[$key]['kategori'] = $value->kategoriArtikel->keterangan ?? '-';
                 $arr[$key]['baru'] = $value->baru;
                 $arr[$key]['aktif'] = $value->aktif;
                 $arr[$key]['popular'] = $value->popular;
                 $arr[$key]['jumlah_visit'] = $value->jumlah_visit;
-                $arr[$key]['tanggal_posting'] =  date('dd-mm-YYYY', $value->created_at);
+                $arr[$key]['tanggal_posting'] =  date('d F Y', $value->created_at);
                 $arr[$key]['picturePath'] = Yii::$app->request->hostInfo . '/api/lihat-file/by-id?id=' . $idGambar;
                 $arr[$key]['picturePathThumb'] = Yii::$app->request->hostInfo . '/api/lihat-file/by-id?id=' . $idGambarThumb;
             }
@@ -111,13 +111,13 @@ class PortalController extends Controller
                 $arr[$key]['judul'] = $value->judul;
                 $arr[$key]['sub_judul'] = $value->sub_judul;
                 // $arr[$key]['isi'] = strip_tags($value->isi);
-                $arr[$key]['isi'] = $value->isi;
+                $arr[$key]['isi'] = trim(preg_replace('/\s\s+/', ' ', strip_tags($value->isi)));
                 $arr[$key]['kategori'] = $value->kategoriArtikel->keterangan ?? '-';
                 $arr[$key]['baru'] = $value->baru;
                 $arr[$key]['aktif'] = $value->aktif;
                 $arr[$key]['popular'] = $value->popular;
                 $arr[$key]['jumlah_visit'] = $value->jumlah_visit;
-                $arr[$key]['tanggal_posting'] =   Yii::$app->formatter->asDate($value->created_at, 'php: d mm Y');
+                $arr[$key]['tanggal_posting'] =   Yii::$app->formatter->asDate($value->created_at, 'php: d F Y');
                 $arr[$key]['picturePath'] = Yii::$app->request->hostInfo . '/api/lihat-file/by-id?id=' . $idGambar;
                 $arr[$key]['picturePathThumb'] = Yii::$app->request->hostInfo . '/api/lihat-file/by-id?id=' . $idGambarThumb;
             }

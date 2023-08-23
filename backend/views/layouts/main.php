@@ -31,9 +31,30 @@ AppAsset::register($this);
 
 
     <div id="app">
-        <div class="main-wrapper">
-            <?= $this->render('header') ?>
-            <?= $this->render('sidebar') ?>
+        <div class="main-wrapper main-wrapper-1">
+            <div class="navbar-bg"></div>
+            <nav class="navbar navbar-expand-lg main-navbar">
+                <form class="form-inline mr-auto">
+                    <ul class="navbar-nav mr-3">
+                        <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+                        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+                    </ul>
+
+                </form>
+                <?= $this->render('header') ?>
+            </nav>
+
+            <div class="main-sidebar sidebar-style-2">
+                <aside id="sidebar-wrapper">
+                    <div class="sidebar-brand">
+                        <a href="<?= Url::to(['/site']) ?>">Administrator</a>
+                    </div>
+                    <div class="sidebar-brand sidebar-brand-sm">
+                        <a href="<?= Url::to(['/site']) ?>">ADM</a>
+                    </div>
+                    <?= $this->render('sidebar') ?>
+                </aside>
+            </div>
             <!-- <div class="container"> -->
             <div class="main-content">
                 <?= Alert::widget() ?>

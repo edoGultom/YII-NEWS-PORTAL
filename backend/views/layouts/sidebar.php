@@ -5,14 +5,7 @@ use yii\helpers\Html;
 use yii\widgets\Menu;
 
 ?>
-<div class="main-sidebar sidebar-style-2">
-    <aside id="sidebar-wrapper">
-        <div class="sidebar-brand">
-            <a href="<?= Url::to(['/site']) ?>">Administrator</a>
-        </div>
-        <div class="sidebar-brand sidebar-brand-sm">
-            <a href="<?= Url::to(['/site']) ?>">ADM</a>
-        </div>
+
         <?php
         $menuItems = [];
         $menuItems[] = [
@@ -93,6 +86,11 @@ use yii\widgets\Menu;
             'url' => ['/usulan-surat/index']
         ];
         $menuItems[] = [
+            'label' => '<i class="fa-solid fa-comments"></i><span>Pengaduan Masyarakat</span>',
+            'options' => ['class' =>  Yii::$app->controller->id == 'usulan-surat' ? 'nav-item active' : 'nav-item'],
+            'url' => ['/usulan-pengaduan/index']
+        ];
+        $menuItems[] = [
             'label' => '<i class="fa-solid fa-users"></i><span>Pengguna</span>',
             'options' => ['class' =>  Yii::$app->controller->id == 'pengguna' ? 'nav-item active' : 'nav-item'],
             'url' => ['/pengguna']
@@ -112,5 +110,4 @@ use yii\widgets\Menu;
 
         ]);
         ?>
-    </aside>
-</div>
+   

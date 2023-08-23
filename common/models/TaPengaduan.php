@@ -63,6 +63,10 @@ class TaPengaduan extends \yii\db\ActiveRecord
     {
         return $this->hasOne(RefTahapUsulan::className(), ['id' => 'status']);
     }
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'id_user']);
+    }
     public function getFile()
     {
         return $this->hasOne(UploadedFiledb::className(), ['id' => 'id_file']);
