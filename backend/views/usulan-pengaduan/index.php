@@ -3,6 +3,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use johnitvn\ajaxcrud\CrudAsset;
+use yii\bootstrap\Modal;
 
 CrudAsset::register($this);
 
@@ -67,3 +68,9 @@ CrudAsset::register($this);
         </div>
     </div>
 </section>
+
+<?php Modal::begin([
+    "id" => "ajaxCrudModal",
+    "footer" => "", // always need it for jquery plugin
+]) ?>
+<?php Modal::end(); ?>

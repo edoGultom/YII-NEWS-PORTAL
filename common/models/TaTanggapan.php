@@ -30,7 +30,8 @@ class TaTanggapan extends \yii\db\ActiveRecord
     {
         return [
             [['id_pengaduan', 'tgl_tanggapan', 'id_admin'], 'default', 'value' => null],
-            [['id_pengaduan', 'tgl_tanggapan', 'id_admin'], 'integer'],
+            [['id_pengaduan', 'id_admin'], 'integer'],
+            ['tgl_tanggapan', 'safe'],
             [['tanggapan'], 'string'],
         ];
     }
@@ -47,5 +48,9 @@ class TaTanggapan extends \yii\db\ActiveRecord
             'tanggapan' => 'Tanggapan',
             'id_admin' => 'Id Admin',
         ];
+    }
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'id_admin']);
     }
 }

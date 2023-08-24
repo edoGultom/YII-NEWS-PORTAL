@@ -71,4 +71,8 @@ class TaPengaduan extends \yii\db\ActiveRecord
     {
         return $this->hasOne(UploadedFiledb::className(), ['id' => 'id_file']);
     }
+    public function getTanggapan()
+    {
+        return $this->hasMany(TaTanggapan::className(), ['id_pengaduan' => 'id'])->andOnCondition(['id_admin' => Yii::$app->user->identity->id]);
+    }
 }

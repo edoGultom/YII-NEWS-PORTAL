@@ -145,22 +145,33 @@ class UsulanPengaduanController extends Controller
             }
         }
     }
-    public function actionIndex($idActive = 1)
+    public function actionIndex($idActive = 1, $idTanggapan = null)
     {
         $request = Yii::$app->request;
-        $model = new TaTanggapan();
+        $model = TaTanggapan::find()->where(['id' => $idTanggapan])->one();
+        if (!$model) {
+            $model = new TaTanggapan();
+        }
         $data = TaPengaduan::find()->where(['status' => 1])->all();
         if ($model->load($request->post())) {
-            echo "<pre>";
-            print_r($model->tanggapan);
-            echo "</pre>";
-            exit();
+            $model->id_pengaduan = $idActive;
+            $model->tgl_tanggapan = date('Y-m-d');
+            $model->id_admin = Yii::$app->user->identity->id;
+            $model->save();
+            $model->tanggapan = NULL;
+            return $this->redirect(['index']);
         }
         return $this->render('index', [
             'data' => $data,
             'idActive' => $idActive,
             'model' => $model,
         ]);
+    }
+    public function actionUbah($idTanggapan = null)
+    {
+        return $this->redirect(['index', [
+            'idTanggapan' => $idTanggapan
+        ]]);
     }
     public function actionProfile($path) // khusus lihat foto
     {
@@ -337,23 +348,17 @@ class UsulanPengaduanController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionHapus($id)
     {
         $request = Yii::$app->request;
-        $this->findModel($id)->delete();
-
-        if ($request->isAjax) {
-            /*
-            *   Process for ajax request
-            */
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            return ['forceClose' => true, 'forceReload' => '#crud-datatable-pjax'];
-        } else {
-            /*
-            *   Process for non-ajax request
-            */
-            return $this->redirect(['index']);
+        // $this->findModel($id)->delete();
+        $model  = TaTanggapan::find()->where(['id' => $id])->one();
+        if ($model) {
+            $model->delete();
         }
+        // Yii::$app->response->format = Response::FORMAT_JSON;
+        // return ['forceClose' => true, 'forceReload' => '#_content_pjax'];
+        return $this->redirect(['index']);
     }
 
     /**
