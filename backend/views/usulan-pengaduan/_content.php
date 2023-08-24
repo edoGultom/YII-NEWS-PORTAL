@@ -54,8 +54,7 @@ $path = $content->user ? Url::to(['usulan-pengaduan/profile?path=' . $content->u
             <div class="gallery-item" data-image="<?= Url::to(['/document/get-file', 'id' => $content->id_file]) ?>" data-title="Image 1"></div>
         </div>
         <div class="media-links text-right">
-            <!-- <a href="#komentar" class="text-muted btn-replay"> <i class="fa-solid fa-reply"></i> Balas</a> -->
-            <?= Html::a('<i class="fa-solid fa-reply"></i> Balas', ['index'], ['class' => 'text-muted btn-replay']); ?>
+            <a href="#komentar" class="text-muted btn-reply-induk"> <i class="fa-solid fa-reply"></i> Balas</a>
         </div>
         <div class="ticket-divider"></div>
         <?php
@@ -65,6 +64,7 @@ $path = $content->user ? Url::to(['usulan-pengaduan/profile?path=' . $content->u
 
                 <ul class="list-unstyled list-unstyled-border list-unstyled-noborder">
                     <?php
+                    $no = 1;
                     foreach ($content->tanggapan as $key => $tanggapan) {
                     ?>
                         <li class="media">
@@ -74,22 +74,38 @@ $path = $content->user ? Url::to(['usulan-pengaduan/profile?path=' . $content->u
                                 <div class="text-time"><?= Yii::$app->formatter->asDate($tanggapan->tgl_tanggapan, 'php:d F Y') ?></div>
                                 <div class="media-description text-muted"><?= $tanggapan->tanggapan ?></div>
                                 <div class="media-links">
-                                    <?= Html::a('<i class="fa-solid fa-edit"></i> Ubah', ['index', 'idTanggapan' => $tanggapan->id], ['class' => 'text-muted btn-replay']); ?>
+                                    <a href="#form" class="text-muted btn-reply" data-tanggapan="<?= $tanggapan->id ?>"> <i class="fa-solid fa-edit"></i> Ubah</a>
                                     <?= Html::a('<i class="fa-solid fa-trash"></i> Hapus', ['hapus', 'id' => $tanggapan->id], ['class' => 'text-danger']); ?>
                                 </div>
                             </div>
+
                         </li>
+                        <div class="ticket ticket-form-<?= $key ?>" style="display:none;" id="form">
+                            <?php $form = ActiveForm::begin([
+                                'method' => 'POST',
+                                'id' => 'ticket-' . $key
+                            ]); ?>
+                            <?= $form->field($model, 'tanggapan')->textarea(['class' => 'summernote  tanggapan', 'placeholder' => "Type a reply ..."])->label(false) ?>
+                            <div class="form-group text-right">
+                                <button class="btn btn-primary btn-lg">
+                                    <i class="fas fa-send"></i> Kirim
+                                </button>
+                            </div>
+                            <?php ActiveForm::end(); ?>
+                        </div>
                     <?php
                     }
                     ?>
                 </ul>
+
                 <div class="ticket-divider"></div>
+
             </div>
         <?php
         }
         ?>
 
-        <div class="ticket-form " id="komentar">
+        <div class="ticket-form" style="display:none;" id="komentar">
             <?php $form = ActiveForm::begin([
                 'method' => 'POST'
             ]); ?>
@@ -107,12 +123,34 @@ $path = $content->user ? Url::to(['usulan-pengaduan/profile?path=' . $content->u
 
 <?php
 $this->registerJs(<<<JS
-    $(".btn-replay").click(function() {
-        $(".ticket-form").removeClass("d-none");
-        $('.note-editable').focus();
-    });
     $(document).ready(function() {
-        $('.note-editable').focus();
+        $(".btn-reply-induk").on('click',function() {
+            $('.note-editable').focus();
+            $(".ticket-form").hide();
+            $(".ticket-form").show();
+        });
+        $(".btn-reply").on('click',function() {
+            var content = "";
+            let idTanggapan = $(this).data("tanggapan")
+            $.ajax({
+                    type: "GET",
+                    url: "/admin/usulan-pengaduan/tanggapan?idTanggapan=" +idTanggapan ,
+                success: function (res) {
+                    content = res.tanggapan;
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+                async: false
+            })
+            console.log(content,'content');
+            let index = $('.btn-reply').index(this);
+            $(".ticket").hide();
+            $(".ticket-form-"+index).show();
+            $('.note-editable').html(content);
+            $('.note-editable').focus();
+        });
+        
     });
 JS);
 ?>

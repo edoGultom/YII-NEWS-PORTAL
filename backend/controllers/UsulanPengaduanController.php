@@ -159,7 +159,7 @@ class UsulanPengaduanController extends Controller
             $model->id_admin = Yii::$app->user->identity->id;
             $model->save();
             $model->tanggapan = NULL;
-            return $this->redirect(['index']);
+            return $this->redirect(['index', 'idActive' => $idActive]);
         }
         return $this->render('index', [
             'data' => $data,
@@ -192,6 +192,13 @@ class UsulanPengaduanController extends Controller
     public function actionDataContent($id = null)
     {
         $data = TaPengaduan::find()->where(['id' => $id])->one();
+        return $data;
+    }
+
+    public function actionTanggapan($idTanggapan = null)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $data = TaTanggapan::find()->where(['id' => $idTanggapan])->one();
         return $data;
     }
 
