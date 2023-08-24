@@ -4,6 +4,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use johnitvn\ajaxcrud\CrudAsset;
 use yii\bootstrap\Modal;
+use yii\helpers\ArrayHelper;
 
 CrudAsset::register($this);
 
@@ -30,38 +31,50 @@ CrudAsset::register($this);
                             <i class="fas fa-list"></i> All Tickets
                         </a>
                         <div class="tickets">
-                            <div class="ticket-items" id="ticket-items">
-                                <?php
-                                $no = 0;
-                                foreach ($data as $key => $value) {
-                                    $no++;
-                                ?>
-                                    <a href="<?= Url::to(['/usulan-pengaduan/index', 'idActive' => $value->id]) ?>">
-                                        <div class="ticket-item <?= ($no == $idActive) ? 'active' : '' ?>">
-                                            <div class="ticket-title">
-                                                <h4>
-                                                    <?= strlen($value->subjek) >= 20 ? substr($value->subjek, 0, 18) . '...' : $value->subjek; ?>
-                                                </h4>
 
-                                            </div>
-                                            <div class="ticket-desc">
-                                                <div><?= $value->user->name ?? 'no_user' ?></div>
-                                                <div class="bullet"></div>
-                                                <div><?= Yii::$app->formatter->asDate($value->tgl_pengaduan, 'php:d F Y') ?></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                <?php
-                                }
-                                ?>
-                            </div>
                             <?php
-                            $data =   Yii::$app->runAction('/usulan-pengaduan/data-content', ['id' => $idActive]);
-                            echo $this->render('_content', [
-                                'model' => $model,
-                                'content' => $data,
-                                'idActive' => $idActive
-                            ]); ?>
+                            $dataContent =   Yii::$app->runAction('/usulan-pengaduan/data-content', ['id' => $idActive]);
+                            // echo "<pre>";
+                            // print_r($dataContent);
+                            // echo "</pre>";
+                            // exit();
+                            if (!empty($dataPengaduan)) {
+                            ?>
+                                <div class="ticket-items" id="ticket-items">
+                                    <?php
+                                    $no = 0;
+                                    foreach ($dataPengaduan as $key => $value) {
+                                        $no++;
+                                    ?>
+                                        <a href="<?= Url::to(['/usulan-pengaduan/index', 'idActive' => $value->id]) ?>">
+                                            <div class="ticket-item <?= ($value->id == $idActive) ? 'active' : '' ?>">
+                                                <div class="ticket-title">
+                                                    <h4>
+                                                        <?= strlen($value->subjek) >= 20 ? substr($value->subjek, 0, 18) . '...' : $value->subjek; ?>
+                                                    </h4>
+
+                                                </div>
+                                                <div class="ticket-desc">
+                                                    <div><?= $value->user->name ?? 'no_user' ?></div>
+                                                    <div class="bullet"></div>
+                                                    <div><?= Yii::$app->formatter->asDateTime($value->tgl_pengaduan, 'php:d F Y H:i:s') ?></div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                                <?= $this->render('_content', [
+                                    'model' => $model,
+                                    'content' => $dataContent,
+                                    'idActive' => $idActive
+                                ]); ?>
+                            <?php
+                            } else {
+                                echo '<div class="d-flex w-100 justify-content-center"><p class="text-muted text-center">Data Tidak Ditemukan</p></div>';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

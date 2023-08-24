@@ -24,10 +24,14 @@ return [
             'class' => 'common\components\Api',
         ],
         'formatter' => [
-            'dateFormat' => 'dd.MM.yyyy',
+            'class' => 'yii\i18n\Formatter',
+            'thousandSeparator' => '.',
             'decimalSeparator' => ',',
-            'thousandSeparator' => ' ',
-            'currencyCode' => 'EUR',
+            'currencyCode' => 'Rp',
+            'defaultTimeZone' => 'Asia/Jakarta',
+            'dateFormat' => 'php:d-m-Y',
+            'datetimeFormat' => 'php:d-M-Y H:i:s',
+            'nullDisplay' => '-'
         ],
         'i18n' => [
             'translations' => [
