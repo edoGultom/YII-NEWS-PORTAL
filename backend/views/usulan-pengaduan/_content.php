@@ -83,6 +83,7 @@ $path = $content->user ? Url::to(['usulan-pengaduan/profile?path=' . $content->u
                         <div class="ticket ticket-form-<?= $key ?>" style="display:none;" id="form">
                             <?php $form = ActiveForm::begin([
                                 'method' => 'POST',
+                                'action' => '/admin/usulan-pengaduan/index?idActive=' . $idActive . '&idTanggapan=' . $tanggapan->id,
                                 'id' => 'ticket-' . $key
                             ]); ?>
                             <?= $form->field($model, 'tanggapan')->textarea(['class' => 'summernote  tanggapan', 'placeholder' => "Type a reply ..."])->label(false) ?>

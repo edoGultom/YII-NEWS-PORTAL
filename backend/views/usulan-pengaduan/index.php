@@ -59,7 +59,8 @@ CrudAsset::register($this);
                             $data =   Yii::$app->runAction('/usulan-pengaduan/data-content', ['id' => $idActive]);
                             echo $this->render('_content', [
                                 'model' => $model,
-                                'content' => $data
+                                'content' => $data,
+                                'idActive' => $idActive
                             ]); ?>
                         </div>
                     </div>
