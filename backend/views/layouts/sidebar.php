@@ -81,17 +81,17 @@ use yii\widgets\Menu;
             ],
         ];
         $menuItems[] = [
-            'label' => '<i class="fa-solid fa-envelope-circle-check"></i><span>Usulan Surat</span>',
+            'label' => '<i class="fa-solid fa-envelope-circle-check m-0"></i><span>Usulan Surat</span>',
             'options' => ['class' =>  Yii::$app->controller->id == 'usulan-surat' ? 'nav-item active' : 'nav-item'],
             'url' => ['/usulan-surat/index']
         ];
         $menuItems[] = [
-            'label' => '<i class="fa-solid fa-comments"></i><span>Pengaduan Masyarakat</span>',
-            'options' => ['class' =>  Yii::$app->controller->id == 'usulan-surat' ? 'nav-item active' : 'nav-item'],
+            'label' => '<i class="fa-solid fa-comments m-0"></i><span>Pengaduan Masyarakat</span>',
+            'options' => ['class' =>  Yii::$app->controller->id == 'usulan-pengaduan' ? 'nav-item active' : 'nav-item'],
             'url' => ['/usulan-pengaduan/index']
         ];
         $menuItems[] = [
-            'label' => '<i class="fa-solid fa-users"></i><span>Pengguna</span>',
+            'label' => '<i class="fa-solid fa-users m-0"></i><span>Pengguna</span>',
             'options' => ['class' =>  Yii::$app->controller->id == 'pengguna' ? 'nav-item active' : 'nav-item'],
             'url' => ['/pengguna']
         ];

@@ -1,4 +1,5 @@
 <?php
+
 namespace common\models;
 
 use Yii;
@@ -124,6 +125,10 @@ class User extends ActiveRecord implements IdentityInterface
     public function getId()
     {
         return $this->getPrimaryKey();
+    }
+    public function getAuthAssignment()
+    {
+        return AuthAssignment::findOne(['user_id' => $this->id]);
     }
 
     /**

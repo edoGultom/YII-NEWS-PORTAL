@@ -88,11 +88,16 @@ $path = $content && $content->user ? Url::to(['usulan-pengaduan/profile?path=' .
                     $no = 1;
                     foreach ($content->tanggapan as $key => $tanggapan) {
                     ?>
-                        <li class="media">
+                        <li class="media shadow-sm p-3 mb-5 bg-body rounded">
                             <img alt="image" class="mr-3 rounded" width="45" height="45" src="<?= $path ?>" style="">
                             <div class="media-body">
-                                <div class="media-title mb-1"><?= $tanggapan->user->name ?? 'no_user' ?></div>
-                                <div class="text-time"><?= Yii::$app->formatter->asDateTime($tanggapan->tgl_tanggapan, 'php:d F Y H:i:s') ?></div>
+                                <div class="media-title m-0"><?= $tanggapan->user->name ?? 'no_user' ?></div>
+                                <div class="d-flex flex-row">
+                                    <div class="badge badge-info float-right text-xs"><?= $tanggapan->user->authAssignment->item_name ?? '' ?></div>
+                                    <div class="bullet"></div>
+                                    <div class="text-primary font-weight-600"><?= Yii::$app->formatter->asDateTime($content->tgl_pengaduan ?? NULL, 'php:d F Y H:i:s') ?></div>
+                                </div>
+
                                 <div class="media-description text-muted"><?= $tanggapan->tanggapan ?></div>
                                 <div class="media-links">
                                     <a href="#form" class="text-muted btn-reply" data-tanggapan="<?= $tanggapan->id ?>"> <i class="fa-solid fa-edit"></i> Ubah</a>
@@ -119,14 +124,11 @@ $path = $content && $content->user ? Url::to(['usulan-pengaduan/profile?path=' .
                     }
                     ?>
                 </ul>
-
-                <div class="ticket-divider"></div>
-
             </div>
         <?php
         }
         ?>
-
+        <div class="ticket-divider"></div>
         <div class="ticket-form" style="display:none;" id="komentar">
             <?php $form = ActiveForm::begin([
                 'method' => 'POST',
