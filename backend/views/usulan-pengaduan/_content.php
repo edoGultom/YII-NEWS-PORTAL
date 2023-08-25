@@ -94,7 +94,7 @@ $path = $content && $content->user ? Url::to(['usulan-pengaduan/profile?path=' .
                                 <div class="media-description text-muted"><?= $tanggapan->tanggapan ?></div>
                                 <div class="media-links">
                                     <a href="#form" class="text-muted btn-reply" data-tanggapan="<?= $tanggapan->id ?>"> <i class="fa-solid fa-edit"></i> Ubah</a>
-                                    <?= Html::a('<i class="fa-solid fa-trash"></i> Hapus', ['hapus', 'id' => $tanggapan->id], ['class' => 'text-danger']); ?>
+                                    <?= Html::a('<i class="fa-solid fa-trash"></i> Hapus', ['hapus', 'id' => $tanggapan->id, 'idActive' => $idActive], ['class' => 'text-danger']); ?>
                                 </div>
                             </div>
 

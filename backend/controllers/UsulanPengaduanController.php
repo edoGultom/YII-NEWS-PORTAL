@@ -123,17 +123,16 @@ class UsulanPengaduanController extends Controller
         return ['forceClose' => true, 'forceReload' => '#_content_pjax'];
         // return $this->redirect(['index']);
     }
-    public function actionHapus($id)
+    public function actionHapus($id, $idActive = null)
     {
         $request = Yii::$app->request;
-        // $this->findModel($id)->delete();
         $model  = TaTanggapan::find()->where(['id' => $id])->one();
         if ($model) {
             $model->delete();
         }
         // Yii::$app->response->format = Response::FORMAT_JSON;
         // return ['forceClose' => true, 'forceReload' => '#_content_pjax'];
-        return $this->redirect(['index']);
+        return $this->redirect(['index', 'idActive' => $idActive]);
     }
 
     /**
