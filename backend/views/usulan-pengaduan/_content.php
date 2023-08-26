@@ -60,7 +60,7 @@ $path = $content && $content->user ? Url::to(['usulan-pengaduan/profile?path=' .
     <div class="ticket-description">
         <p><?= $content->isi ?? NULL ?></p>
         <?php
-        if ($content->id_file) {
+        if ($content->id_file ?? NULL) {
         ?>
             <div class="gallery">
                 <div class="gallery-item gallery-more" data-image="<?= Url::to(['/document/get-file', 'id' => $content->id_file ?? NULL]) ?>" data-title="Image">
@@ -95,7 +95,7 @@ $path = $content && $content->user ? Url::to(['usulan-pengaduan/profile?path=' .
                                 <div class="d-flex flex-row">
                                     <div class="badge badge-info float-right text-xs"><?= $tanggapan->user->authAssignment->item_name ?? '' ?></div>
                                     <div class="bullet"></div>
-                                    <div class="text-primary font-weight-600"><?= Yii::$app->formatter->asDateTime($content->tgl_pengaduan ?? NULL, 'php:d F Y H:i:s') ?></div>
+                                    <div class="text-primary font-weight-600"><?= Yii::$app->formatter->asDateTime($tanggapan->tgl_tanggapan ?? NULL, 'php:d F Y H:i:s') ?></div>
                                 </div>
 
                                 <div class="media-description text-muted"><?= $tanggapan->tanggapan ?></div>

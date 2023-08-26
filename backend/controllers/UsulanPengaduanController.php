@@ -46,6 +46,7 @@ class UsulanPengaduanController extends Controller
         $request = Yii::$app->request;
         $data = TaPengaduan::find()
             ->where(['status' => 1])
+            ->orderBy(['tgl_pengaduan' => SORT_DESC])
             ->all();
         if (empty($idActive)) {
             $idActive =  (!empty($data)) ? ArrayHelper::getColumn($data, 'id')[0] : NULL;
@@ -108,7 +109,7 @@ class UsulanPengaduanController extends Controller
     public function actionTanggapan($idTanggapan = null)
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
-        $data = TaTanggapan::find()->where(['id' => $idTanggapan])->one();
+        $data = TaTanggapan::find()->where(['id' => $idTanggapan])->orderBy(['tgl_tanggapan' => SORT_DESC])->one();
         return $data;
     }
 
@@ -120,8 +121,15 @@ class UsulanPengaduanController extends Controller
             $model->setTahap(3);
         }
         Yii::$app->response->format = Response::FORMAT_JSON;
-        return ['forceClose' => true, 'forceReload' => '#_content_pjax'];
+        // return ['forceClose' => true, 'forceReload' => '#_content_pjax'];
         // return $this->redirect(['index']);
+        return [
+            'forceReload' => '#_content_pjax',
+            'title' => "Informasi",
+            'content' => '<span class="bg-success">Berhasil menyimpan data</span>',
+            'footer' => Html::button('Tutup', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"])
+
+        ];
     }
     public function actionHapus($id, $idActive = null)
     {
