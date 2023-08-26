@@ -31,16 +31,17 @@ $path = $content && $content->user ? Url::to(['usulan-pengaduan/profile?path=' .
                 </div>
             </div>
             <div class="float-right">
-                <?php Pjax::begin(['id' => '_content']) ?>
+                <?php Pjax::begin(['id' => 'content']) ?>
                 <?php
                 if ($content->status ?? 0 == 1) {
                     echo  Html::a(
                         '<i class="fas fa-close"></i> Close',
                         ['close', 'idPengaduan' => $content->id ?? NULL],
                         [
-                            'role' => 'modal-remote',
+                            // 'role' => 'modal-remote',
                             'class' => 'my-2 btn btn-danger d-block',
-                            'data-confirm' => false, 'data-method' => false, // for overide yii data api
+                            'data-confirm' => false,
+                            'data-method' => false, // for overide yii data api
                             'data-request-method' => 'post',
                             'data-toggle' => 'tooltip',
                             'data-confirm-title' => 'Apakah anda yakin?',
