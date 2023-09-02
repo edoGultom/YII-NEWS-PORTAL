@@ -13,9 +13,9 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         "css/bootstrap.css",
-        // "plugins/revolution/css/settings.css",
-        // "plugins/revolution/css/layers.css",
-        // "plugins/revolution/css/navigation.css",
+        "plugins/revolution/css/settings.css",
+        "plugins/revolution/css/layers.css",
+        "plugins/revolution/css/navigation.css",
         "css/style.css",
         "css/responsive.css",
         "css/color-switcher-design.css",

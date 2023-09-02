@@ -113,6 +113,14 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                         <?php
                                     } else {
                                         foreach ($sectionHeader as $key => $value) {
+                                            $classActive = '';
+                                            if (str_contains($value->link, Yii::$app->controller->id)) {
+                                                $classActive = 'current';
+                                            } else {
+                                                if (Yii::$app->controller->id === 'site' && strtolower($value->link) == '/') {
+                                                    $classActive = 'current';
+                                                }
+                                            }
                                             $status = ' ';
                                             if (str_contains($value->link, Yii::$app->controller->id)) {
                                                 $status = 'current';
@@ -121,7 +129,7 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                                 $status = 'current';
                                             }
                                         ?>
-                                            <li class='<?= str_contains($value->link, Yii::$app->controller->id) ? 'current' : (Yii::$app->controller->id === 'site' && strtolower($value->link) == '/') ? 'current' : '' ?>'>
+                                            <li class=' <?= $classActive ?>'>
                                                 <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
                                             </li>
                                     <?php
@@ -182,6 +190,14 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                         <?php
                                     } else {
                                         foreach ($sectionHeader as $key => $value) {
+                                            $classCurrent = '';
+                                            if (str_contains($value->link, Yii::$app->controller->id)) {
+                                                $classCurrent = 'current';
+                                            } else {
+                                                if (Yii::$app->controller->id === 'site' && strtolower($value->link) == '/') {
+                                                    $classCurrent = 'current';
+                                                }
+                                            }
                                             $status = ' ';
                                             if (str_contains($value->link, Yii::$app->controller->id)) {
                                                 $status = 'current';
@@ -190,7 +206,7 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                                 $status = 'current';
                                             }
                                         ?>
-                                            <li class='<?= str_contains($value->link, Yii::$app->controller->id) ? 'current' : (Yii::$app->controller->id === 'site' && strtolower($value->link) == '/') ? 'current' : '' ?>'>
+                                            <li class='<?= $classCurrent ?>'>
                                                 <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
                                             </li>
                                     <?php
@@ -238,6 +254,14 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                         } else {
                             foreach ($sectionHeader as $key => $value) {
                                 $status = ' ';
+                                $classCurrent = '';
+                                if (str_contains($value->link, Yii::$app->controller->id)) {
+                                    $classCurrent = 'current';
+                                } else {
+                                    if (Yii::$app->controller->id === 'site' && strtolower($value->link) == '/') {
+                                        $classCurrent = 'current';
+                                    }
+                                }
                                 if (str_contains($value->link, Yii::$app->controller->id)) {
                                     $status = 'current';
                                 }
@@ -245,7 +269,7 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                     $status = 'current';
                                 }
                             ?>
-                                <li class='<?= str_contains($value->link, Yii::$app->controller->id) ? 'current' : (Yii::$app->controller->id === 'site' && strtolower($value->link) == '/') ? 'current' : '' ?>'>
+                                <li class='<?= $classCurrent ?>'>
                                     <a href="<?= $value->link ?>"><?= $value->keterangan ?></a>
                                 </li>
                         <?php
