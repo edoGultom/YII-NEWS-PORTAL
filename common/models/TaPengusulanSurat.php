@@ -9,11 +9,20 @@ use Yii;
  *
  * @property int $id
  * @property int|null $id_jenis_surat
+ * @property int|null $id_file
+ * @property int|null $id_user
  * @property string|null $jenis_surat
  * @property string|null $tanggal
- * @property int|null $id_file
- * @property string|null $kieterangan
+ * @property string|null $keterangan
  * @property int|null $status
+ * @property string|null $nama_lengkap
+ * @property string|null $tempat_lahir
+ * @property string|null $tgl_lahir
+ * @property string|null $jenis_kelamin
+ * @property string|null $alamat
+ * @property string|null $alamat_domisili
+ * @property string|null $keterangan_tempat_tinggal
+ * @property string|null $keterangan_keperluan_surat
  */
 class TaPengusulanSurat extends \yii\db\ActiveRecord
 {
@@ -32,9 +41,10 @@ class TaPengusulanSurat extends \yii\db\ActiveRecord
     {
         return [
             [['id_jenis_surat', 'id_file', 'id_user', 'status'], 'integer'],
-            [['tanggal'], 'safe'],
-            [['keterangan'], 'string'],
+            [['tanggal', 'tgl_lahir'], 'safe'],
+            [['keterangan', 'nama_lengkap', 'tempat_lahir', 'alamat', 'alamat_domisili', 'keterangan_tempat_tinggal', 'keterangan_keperluan_surat'], 'string'],
             [['jenis_surat'], 'string', 'max' => 255],
+            [['jenis_kelamin'], 'string', 'max' => 20],
         ];
     }
 
@@ -46,12 +56,20 @@ class TaPengusulanSurat extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_jenis_surat' => 'Id Jenis Surat',
-            'jenis_surat' => 'Jenis Surat',
-            'tanggal' => 'Tanggal',
             'id_file' => 'Id File',
             'id_user' => 'Id User',
-            'keterangan' => 'keterangan',
+            'jenis_surat' => 'Jenis Surat',
+            'tanggal' => 'Tanggal',
+            'keterangan' => 'Keterangan',
             'status' => 'Status',
+            'nama_lengkap' => 'Nama Lengkap',
+            'tempat_lahir' => 'Tempat Lahir',
+            'tgl_lahir' => 'Tgl Lahir',
+            'jenis_kelamin' => 'Jenis Kelamin',
+            'alamat' => 'Alamat',
+            'alamat_domisili' => 'Alamat Domisili',
+            'keterangan_tempat_tinggal' => 'Keterangan Tempat Tinggal',
+            'keterangan_keperluan_surat' => 'Keterangan Keperluan Surat',
         ];
     }
     public function setTahap($tahap, $keterangan = NULL)

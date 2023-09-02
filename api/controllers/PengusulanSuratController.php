@@ -3,6 +3,7 @@
 namespace api\controllers;
 
 use api\models\UploadForm;
+use common\models\RefJenisSurat;
 use common\models\TaPengusulanSurat;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -45,9 +46,77 @@ class PengusulanSuratController extends Controller
                 'actions' => [
                     'cek-surat'  => ['GET'],
                     'notification'  => ['GET'],
+                    'create'  => ['POST'],
                 ],
             ],
         ]);
+    }
+    public function actionCreate()
+    {
+        $post = Yii::$app->request->post();
+        // return $post;
+        $nama_lengkap = array_key_exists('nama_lengkap', $post) ? $post['nama_lengkap'] : NULL;
+        $tempat_lahir = array_key_exists('tempat_lahir', $post) ? $post['tempat_lahir'] : NULL;
+        $tgl_lahir = array_key_exists('tgl_lahir', $post) ? $post['tgl_lahir'] : NULL;
+        $jenis_kelamin = array_key_exists('jenis_kelamin', $post) ? $post['jenis_kelamin'] : NULL;
+        $alamat = array_key_exists('alamat', $post) ? $post['alamat'] : NULL;
+        $alamat_domisili = array_key_exists('alamat_domisili', $post) ? $post['alamat_domisili'] : NULL;
+        $keterangan_tempat_tinggal = array_key_exists('keterangan_tempat_tinggal', $post) ? $post['keterangan_tempat_tinggal'] : NULL;
+        $keterangan_keperluan_surat = array_key_exists('keterangan_keperluan_surat', $post) ? $post['keterangan_keperluan_surat'] : NULL;
+
+        $jenisSurat = RefJenisSurat::findOne(['id' => 1]);
+        $model = new TaPengusulanSurat();
+        $model->id_jenis_surat = 1;
+        $model->id_user =  Yii::$app->user->identity->id;
+        $model->jenis_surat = $jenisSurat->jenis;
+        $model->tanggal = date('Y-m-d');
+        $model->nama_lengkap = $nama_lengkap;
+        $model->tempat_lahir = $tempat_lahir;
+        $model->tgl_lahir = $tgl_lahir;
+        $model->jenis_kelamin = $jenis_kelamin;
+        $model->alamat = $alamat;
+        $model->alamat_domisili = $alamat_domisili;
+        $model->keterangan_tempat_tinggal = $keterangan_tempat_tinggal;
+        $model->keterangan_keperluan_surat = $keterangan_keperluan_surat;
+        $connection = Yii::$app->db;
+        $transaction = $connection->beginTransaction();
+        try {
+            $file = new UploadForm();
+            $file->imageFile =  UploadedFile::getInstanceByName('file');
+            $idFile = $file->uploadFileKtp();
+            // echo "<pre>";
+            // print_r($idFile);
+            // echo "</pre>";
+            // exit();
+            if ($idFile) {
+                $model->id_file = $idFile;
+                if ($model->setTahap(1)) {
+                    $this->status = true;
+                    $this->pesan = "Berhasil Upload Dokumen";
+                    $transaction->commit();
+                } else {
+                    $this->status = $model;
+                    $this->pesan = $model->getErrors();
+                }
+            } else {
+                $this->status = false;
+                $this->pesan = $file->uploadFileKtp();
+            }
+        } catch (\Exception $e) {
+            $transaction->rollBack();
+            $this->status = false;
+            $this->pesan = $e->getMessage();
+        } catch (\Throwable $e) {
+            $transaction->rollBack();
+            $this->status = false;
+            $this->pesan = $e->getMessage();
+        }
+
+        return [
+            'status' => $this->status,
+            'pesan' => $this->pesan,
+            'data' => $this->data,
+        ];
     }
     public function actionCekSurat($userId)
     {

@@ -84,7 +84,6 @@ class UploadForm extends Model
                     ->save($newPath, ['quality' => 100]);
                 unlink(Yii::getAlias('@temp/') . $nameFile);
 
-
                 $fileDb = new UploadedFiledb();
                 $fileDb->name = $nameFile;
                 $fileDb->size = $this->imageFile->size;
@@ -93,22 +92,12 @@ class UploadForm extends Model
                 if (!$fileDb->validate()) {
                     return $fileDb->getErrors();
                 }
+
                 if ($fileDb->save()) {
                     $this->imageFile->saveAs($newPath);
-                    $jenisSurat = RefJenisSurat::findOne(['id' => 1]);
-                    $model = new TaPengusulanSurat();
-                    $model->id_jenis_surat = 1;
-                    $model->id_file = $fileDb->id;
-                    $model->id_user =  Yii::$app->user->identity->id;
-                    $model->jenis_surat = $jenisSurat->jenis;
-                    $model->tanggal = date('Y-m-d');
-
-                    if ($model->setTahap(1)) {
-                        $transaction->commit();
-                        return true;
-                    }
+                    $transaction->commit();
+                    return  $fileDb->id;
                 }
-                return  false;
             } catch (\Exception $e) {
                 $transaction->rollBack();
                 return $e->getMessage();
@@ -117,7 +106,7 @@ class UploadForm extends Model
                 return $e->getMessage();
             }
         } else {
-            return false;
+            return $this->getErrors();
         }
     }
     public function uploadFilePengaduan($id)

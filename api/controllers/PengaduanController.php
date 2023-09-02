@@ -59,8 +59,8 @@ class PengaduanController extends Controller
         $model = new TaPengaduan();
         $model->id_user = Yii::$app->user->identity->id;
         $model->tgl_pengaduan = (new \DateTime())->format('Y-m-d H:i:s');
-        $model->subjek = $post['subjek'];
-        $model->isi = $post['isi'];
+        $model->subjek =  array_key_exists('subjek', $post) ? $post['subjek'] : NULL;
+        $model->isi = array_key_exists('isi', $post) ? $post['isi'] : NULL;
         if ($model->setTahap(1)) {
             $this->status = true;
             $this->pesan = "Data Berhasil Disimpan";
@@ -100,6 +100,7 @@ class PengaduanController extends Controller
                 $arr[$key]['isi'] = $value->isi;
                 $arr[$key]['tgl_pengaduan'] = Yii::$app->formatter->asDate($value->tgl_pengaduan, 'php:d F Y');
                 $arr[$key]['status'] = $value->tahap->tahap ?? '';
+                $arr[$key]['tanggapan'] = $value->tanggapanById;
                 $arr[$key]['idFile'] = $value->file->id ?? '';
                 $arr[$key]['picturePath'] = Yii::$app->request->hostInfo . '/api/lihat-file/by-id?id=' . $idGambar;
             }

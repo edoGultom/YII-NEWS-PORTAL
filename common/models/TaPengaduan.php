@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "ta_pengaduan".
@@ -74,5 +75,12 @@ class TaPengaduan extends \yii\db\ActiveRecord
     public function getTanggapan()
     {
         return $this->hasMany(TaTanggapan::className(), ['id_pengaduan' => 'id'])->orderBy(['tgl_tanggapan' => SORT_DESC])->andOnCondition(['id_admin' => Yii::$app->user->identity->id]);
+    }
+    public function getTanggapanById()
+    {
+        // $kategori = ArrayHelper::map(TaTanggapan::find()->where(['id_pengaduan'=>$this->id])->all(), 'id', 'keterangan');
+        return TaTanggapan::find()->where(['id_pengaduan' => $this->id])->all();
+
+        // return $this->hasMany(TaTanggapan::className(), ['id_pengaduan' => 'id'])->orderBy(['tgl_tanggapan' => SORT_DESC]);
     }
 }
