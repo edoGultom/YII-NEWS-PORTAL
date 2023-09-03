@@ -18,7 +18,7 @@ class m230730_161306_ta_aduan_masyarakat extends Migration
             'tgl_pengaduan'        => $this->datetime(),
             'subjek'        => $this->text(),
             'isi'        => $this->text(),
-            'id_file'        => $this->integer(),
+            'id_file'        => $this->text(),
             'status'        => $this->tinyInteger(),
         ]);
         $this->createTable('ta_tanggapan', [

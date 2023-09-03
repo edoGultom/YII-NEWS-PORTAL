@@ -45,35 +45,44 @@ class PengaduanController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'pengaduan'  => ['POST'],
+                    'create'  => ['POST'],
                     'data'  => ['GET'],
                 ],
             ],
         ]);
     }
 
-    public function actionTambah()
+    public function actionCreate()
     {
-
         $post = Yii::$app->request->post();
-
         $model = new TaPengaduan();
         $model->id_user = Yii::$app->user->identity->id;
         $model->tgl_pengaduan = (new \DateTime())->format('Y-m-d H:i:s');
         $model->subjek =  array_key_exists('subjek', $post) ? $post['subjek'] : NULL;
         $model->isi = array_key_exists('isi', $post) ? $post['isi'] : NULL;
+        $files = UploadedFile::getInstancesByName("file");
+
         if ($model->setTahap(1)) {
             $this->status = true;
             $this->pesan = "Data Berhasil Disimpan";
-            $upload = new UploadForm();
-            $upload->imageFile =  UploadedFile::getInstanceByName('file');
-            if (!empty($upload->imageFile)) {
+
+            if (!empty($files)) {
+
+                $upload = new UploadForm();
+                $upload->imageFilesPengaduan = $files;
+
                 $resp = $upload->uploadFilePengaduan($model->id);
+
                 if (!$resp) {
-                    $this->pesan = $resp;
                     $this->status = false;
+                    $this->pesan = $resp;
                 }
+
+                $this->data = $model;
+            } else {
+                $this->status = false;
+                $this->pesan = 'file kosong!';
             }
-            $this->data = $model;
         } else {
             $this->status = false;
             $this->pesan = $model->getErrors();

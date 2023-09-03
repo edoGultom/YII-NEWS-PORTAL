@@ -22,11 +22,13 @@ class UploadForm extends Model
      * @var UploadedFile
      */
     public $imageFile;
+    public $imageFilesPengaduan;
 
     public function rules()
     {
         return [
             [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            [['imageFilesPengaduan'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -111,42 +113,47 @@ class UploadForm extends Model
     }
     public function uploadFilePengaduan($id)
     {
-        if (!empty($this->imageFile) && $this->validate()) {
+        if (!empty($this->imageFilesPengaduan)) {
+            // return $this->imageFilesPengaduan;
             $connection = Yii::$app->db;
             $transaction = $connection->beginTransaction();
             try {
+                $no = 0;
+                // return $this->imageFilesPengaduan;
+                $arrIdFile = [];
+                foreach ($this->imageFilesPengaduan as  $value) {
+                    $no++;
+                    $ext = pathinfo($value->name, PATHINFO_EXTENSION);
+                    $nameFile =  'PengaduanFile_' . Yii::$app->user->identity->id . '_' . $id . '_file' . $no . '.' . $ext;
+                    $value->saveAs('@temp/' . $nameFile);
 
+                    $newNameFile =   'PengaduanFile_' . Yii::$app->user->identity->id . '_' . $id . '_file' . $no . '_compressed.' . $ext;
+                    $newPath = Yii::getAlias('@upload/FilePengaduan/' . $newNameFile);
 
-                $ext = $this->imageFile->extension;
-                $nameFile =  'PengaduanFile_' . Yii::$app->user->identity->id . '_' . $id . '.' . $ext;
-                $this->imageFile->saveAs('@temp/' . $nameFile);
-
-                $newNameFile =   'PengaduanFile_' . Yii::$app->user->identity->id . '_' . $id . '_compressed.' . $ext;
-                $newPath = Yii::getAlias('@upload/FilePengaduan/' . $newNameFile);
-
-                $fileDb = new UploadedFiledb();
-                $fileDb->name = $this->imageFile->name;
-                $fileDb->size = $this->imageFile->size;
-                $fileDb->filename = $newPath;
-                $fileDb->type = $this->imageFile->type;
-                if (!$fileDb->validate()) {
-                    return $fileDb->getErrors();
-                }
-                if ($fileDb->save()) {
-                    Image::getImagine()->open(Yii::getAlias('@temp/') . $nameFile)
-                        ->thumbnail(new Box(500, 500))
-                        ->save($newPath, ['quality' => 100]);
-                    unlink(Yii::getAlias('@temp/') . $nameFile);
-                    $this->imageFile->saveAs($newPath);
-
-                    $pengaduan = TaPengaduan::findOne(['id' => $id]);
-                    $pengaduan->id_file = $fileDb->id;
-                    if ($pengaduan->save()) {
-                        $transaction->commit();
-                        return true;
+                    $fileDb = new UploadedFiledb();
+                    $fileDb->name = $value->name;
+                    $fileDb->size = $value->size;
+                    $fileDb->filename = $newPath;
+                    $fileDb->type = $value->type;
+                    if (!$fileDb->validate()) {
+                        return $fileDb->getErrors();
+                    }
+                    if ($fileDb->save()) {
+                        Image::getImagine()->open(Yii::getAlias('@temp/') . $nameFile)
+                            ->thumbnail(new Box(800, 800))
+                            ->save($newPath, ['quality' => 100]);
+                        unlink(Yii::getAlias('@temp/') . $nameFile);
+                        $value->saveAs($newPath);
+                        array_push($arrIdFile, $fileDb->id);
                     }
                 }
-                return  false;
+                $pengaduan = TaPengaduan::findOne(['id' => $id]);
+                $pengaduan->id_file =  implode(', ', $arrIdFile);
+                if ($pengaduan->save()) {
+                    $transaction->commit();
+                    return true;
+                }
+                return  $pengaduan->getErrors();
             } catch (\Exception $e) {
                 $transaction->rollBack();
                 return $e->getMessage();
@@ -155,7 +162,7 @@ class UploadForm extends Model
                 return $e->getMessage();
             }
         } else {
-            return false;
+            return $this->getErrors();
         }
     }
 }

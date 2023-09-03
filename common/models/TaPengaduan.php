@@ -32,8 +32,8 @@ class TaPengaduan extends \yii\db\ActiveRecord
     {
         return [
             [['id_user', 'tgl_pengaduan', 'status'], 'default', 'value' => null],
-            [['id_user', 'status', 'id_file'], 'integer'],
-            [['subjek', 'isi'], 'string'],
+            [['id_user', 'status'], 'integer'],
+            [['subjek', 'isi', 'id_file'], 'string'],
             ['tgl_pengaduan', 'safe'],
         ];
     }
