@@ -121,15 +121,7 @@ class UsulanPengaduanController extends Controller
             $model->setTahap(3);
         }
         Yii::$app->response->format = Response::FORMAT_JSON;
-        // return ['forceClose' => true, 'forceReload' => '#content_pjax'];
         return $this->redirect(['index']);
-        // return [
-        //     'forceReload' => '#content_pjax',
-        //     'title' => "Informasi",
-        //     'content' => '<span class="bg-success">Berhasil menyimpan data</span>',
-        //     'footer' => Html::button('Tutup', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"])
-
-        // ];
     }
     public function actionHapus($id, $idActive = null)
     {

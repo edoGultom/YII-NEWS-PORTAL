@@ -82,10 +82,6 @@ $path = $content && $content->user ? Url::to(['usulan-pengaduan/profile?path=' .
         </div>
         <div class="ticket-divider"></div>
         <?php
-        // echo "<pre>";
-        // print_r($content->tanggapan);
-        // echo "</pre>";
-        // exit();
         if (!empty($content->tanggapan)) {
         ?>
             <div class="card-body">
@@ -93,35 +89,34 @@ $path = $content && $content->user ? Url::to(['usulan-pengaduan/profile?path=' .
                     <?php
                     $no = 1;
                     foreach ($content->tanggapan as $key => $tanggapan) {
-                        $float = ($tanggapan->id_user == Yii::$app->user->identity->id) ? 'float-left' : 'float-right';
+                        $isAdmin =  ($tanggapan->id_user == Yii::$app->user->identity->id) ? true : false;
                         $isUser = ($tanggapan->user && $tanggapan->user->authAssignment && $tanggapan->user->authAssignment->item_name == 'User') ? true : false;
                         $colorRole = ($isUser) ? 'badge-success' : 'badge-info';
-
-
                     ?>
-                        <li class="media shadow-sm p-3 mb-5 bg-body rounded <?= $float ?>">
-                            <img alt="image" class="mr-3 rounded" width="45" height="45" src="<?= $path ?>" style="">
-                            <div class="media-body">
-                                <div class="media-title m-0"><?= $tanggapan->user->name ?? 'no_user' ?></div>
-                                <div class="d-flex flex-row">
-                                    <div class="badge <?= $colorRole ?> float-right text-xs"><?= $tanggapan->user->authAssignment->item_name ?? '' ?></div>
-                                    <div class="bullet"></div>
-                                    <div class="text-primary font-weight-600"><?= Yii::$app->formatter->asDateTime($tanggapan->tgl_tanggapan ?? NULL, 'php:d F Y H:i:s') ?></div>
+                        <div class="d-flex <?= ($isAdmin) ? 'justify-content-start' : 'justify-content-end' ?>">
+                            <li class="media shadow-sm p-3 mb-5 bg-body rounded ">
+                                <img alt="image" class="mr-3 rounded" width="45" height="45" src="<?= $path ?>" style="">
+                                <div class="media-body">
+                                    <div class="media-title m-0"><?= $tanggapan->user->name ?? 'no_user' ?></div>
+                                    <div class="d-flex flex-row">
+                                        <div class="badge <?= $colorRole ?> float-right text-xs"><?= $tanggapan->user->authAssignment->item_name ?? '' ?></div>
+                                        <div class="bullet"></div>
+                                        <div class="text-primary font-weight-600"><?= Yii::$app->formatter->asDateTime($tanggapan->tgl_tanggapan ?? NULL, 'php:d F Y H:i:s') ?></div>
+                                    </div>
+
+                                    <div class="media-description text-muted"><?= $tanggapan->tanggapan ?></div>
+                                    <div class="media-links">
+                                        <?php
+                                        if (!$isUser) {
+                                        ?>
+                                            <a href="#form" class="text-muted btn-reply" data-tanggapan="<?= $tanggapan->id ?>"> <i class="fa-solid fa-edit"></i> Ubah</a>
+                                            <?= Html::a('<i class="fa-solid fa-trash"></i> Hapus', ['hapus', 'id' => $tanggapan->id, 'idActive' => $idActive], ['class' => 'text-danger']); ?>
+                                        <?php }  ?>
+
+                                    </div>
                                 </div>
-
-                                <div class="media-description text-muted"><?= $tanggapan->tanggapan ?></div>
-                                <div class="media-links">
-                                    <?php
-                                    if (!$isUser) {
-                                    ?>
-                                        <a href="#form" class="text-muted btn-reply" data-tanggapan="<?= $tanggapan->id ?>"> <i class="fa-solid fa-edit"></i> Ubah</a>
-                                        <?= Html::a('<i class="fa-solid fa-trash"></i> Hapus', ['hapus', 'id' => $tanggapan->id, 'idActive' => $idActive], ['class' => 'text-danger']); ?>
-                                    <?php }  ?>
-
-                                </div>
-                            </div>
-                        </li>
-
+                            </li>
+                        </div>
                         <div class="ticket ticket-form-<?= $key ?>" style="display:none;" id="form">
                             <?php $form = ActiveForm::begin([
                                 'method' => 'POST',

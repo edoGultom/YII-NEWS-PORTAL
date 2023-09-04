@@ -76,6 +76,14 @@ class TaPengaduan extends \yii\db\ActiveRecord
         }
         return 'tidak ditemukan';
     }
+    public function getRoleUser($id_user)
+    {
+        $model =  AuthAssignment::findOne(['user_id' => $id_user]);
+        if ($model) {
+            return $model->item_name;
+        }
+        return 'tidak ditemukan';
+    }
     public function getFile()
     {
         return $this->hasOne(UploadedFiledb::className(), ['id' => 'id_file']);
@@ -90,7 +98,8 @@ class TaPengaduan extends \yii\db\ActiveRecord
         $model = TaTanggapan::find()->where(['id_pengaduan' => $this->id])->orderBy(['tgl_tanggapan' => SORT_ASC])->asArray()->all();
         foreach ($model as $key => $value) {
             $model[$key]['tgl_tanggapan'] =  Yii::$app->formatter->asDate($model[$key]['tgl_tanggapan'], 'php:d F Y H:i:s');
-            $model[$key]['id_user'] =  $this->getUserBy($model[$key]['id_user']);
+            $model[$key]['username'] =  $this->getUserBy($model[$key]['id_user']);
+            $model[$key]['role'] =  $this->getRoleUser($model[$key]['id_user']);
         }
         return $model;
     }
