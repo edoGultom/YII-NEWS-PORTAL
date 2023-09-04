@@ -34,10 +34,6 @@ CrudAsset::register($this);
 
                             <?php
                             $dataContent =   Yii::$app->runAction('/usulan-pengaduan/data-content', ['id' => $idActive]);
-                            // echo "<pre>";
-                            // print_r($dataContent);
-                            // echo "</pre>";
-                            // exit();
                             if (!empty($dataPengaduan)) {
                             ?>
                                 <div class="ticket-items" id="ticket-items">

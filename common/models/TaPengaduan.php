@@ -68,19 +68,29 @@ class TaPengaduan extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'id_user']);
     }
+    public function getUserBy($id_user)
+    {
+        $model =  User::findOne(['id' => $id_user]);
+        if ($model) {
+            return $model->name;
+        }
+        return 'tidak ditemukan';
+    }
     public function getFile()
     {
         return $this->hasOne(UploadedFiledb::className(), ['id' => 'id_file']);
     }
     public function getTanggapan()
     {
-        return $this->hasMany(TaTanggapan::className(), ['id_pengaduan' => 'id'])->orderBy(['tgl_tanggapan' => SORT_DESC])->andOnCondition(['id_user' => Yii::$app->user->identity->id]);
+        return $this->hasMany(TaTanggapan::className(), ['id_pengaduan' => 'id'])->orderBy(['tgl_tanggapan' => SORT_ASC]);
+        // ->andOnCondition(['id_user' => Yii::$app->user->identity->id]);
     }
     public function getTanggapanById()
     {
-        $model = TaTanggapan::find()->where(['id_pengaduan' => $this->id])->asArray()->all();
+        $model = TaTanggapan::find()->where(['id_pengaduan' => $this->id])->orderBy(['tgl_tanggapan' => SORT_ASC])->asArray()->all();
         foreach ($model as $key => $value) {
             $model[$key]['tgl_tanggapan'] =  Yii::$app->formatter->asDate($model[$key]['tgl_tanggapan'], 'php:d F Y H:i:s');
+            $model[$key]['id_user'] =  $this->getUserBy($model[$key]['id_user']);
         }
         return $model;
     }
