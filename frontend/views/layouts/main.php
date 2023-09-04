@@ -50,7 +50,7 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                     <div class="inner-container clearfix">
 
                         <div class="pull-left logo-outer">
-                            <div class="logo"><a href="/"><span class="letter">Desa</span><img src="<?= Url::to('@web/img/logo.svg') ?>" width="100" height="100" alt="" /></a>
+                            <div class="logo"><a href="/"><span class="letter">Desa</span><img src="<?= Url::to('/img/logo.svg') ?>" width="100" height="100" alt="" /></a>
                             </div>
                         </div>
 
