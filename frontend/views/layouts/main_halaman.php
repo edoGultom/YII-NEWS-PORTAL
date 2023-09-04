@@ -48,7 +48,7 @@ $sectionHeader = Yii::$app->Template->sectionHeader(1);
                     <div class="inner-container clearfix">
 
                         <div class="pull-left logo-outer">
-                            <div class="logo"><a href="/"><span class="letter">Desa</span><img src="/img/logo.svg" width="100" height="100" alt="" /></a></div>
+                            <div class="logo"><a href="/"><span class="letter">Desa</span><img src="/img/Logo.svg" width="100" height="100" alt="" /></a></div>
                         </div>
 
                         <div class="pull-right upper-right clearfix">

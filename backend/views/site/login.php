@@ -17,7 +17,7 @@ $password =  json_encode(substr(strrchr(get_class($model), '\\'), 1) . '[passwor
 <div class="d-flex flex-wrap align-items-stretch">
     <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
         <div class="p-4 m-3">
-            <img src="/img/logo.svg" alt="logo" width="150" class="rounded mb-2 mt-2">
+            <img src="/img/Logo.svg" alt="logo" width="150" class="rounded mb-2 mt-2">
             <h4 class="text-dark font-weight-normal">Welcomes to <span class="font-weight-bold">Admin Desa</span>
             </h4>
             <p class="text-muted">Sebelum kamu memulai, kamu harus login atau register ijika kamu belum mempunyai akun.
