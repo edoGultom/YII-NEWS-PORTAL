@@ -74,7 +74,7 @@ class TaPengaduan extends \yii\db\ActiveRecord
     }
     public function getTanggapan()
     {
-        return $this->hasMany(TaTanggapan::className(), ['id_pengaduan' => 'id'])->orderBy(['tgl_tanggapan' => SORT_DESC])->andOnCondition(['id_admin' => Yii::$app->user->identity->id]);
+        return $this->hasMany(TaTanggapan::className(), ['id_pengaduan' => 'id'])->orderBy(['tgl_tanggapan' => SORT_DESC])->andOnCondition(['id_user' => Yii::$app->user->identity->id]);
     }
     public function getTanggapanById()
     {

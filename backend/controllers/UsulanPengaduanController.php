@@ -63,7 +63,7 @@ class UsulanPengaduanController extends Controller
         if ($model->load($request->post())) {
             $model->id_pengaduan = $idActive;
             $model->tgl_tanggapan = (new \DateTime())->format('Y-m-d H:i:s');
-            $model->id_admin = Yii::$app->user->identity->id;
+            $model->id_user = Yii::$app->user->identity->id;
             $model->save();
             $model->tanggapan = NULL;
             return $this->redirect(['index', 'idActive' => $idActive]);

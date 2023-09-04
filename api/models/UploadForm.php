@@ -27,8 +27,7 @@ class UploadForm extends Model
     public function rules()
     {
         return [
-            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
-            [['imageFilesPengaduan'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            [['imageFile', 'imageFilesPengaduan'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -70,12 +69,12 @@ class UploadForm extends Model
     }
     public function uploadFileKtp()
     {
-        if (!empty($this->imageFile) && $this->validate()) {
+        if (!empty($this->imageFile)) {
             $connection = Yii::$app->db;
             $transaction = $connection->beginTransaction();
             try {
 
-                $ext = $this->imageFile->extension;
+                $ext = pathinfo($this->imageFile->name, PATHINFO_EXTENSION);
                 $nameFile =  'Ktp_' . Yii::$app->user->identity->id . '.' . $ext;
                 $this->imageFile->saveAs('@temp/' . $nameFile);
 
@@ -94,7 +93,6 @@ class UploadForm extends Model
                 if (!$fileDb->validate()) {
                     return $fileDb->getErrors();
                 }
-
                 if ($fileDb->save()) {
                     $this->imageFile->saveAs($newPath);
                     $transaction->commit();

@@ -5,6 +5,7 @@ namespace api\controllers;
 use api\models\UploadForm;
 use common\models\TaPengaduan;
 use common\models\TaPengusulanSurat;
+use common\models\TaTanggapan;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\rest\Controller;
@@ -83,6 +84,31 @@ class PengaduanController extends Controller
                 $this->status = false;
                 $this->pesan = 'file kosong!';
             }
+        } else {
+            $this->status = false;
+            $this->pesan = $model->getErrors();
+        }
+
+        return [
+            'status' => $this->status,
+            'pesan' => $this->pesan,
+            'data' => $this->data,
+        ];
+    }
+    public function actionKirim()
+    {
+        $post = Yii::$app->request->post();
+        $id =  array_key_exists('id', $post) ? $post['id'] : NULL;
+        $balasan =  array_key_exists('balasan', $post) ? $post['balasan'] : NULL;
+        $model = new TaTanggapan();
+        $model->id_pengaduan = $id;
+        $model->tgl_tanggapan = (new \DateTime())->format('Y-m-d H:i:s');
+        $model->tanggapan = $balasan;
+        $model->id_user =  Yii::$app->user->identity->id;
+        if ($model->save()) {
+            $this->status = true;
+            $this->pesan = "Data Berhasil Disimpan";
+            $this->data = $model;
         } else {
             $this->status = false;
             $this->pesan = $model->getErrors();

@@ -11,7 +11,7 @@ use Yii;
  * @property int|null $id_pengaduan
  * @property int|null $tgl_tanggapan
  * @property string|null $tanggapan
- * @property int|null $id_admin
+ * @property int|null $id_user
  */
 class TaTanggapan extends \yii\db\ActiveRecord
 {
@@ -29,8 +29,8 @@ class TaTanggapan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_pengaduan', 'tgl_tanggapan', 'id_admin'], 'default', 'value' => null],
-            [['id_pengaduan', 'id_admin'], 'integer'],
+            [['id_pengaduan', 'tgl_tanggapan', 'id_user'], 'default', 'value' => null],
+            [['id_pengaduan', 'id_user'], 'integer'],
             ['tgl_tanggapan', 'safe'],
             [['tanggapan'], 'string'],
         ];
@@ -46,11 +46,11 @@ class TaTanggapan extends \yii\db\ActiveRecord
             'id_pengaduan' => 'Id Pengaduan',
             'tgl_tanggapan' => 'Tgl Tanggapan',
             'tanggapan' => 'Tanggapan',
-            'id_admin' => 'Id Admin',
+            'id_user' => 'Id Admin',
         ];
     }
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id' => 'id_admin']);
+        return $this->hasOne(User::className(), ['id' => 'id_user']);
     }
 }

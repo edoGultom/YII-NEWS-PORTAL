@@ -63,6 +63,7 @@ class PengusulanSuratController extends Controller
         $alamat_domisili = array_key_exists('alamat_domisili', $post) ? $post['alamat_domisili'] : NULL;
         $keterangan_tempat_tinggal = array_key_exists('keterangan_tempat_tinggal', $post) ? $post['keterangan_tempat_tinggal'] : NULL;
         $keterangan_keperluan_surat = array_key_exists('keterangan_keperluan_surat', $post) ? $post['keterangan_keperluan_surat'] : NULL;
+        $files = UploadedFile::getInstancesByName("file");
 
         $jenisSurat = RefJenisSurat::findOne(['id' => 1]);
         $model = new TaPengusulanSurat();
@@ -81,26 +82,28 @@ class PengusulanSuratController extends Controller
         $connection = Yii::$app->db;
         $transaction = $connection->beginTransaction();
         try {
-            $file = new UploadForm();
-            $file->imageFile =  UploadedFile::getInstanceByName('file');
-            $idFile = $file->uploadFileKtp();
-            // echo "<pre>";
-            // print_r($idFile);
-            // echo "</pre>";
-            // exit();
-            if ($idFile) {
-                $model->id_file = $idFile;
-                if ($model->setTahap(1)) {
-                    $this->status = true;
-                    $this->pesan = "Berhasil Upload Dokumen";
-                    $transaction->commit();
+            if (!empty($files)) {
+                $upload = new UploadForm();
+                $upload->imageFile = $files[0];
+                $idFile = $upload->uploadFileKtp();
+
+                if ($idFile) {
+                    $model->id_file = $idFile;
+                    if ($model->setTahap(1)) {
+                        $this->status = true;
+                        $this->pesan = "Berhasil Upload Dokumen";
+                        $transaction->commit();
+                    } else {
+                        $this->status = $model;
+                        $this->pesan = $model->getErrors();
+                    }
                 } else {
-                    $this->status = $model;
-                    $this->pesan = $model->getErrors();
+                    $this->status = false;
+                    $this->pesan = $idFile;
                 }
             } else {
                 $this->status = false;
-                $this->pesan = $file->uploadFileKtp();
+                $this->pesan = 'File Kosong!';
             }
         } catch (\Exception $e) {
             $transaction->rollBack();
