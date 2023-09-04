@@ -40,6 +40,7 @@ return [
             'frontend/web/assets',
             'api/runtime',
             'api/web/assets',
+            'common/upload',
         ],
         'setExecutable' => [
             'yii',
