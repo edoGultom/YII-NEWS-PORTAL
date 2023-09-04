@@ -35,19 +35,7 @@ class ArtikelController extends Controller
     //     return [$_SERVER["REMOTE_ADDR"], 'http://dinkes.test'];
     // }
 
-    public function behaviors()
-    {
-        return [
 
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                    'bulk-delete' => ['post'],
-                ],
-            ],
-        ];
-    }
     // public function behaviors()
     // {
     //     $behaviors = parent::behaviors();
