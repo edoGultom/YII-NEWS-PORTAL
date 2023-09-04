@@ -41,6 +41,7 @@ return [
             'api/runtime',
             'api/web/assets',
             'common/upload',
+            'temp/upload',
         ],
         'setExecutable' => [
             'yii',
@@ -63,6 +64,8 @@ return [
             'frontend/web/assets',
             'api/runtime',
             'api/web/assets',
+            'common/upload',
+            'temp/upload',
         ],
         'setExecutable' => [
             'yii',
