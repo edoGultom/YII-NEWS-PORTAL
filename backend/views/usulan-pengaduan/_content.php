@@ -60,17 +60,22 @@ $path = $content && $content->user ? Url::to(['usulan-pengaduan/profile?path=' .
 
     <div class="ticket-description">
         <p><?= $content->isi ?? NULL ?></p>
-        <?php
-        if ($content->id_file ?? NULL) {
-        ?>
-            <div class="gallery">
-                <div class="gallery-item gallery-more" data-image="<?= Url::to(['/document/get-file', 'id' => $content->id_file ?? NULL]) ?>" data-title="Image">
-                    <div><i class="fas fa-eye"></i></div>
-                </div>
-            </div>
-        <?php
-        }
-        ?>
+        <div class="gallery">
+            <p class="m-0 p-0">All File : </p>
+            <?php
+            if ($content->id_file ?? NULL) {
+                $expIdFile = explode(', ', $content->id_file);
+                foreach ($expIdFile as $key => $value) {
+            ?>
+                    <div class="gallery-item" data-image="<?= Url::to(['/document/get-file', 'id' => $value ?? NULL]) ?>" data-title="Image"></div>
+                <?php
+                }
+                ?>
+            <?php
+            }
+            ?>
+        </div>
+
 
         <div class="media-links text-right">
             <a href="#komentar" class="text-muted btn-reply-induk"> <i class="fa-solid fa-reply"></i> Balas</a>

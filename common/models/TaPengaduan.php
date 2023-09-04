@@ -78,9 +78,10 @@ class TaPengaduan extends \yii\db\ActiveRecord
     }
     public function getTanggapanById()
     {
-        // $kategori = ArrayHelper::map(TaTanggapan::find()->where(['id_pengaduan'=>$this->id])->all(), 'id', 'keterangan');
-        return TaTanggapan::find()->where(['id_pengaduan' => $this->id])->all();
-
-        // return $this->hasMany(TaTanggapan::className(), ['id_pengaduan' => 'id'])->orderBy(['tgl_tanggapan' => SORT_DESC]);
+        $model = TaTanggapan::find()->where(['id_pengaduan' => $this->id])->asArray()->all();
+        foreach ($model as $key => $value) {
+            $model[$key]['tgl_tanggapan'] =  Yii::$app->formatter->asDate($model[$key]['tgl_tanggapan'], 'php:d F Y H:i:s');
+        }
+        return $model;
     }
 }

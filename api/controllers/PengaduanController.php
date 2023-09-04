@@ -103,7 +103,14 @@ class PengaduanController extends Controller
             $this->pesan = "Data ditemukan";
             $arr = [];
             foreach ($query as $key => $value) {
-                $idGambar = $value->file->id ?? NULL;
+                $expIdFile = explode(', ', $value->id_file);
+                array_walk($expIdFile, function (&$value, $key) {
+                    $value = Yii::$app->request->hostInfo . '/api/lihat-file/by-id?id=' . $value;
+                });
+                // echo "<pre>";
+                // print_r($value->tanggapanById);
+                // echo "</pre>";
+                // exit();
                 $arr[$key]['id'] = $value->id;
                 $arr[$key]['subjek'] = $value->subjek;
                 $arr[$key]['isi'] = $value->isi;
@@ -111,7 +118,7 @@ class PengaduanController extends Controller
                 $arr[$key]['status'] = $value->tahap->tahap ?? '';
                 $arr[$key]['tanggapan'] = $value->tanggapanById;
                 $arr[$key]['idFile'] = $value->file->id ?? '';
-                $arr[$key]['picturePath'] = Yii::$app->request->hostInfo . '/api/lihat-file/by-id?id=' . $idGambar;
+                $arr[$key]['picturePaths'] = $expIdFile;
             }
             $this->data = $arr;
         } else {
