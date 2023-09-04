@@ -64,15 +64,27 @@ class ArtikelController extends Controller
 
     // }
 
+    // public function behaviors()
+    // {
+    //     return ArrayHelper::merge([
+    //         [
+    //             'class' => Cors::className(),
+    //         ],
+    //     ], parent::behaviors());
+    // }
     public function behaviors()
     {
-        return ArrayHelper::merge([
-            [
-                'class' => Cors::className(),
-            ],
-        ], parent::behaviors());
-    }
+        return [
 
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['post'],
+                    'bulk-delete' => ['post'],
+                ],
+            ],
+        ];
+    }
     /**
      * Lists all Artikel models.
      * @return mixed
