@@ -421,7 +421,7 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                                         echo '
                                                         <article class="widget-post">
                                                             <figure class="post-thumb"><a href="#"><img src="images/resource/post-thumb-3.jpg" alt=""></a>
-                                                                <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                                <div class="overlay"></div>
                                                             </figure>
                                                             <div class="text"><a href="#">Lorem Ipsum is simply dummy tex</a></div>
                                                             <div class="post-info">Month Day, Year</div>
@@ -462,7 +462,7 @@ $sectionContent = (array)Yii::$app->Template->sectionContent(3);
                                                         echo '
                                                         <article class="widget-post">
                                                             <figure class="post-thumb"><a href="#"><img src="images/resource/post-thumb-3.jpg" alt=""></a>
-                                                                <div class="overlay"><span class="icon qb-play-arrow"></span></div>
+                                                                <div class="overlay"></div>
                                                             </figure>
                                                             <div class="text"><a href="#">Lorem Ipsum is simply dummy tex</a></div>
                                                             <div class="post-info">Month Day, Year</div>
